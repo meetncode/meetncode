@@ -1,0 +1,26 @@
+.tags-container {
+	background: #3c444c;
+	min-height: 15vh;
+}
+.tags-wrapper {
+	max-width: 70%;
+	margin: 0 auto;
+	padding-top: 3em;
+	padding-bottom: 3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.tag {
+	margin: 0.6em;
+	border: 2px solid #fff;
+	color: #fff;
+	border-radius: 20px;
+	padding: 0.5em;
+}
+.tag a {
+	color: #fff;
+	text-decoration: none;
+	margin: 1em;
+}
