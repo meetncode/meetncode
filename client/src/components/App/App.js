@@ -1,12 +1,14 @@
 import React from 'react';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import { connect }from "react-redux";
 
 const App = (props) => {
   const { title } = props
   return (
     <div>
-      <h1>{title}</h1>
-      <p>Sonam was here</p>
+      <Header></Header>
+      <Footer></Footer>
     </div>
     )
   }
