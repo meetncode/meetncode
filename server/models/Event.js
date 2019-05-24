@@ -18,7 +18,7 @@ const EventSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Location'
   }
-})
+}, { timestamps: true })
 
 const Event = mongoose.model('event', EventSchema);
 

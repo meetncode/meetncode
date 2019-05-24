@@ -1,16 +1,5 @@
-const { User } = require('../models/User');
+const { UserResolvers } = require('./UserResolvers');
 
-const resolvers = {
-  Query: {
-    getUser: async (_, args) => {
-      const fakeUser = {
-        id: 1,
-        firstName: 'John',
-        lastName: 'Doe'
-      }
-      return fakeUser;
-    },
-  },
-}
+const resolvers = UserResolvers;
 
 module.exports = resolvers;
