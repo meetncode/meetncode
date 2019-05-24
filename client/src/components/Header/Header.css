@@ -1,0 +1,25 @@
+.header-wrapper {
+	background: #3C444C;
+	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
+	height: 86px;
+}
+.menu-bar-wrapper {
+	float: right;
+}
+.menu-bar-wrapper a{
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 12px;
+	display: flex;
+	align-items: center;
+	text-align: right;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	display: inline-block;
+	padding: 30px;
+}
+.menu-bar-wrapper a:first-child{
+	color: #CBCFD4;
+}
