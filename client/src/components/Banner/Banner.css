@@ -1,0 +1,27 @@
+.headline,
+.tagline {
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	margin: 1em 0;
+}
+.tagline,
+.headline {
+	margin: 1em 0;
+}
+.call-to-action {
+	margin: 2em 0;
+}
+.btn {
+	text-decoration: none;
+	padding: 0.5em 3em;
+	margin: 1em;
+	border-radius: 20px;
+}
+.btn-white {
+	color: #000;
+	background: #fff;
+}
+.btn-transparent {
+	border: 2px solid #fff;
+	color: #fff;
+}
