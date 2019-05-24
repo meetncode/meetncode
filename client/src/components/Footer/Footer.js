@@ -1,11 +1,13 @@
 import React from 'react';
 import './Footer.css';
+import mySvg from './logo.svg';
 
 const Footer = () => {
   return (
     <div className="footer">
       <div className="terrinary">
         <div className="about-us-wrapper">
+          <img src={mySvg} />
         	<p>test</p>
         </div>
         <div className="terrinary-menu-container-wrap">
