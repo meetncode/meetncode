@@ -1,0 +1,21 @@
+.events-container {
+	background: #637586;
+}
+.events-wrapper {
+	max-width: 70%;
+	margin: 0 auto;
+	padding-top: 3em;
+	padding-bottom: 3em;
+}
+
+.events-list {
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1em;
+}
+.event {
+	max-width: 330px;
+	background: antiquewhite;
+	padding: 1em;
+}

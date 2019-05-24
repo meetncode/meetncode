@@ -1,0 +1,35 @@
+.groups-container {
+	background: #30363d;
+	color: #fff;
+}
+.groups-wrapper {
+	max-width: 70%;
+	margin: 0 auto;
+	padding-top: 3em;
+	padding-bottom: 3em;
+}
+
+.groups-list {
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 1em;
+}
+
+.group {
+	max-width: 270px;
+	max-height: 250px;
+	background: #e91e63;
+	display: grid;
+	grid-template-rows: 120px 1fr;
+}
+.group-profile {
+	overflow: hidden;
+}
+.group-details {
+	padding: 0 1em;
+}
+.group img {
+	max-width: 100%;
+	height: auto;
+}
