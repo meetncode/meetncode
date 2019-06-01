@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="footer">
       <div className="terrinary">
         <div className="about-us-wrapper">
-          <img src={mySvg} />
+          <img src={mySvg} style={{ 'maxWidth': 40, 'margin': '1em'}}/>
         	<p>test</p>
         </div>
         <div className="terrinary-menu-container-wrap">
