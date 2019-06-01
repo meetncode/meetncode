@@ -6,17 +6,21 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
+  host: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
+  },
   description: {
     type: String,
     require: true
   },
   attendees: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'user'
   }],
   location: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Location'
+    ref: 'location'
   }
 }, { timestamps: true })
 

@@ -20,20 +20,24 @@ const UserSchema = new Schema({
   },
   location: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Location'
+    ref: 'location'
   },
   hometown: String,
   language: String,
   birthday: Date,
   gender: String,
   bio: String,
+  events: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'event'
+  }],
   categories: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category'
+    ref: 'category'
   }],
   groups: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Group'
+    ref: 'group'
   }],
   enabled: {
     type: Boolean,

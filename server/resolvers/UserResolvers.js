@@ -3,7 +3,7 @@ const { User } = require('../models/User');
 const UserResolvers = {
   Query: {
     getUser: async(_, { id }) => {
-      return await User.findById(id)
+      return await User.findById(id).populate('events')
     },
     getUsersByGroup: async(_, { groupId }) => {
       return await User.find({ groups: { $in: groupId } })
