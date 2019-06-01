@@ -1,0 +1,33 @@
+.event-header-container {
+	min-height: 15vh;
+	background-color: #171c22;
+}
+.event-header-wrapper {
+	max-width: 70%;
+	margin: 0 auto;
+	padding-top: 3em;
+	padding-bottom: 3em;
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	justify-items: center;
+	align-items: center;
+}
+.event-header-wrapper p,
+.event-header-wrapper h3,
+.event-header-wrapper span,
+.event-header-wrapper a {
+	color: #fff;
+}
+
+.event-header-wrapper a {
+	text-decoration: none;
+}
+.event-attendance {
+	display: flex;
+	align-items: center;
+}
+.event-actions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
