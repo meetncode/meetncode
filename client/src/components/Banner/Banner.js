@@ -1,6 +1,7 @@
 import React from 'react'
 import Background from './background.jpg'
 import './Banner.css'
+import { Link } from 'react-router-dom'
 
 const Banner = () => {
 	return (
@@ -8,8 +9,8 @@ const Banner = () => {
 			<h2 className="headline">Lorem Ipsum Dolor Sit Amet</h2>
 			<p className="tagline">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
 			<div className="call-to-action">
-				<a href="#" className="btn btn-white">Get Started</a>
-				<a href="#" className="btn btn-transparent">Join MeetNCode</a>
+				<Link to="/" className="btn btn-white">Get Started</Link>
+				<Link to="/" className="btn btn-transparent">Join MeetNCode</Link>
 			</div>
 		</div>
 	)

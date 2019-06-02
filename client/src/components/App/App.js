@@ -1,32 +1,21 @@
 import React from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Banner from '../Banner/Banner'
-import Tags from '../Tags/TagsContainer'
-import Categories from '../Categories/Categories'
-import EventsNearby from '../EventsNearby/EventsNearby'
-import GroupsNearby from '../GroupsNearby/GroupsNearby'
-import CreateGroup from '../CreateGroup/CreateGroup'
-import HowItWorks from '../HowItWorks/HowItWorks'
-
-import { connect }from "react-redux";
+import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { connect }from "react-redux"
 import './App.css'
+import Home from '../../pages/Home'
+import Event from '../../pages/Event'
 
 const App = (props) => {
   const { title } = props
   return (
-    <div>
-
-      <Header></Header>
-      <Banner></Banner>
-      <Tags></Tags>
-      <EventsNearby></EventsNearby>
-      <GroupsNearby></GroupsNearby>
-      <CreateGroup></CreateGroup>
-      <Categories></Categories>
-      <HowItWorks></HowItWorks>
-      <Footer></Footer>
-    </div>
+    <Router>
+      <div>
+        <Route exact path="/" component={Home} />
+        <Route path="/event/:id" component={Event} />
+        {/* <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} /> */}
+      </div>
+    </Router>
     )
   }
 
