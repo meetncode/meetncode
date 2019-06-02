@@ -1,10 +1,11 @@
 import React from 'react'
 import './Tags'
+import { Link } from 'react-router-dom'
 
 const Tag = () => {
 	return (
 		<div className="tag">
-			<a href="#">Rails Dev</a>
+			<Link to="/">Rails Dev</Link>
 		</div>
 	)
 }

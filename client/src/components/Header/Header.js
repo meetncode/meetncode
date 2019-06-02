@@ -1,5 +1,6 @@
 import React from 'react'
 import './Header.css'
+import { Link } from 'react-router-dom'
 import mySvg from './logo.svg'
 
 console.log(mySvg);
@@ -9,9 +10,9 @@ const Header = () => {
 		<div className="header-wrapper">
 			<img src={mySvg} style={{ 'maxWidth': 40, 'margin': '1em' }}/>
 			<div className="menu-bar-wrapper">
-				<a href="#">start a new group</a>
-				<a href="#">Login</a>
-				<a href="#">register</a>
+				<Link to="/">start a new group</Link>
+				<Link to="/login">Login</Link>
+				<Link to="/signup">register</Link>
 			</div>
 		</div>
 	)
