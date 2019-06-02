@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// add
 const LocationSchema = new Schema({
   country: {
     type: String,
     required: true
   },
   city: {
+    type: String,
+    required: true
+  },
+  address: {
     type: String,
     required: true
   },

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// Add location
+
 const GroupSchema = new Schema({
   name: {
     type: String,
