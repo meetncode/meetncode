@@ -31,3 +31,58 @@
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 10px;
 }
+.spots-left {
+	margin: 0 1em;
+}
+.btn {
+	text-decoration: none;
+	padding: 0.5em 3em;
+	margin: 1em;
+	border-radius: 20px;
+	background: linear-gradient(to left, #f27954, #a154f2);
+	border: none;
+	color: #fff;
+}
+
+.event-share {
+	max-width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	padding: 0 1em;
+}
+.social-share {
+	display: flex;
+	justify-content: space-evenly;
+	width: 56%;
+}
+
+.event-header-date {
+	max-width: 60px;
+	background: white;
+	padding: 0 1em;
+	height: 60px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.event-header-date .date {
+	color: red;
+	font-weight: bold;
+	font-size: 1.2em;
+	padding-top: 0.4em;
+	margin: 0;
+}
+.event-header-date .month {
+	color: #666;
+	margin: 0;
+	font-weight: 600;
+}
+.event-date {
+	margin: 0;
+}
+.event-header-details {
+	display: flex;
+}
+.event-header-details-expand {
+	margin-left: 1em;
+}

@@ -10,16 +10,16 @@ const EventHeaderActions = () => {
 				<span className="spots-left">8 spots left</span>
 			</div>
 			<div className="event-actions">
-				<button className="attend">Check</button>
-				<button className="skip">Skip</button>
+				<button className="attend btn">Check</button>
+				<button className="skip btn">Skip</button>
 			</div>
 			<div className="event-share">
 				<p>Share</p>
 				<ul className="social-share">
-					<li><Link to="/">Facebook</Link></li>
-					<li><Link to="/">Twitter</Link></li>
-					<li><Link to="/">LinkedIn</Link></li>
-					<li><Link to="/">Email</Link></li>
+					<li><Link to="/"><i class="fab fa-facebook-square"></i></Link></li>
+					<li><Link to="/"><i class="fab fa-twitter-square"></i></Link></li>
+					<li><Link to="/"><i class="fab fa-linkedin"></i></Link></li>
+					<li><Link to="/"><i class="fas fa-reply"></i></Link></li>
 				</ul>
 			</div>
 		</div>

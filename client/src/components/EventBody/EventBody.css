@@ -1,0 +1,24 @@
+.event-body-container {
+	background-color: #3c444c;
+	color: #fff;
+}
+.event-body-wrapper {
+	max-width: 70%;
+	margin: 0 auto;
+	padding-top: 3em;
+	padding-bottom: 3em;
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	justify-items: center;
+	grid-gap: 1em;
+}
+
+.event-meetings-details {
+	background-color: #fff;
+	padding: 1em;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.event-meetings-details p {
+	color: #3c444c;
+}
