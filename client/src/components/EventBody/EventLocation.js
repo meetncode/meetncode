@@ -15,6 +15,7 @@ const EventLocation = () => {
 				<div className="event-meeting-place">
 					<div className="location-icon"></div>
 					<div className="location-details">
+						<i className="fas fa-map-marker-alt location-icon"></i>
 						Liberty Island, New York, NY 10004, USA
 					</div>
 				</div>

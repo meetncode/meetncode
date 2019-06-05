@@ -41,7 +41,9 @@
 	border-radius: 20px;
 	background: linear-gradient(to left, #f27954, #a154f2);
 	border: none;
+	outline: none;
 	color: #fff;
+	cursor: pointer;
 }
 
 .event-share {
@@ -49,6 +51,9 @@
 	display: flex;
 	justify-content: flex-start;
 	padding: 0 1em;
+	border-top: 1px solid #9e9e9e;
+	border-bottom: 1px solid #9e9e9e;
+	margin-top: 1em;
 }
 .social-share {
 	display: flex;
@@ -82,7 +87,27 @@
 }
 .event-header-details {
 	display: flex;
+	width: 100%;
 }
 .event-header-details-expand {
 	margin-left: 1em;
+}
+
+.host-photo {
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.host-photo img {
+	max-width: 100%;
+}
+.host-information {
+	display: grid;
+	align-items: center;
+	grid-template-columns: 1fr 3fr;
+}
+.event-group-name {
+	font-weight: bold;
+	margin-top: 0;
 }

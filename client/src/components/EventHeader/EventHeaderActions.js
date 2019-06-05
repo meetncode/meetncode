@@ -16,10 +16,10 @@ const EventHeaderActions = () => {
 			<div className="event-share">
 				<p>Share</p>
 				<ul className="social-share">
-					<li><Link to="/"><i class="fab fa-facebook-square"></i></Link></li>
-					<li><Link to="/"><i class="fab fa-twitter-square"></i></Link></li>
-					<li><Link to="/"><i class="fab fa-linkedin"></i></Link></li>
-					<li><Link to="/"><i class="fas fa-reply"></i></Link></li>
+					<li><Link to="/"><i className="fab fa-facebook-square"></i></Link></li>
+					<li><Link to="/"><i className="fab fa-twitter-square"></i></Link></li>
+					<li><Link to="/"><i className="fab fa-linkedin"></i></Link></li>
+					<li><Link to="/"><i className="fas fa-reply"></i></Link></li>
 				</ul>
 			</div>
 		</div>
