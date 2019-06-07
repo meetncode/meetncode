@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// Add location
+
 const GroupSchema = new Schema({
   name: {
     type: String,
@@ -16,25 +18,25 @@ const GroupSchema = new Schema({
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category'
+    ref: 'category'
   },
   events : [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Event'
+    ref: 'event'
   }],
   admin: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'user'
   },
   members: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'user'
   }],
   enabled: {
     type: Boolean,
     default: true
   }
-});
+}, { timestamps: true });
 
 const Group = mongoose.model('group', GroupSchema);
 

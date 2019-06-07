@@ -19,38 +19,31 @@ const UserSchema = new Schema({
     required: true
   },
   location: {
-    type: String,
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'location'
   },
-  hometown: {
-    type: String,
-    required: true
-  },
-  language: {
-    type: String,
-    required: true
-  },
-  birthday: {
-    type: Date,
-    required: true
-  },
-  gender: {
-    type: String,
-    required: true
-  },
-  bio: {
-    type: String,
-    required: true
-  },
+  hometown: String,
+  language: String,
+  birthday: Date,
+  gender: String,
+  bio: String,
+  events: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'event'
+  }],
   categories: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category'
+    ref: 'category'
+  }],
+  groups: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'group'
   }],
   enabled: {
     type: Boolean,
     default: true
   }
-})
+}, { timestamps: true })
 
 const User =  mongoose.model('user', UserSchema);
 
