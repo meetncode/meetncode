@@ -44,13 +44,20 @@ const UserSchema = gql`
     enabled: Boolean
   }
 
+  type AuthData {
+    userId: ID!
+    token: String!
+    tokenExpiration: Int!
+  }
+
   type Query {
     getUser(id: ID!): User
     getUsersByGroup(groupId: ID!): [User]
+    loginUser(email: String! password: String!): AuthData
   }
 
   type Mutation {
-    createUser(input: CreateUserInput): User
+    signupUser(input: CreateUserInput): User
     updateUser(id: ID! input: UserInput): User
   }
 `
