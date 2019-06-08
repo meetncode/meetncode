@@ -45,9 +45,6 @@ const UserResolvers = {
         token,
         tokenExpiration: 3
       }
-
-
-      return await User.findOne({ email })
     }
   },
   Mutation: {
