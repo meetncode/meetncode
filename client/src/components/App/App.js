@@ -4,6 +4,8 @@ import { connect }from "react-redux"
 import './App.css'
 import Home from '../../pages/Home'
 import Event from '../../pages/Event'
+import Login from '../../pages/Login'
+import SignUp from '../../pages/SignUp'
 
 class App extends React.Component {
   render(){
@@ -13,8 +15,8 @@ class App extends React.Component {
         <div>
           <Route exact path="/" component={Home} />
           <Route path="/event/:id" component={Event} />
-          {/* <Route path="/login" component={Login} />
-          <Route path="/signup" component={SignUp} /> */}
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
         </div>
       </Router>
       )

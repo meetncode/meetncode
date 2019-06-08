@@ -1,0 +1,9 @@
+.login-form-wrapper {
+	background: #E5E5E5;
+	padding: 260px 0;
+}
+
+.login-form-wrapper form {
+	max-width: 315px;
+	margin: 0 auto;
+}
