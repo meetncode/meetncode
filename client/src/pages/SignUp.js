@@ -7,9 +7,9 @@ import SignUpForm from '../components/SignUpForm/SignUpForm'
 export default function SignUp() {
     return (
         <div>
-      <Header></Header>
-      <SignUpForm></SignUpForm>
-      <Footer></Footer>
+      <Header/>
+      <SignUpForm/>
+      <Footer/>
     </div>
     )
 }
