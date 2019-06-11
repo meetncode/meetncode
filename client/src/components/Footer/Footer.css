@@ -32,6 +32,9 @@
 	text-decoration: none;
 	color: #cbcfd4;
 }
+.footer-menu-wrap a {
+	padding: 15px;
+}
 .terrinary {
 	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
 	width: 100%;
@@ -40,6 +43,10 @@
 	display: inline-block;
 	width: 25%;
 	vertical-align: top;
+	
+}
+.list-content:last-child {
+	padding-left: 35px;
 }
 .list-content p {
 	font-style: normal;
@@ -61,11 +68,20 @@
 	display: inline-block;
 }
 .about-us-wrapper {
-	width: 25%;
+	width: 35%;
+	padding: 35px;
+	vertical-align: middle;
+	display: inline-block;
 }
 .terrinary-menu-container-wrap {
-	width: 70%;
+	width: 60%;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 30px 0;
+	float: right;
+	line-height: 28px;
 }
+
 ul {
 	padding: 0;
 	list-style-type: none;

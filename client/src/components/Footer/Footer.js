@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="terrinary">
         <div className="about-us-wrapper">
           <img src={mySvg} style={{ 'maxWidth': 40, 'margin': '1em'}}/>
-        	<p>test</p>
+        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla faucibus egestas elit, at eleifend elit ornare ut.</p>
         </div>
         <div className="terrinary-menu-container-wrap">
           <div className="first-column list-content">
@@ -41,9 +41,9 @@ const Footer = () => {
           <div className="social-column list-content">
           <p>Social</p>
             <ul className="menu-wrapper">
-              <li className = "menu-item"><Link to="/">Facebook</Link></li>
-              <li className = "menu-item"><Link to="/">Twitter</Link></li>
-              <li className = "menu-item"><Link to="/">Dribble</Link></li>
+              <li className = "menu-item"><a href="http://www.twitter.com/meetup"><i class="fab fa-twitter" ></i> Twitter</a></li>
+              <li className = "menu-item"><a href="http://www.facebook.com/meetup"><i class="fab fa-facebook-square" ></i> Facebook</a></li>
+              <li className = "menu-item"><a href="http://www.dribble.com"><i class="far fa-basketball-ball"></i> Dribble</a></li>
             </ul>
           </div>
         </div>
