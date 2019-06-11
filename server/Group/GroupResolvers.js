@@ -26,11 +26,11 @@ const GroupResolvers = {
   },
   Mutation: {
     createGroup: async (_, { input }) => {
-      return await Group.create(input)
-        .populate('category')
+      const group =  await Group.create(input);
+      return await group.populate('category')
         .populate('events')
         .populate('admin')
-        .populate('members');
+        .populate('members').execPopulate();
     },
     updateGroup: async (_, { id, input }) => {
       return await Group.findByIdAndUpdate(id, input, {

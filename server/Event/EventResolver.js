@@ -14,7 +14,8 @@ const EventResolvers = {
   },
   Mutation: {
     createEvent: async (_, { input }) => {
-      return await Event.create(input).populate('host').populate('attendees');
+      const event =  await Event.create(input);
+      return event.populate('host').populate('attendees').execPopulate();
     },
     updateEvent: async (_, { id, input }) => {
       return await Event.findByIdAndUpdate(id, input, {

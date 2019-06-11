@@ -20,7 +20,7 @@ const GroupSchema = gql`
     name: String
     description: String
     private: Boolean
-    category: CategoryInput
+    category: ID
     events: [ID!]
     admin: ID!
     members: [ID!]
