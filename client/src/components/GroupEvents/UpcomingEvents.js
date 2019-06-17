@@ -9,6 +9,8 @@ export default function UpcomingEvents() {
 				<a href="#">See all</a>
 			</div>
 			<GroupEvent />
+			<GroupEvent />
+			<GroupEvent />
 		</div>
 	)
 }

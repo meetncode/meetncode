@@ -2,9 +2,10 @@ import React from 'react'
 
 export default function GroupHeaderBanner() {
 	return (
-		<div>
+		<div className="group-header-banner">
 			<div className="group-header-banner-image">
-				<img src="#" alt=""/>
+				{/* <img src="https://images.unsplash.com/photo-1490487135801-031cf13ab462?ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80" alt=""/> */}
+				<img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt=""/>
 			</div>
 			<div className="group-header-banner-details">
 				<div className="group-details">

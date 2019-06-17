@@ -1,0 +1,43 @@
+.group-about-container {
+	max-width: 70%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-gap: 1em;
+}
+.group-details-text {
+	text-align: left;
+}
+.more-group-details-text {
+	color: #03a9f4;
+	display: block;
+	margin-top: 1em;
+	font-weight: bold;
+}
+.member-profile,
+.organizer-profile {
+	width: 65px;
+	border-radius: 50%;
+}
+.group-members-avatar {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(70px, 5fr));
+	justify-items: center;
+	margin-top: 1em;
+	grid-gap: 5px;
+}
+.link-item {
+	text-decoration: none;
+	color: #2196f3;
+	cursor: pointer;
+}
+.organizer-details {
+	display: flex;
+	align-items: center;
+}
+.organizer-actions {
+	margin-left: 1em;
+}
+.organizer-profile {
+	display: block;
+}

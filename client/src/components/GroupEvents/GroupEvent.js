@@ -6,16 +6,17 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
-  card: {
-    minWidth: 775,
-  }
-});
+// const useStyles = makeStyles({
+//   card: {
+//     minWidth: 775
+//   }
+// });
 
 export default function GroupEvent() {
-	const classes = useStyles();
+	// const classes = useStyles();
 	return (
-		<Card className={classes.card}>
+    // <Card className={classes.card}>
+    <Card style={{maxWidth: 575}}>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           Word of the Day
