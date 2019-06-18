@@ -1,9 +1,12 @@
 .group-about-container {
-	max-width: 70%;
+	max-width: 65%;
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	grid-gap: 1em;
+}
+.group-about-wrapper {
+	max-width: 600px;
 }
 .group-details-text {
 	text-align: left;
@@ -40,4 +43,18 @@
 }
 .organizer-profile {
 	display: block;
+}
+.group-event-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+.group-event-header h4 {
+	margin: 0;
+}
+.group-event-header a {
+	text-decoration: none;
+	color: #2196f3;
 }

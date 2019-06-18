@@ -63,7 +63,7 @@ class SignUpForm extends React.Component {
                         }
                     </div>
                     <div className="form-group">
-                        <button className="btn btn-primary">Register <i class="fas fa-angle-right"></i></button>
+                        <button className="btn btn-primary">Register <i className="fas fa-angle-right"></i></button>
                     </div>
                 </form>
             </div>

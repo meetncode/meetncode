@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
                         }
                     </div>
                     <div className="form-group">
-                        <button className="btn btn-primary">Login <i class="fas fa-angle-right"></i></button>
+                        <button className="btn btn-primary">Login <i className="fas fa-angle-right"></i></button>
                     </div>
                 </form>
             </div>

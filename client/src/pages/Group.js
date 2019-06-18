@@ -16,12 +16,12 @@ const GET_GROUP = gql`
 
 export default class Group extends React.Component {
 	render() {
-		return (
-			<Query query={GET_GROUP}>
-				{({ data, loading, error }) => {
-					if (loading) return <p>Loading</p>;
-					if (error) return <p>ERROR</p>;
-					const { description, name } = data.getGroup
+		// return (
+		// 	<Query query={GET_GROUP}>
+		// 		{({ data, loading, error }) => {
+		// 			if (loading) return <p>Loading</p>;
+		// 			if (error) return <p>ERROR</p>;
+		// 			const { description, name } = data.getGroup
 					return (
 						<React.Fragment>
 							<Header />
@@ -30,8 +30,8 @@ export default class Group extends React.Component {
 							<Footer />
 						</React.Fragment>
 					)
-				}}
-			</Query>
-		)
+		// 		}}
+		// 	</Query>
+		// )
 	}
 }
