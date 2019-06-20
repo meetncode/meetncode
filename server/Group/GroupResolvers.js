@@ -3,11 +3,18 @@ const { Group } =  require('./GroupModel');
 const GroupResolvers = {
   Query: {
     getGroup: async(_, { id }) => {
-      return await Group.findById(id)
-        .populate('category')
-        .populate('events')
-        .populate('admin')
-        .populate('members');
+      const group = await Group.findById(id)
+      .populate('category')
+      .populate({
+        path: 'events',
+        populate: {
+          path: 'host attendees'
+        }
+      })
+      .populate('admin')
+      .populate('members');
+
+      return group;
     },
     getGroupsByCategory: async(_, { categoryId }) => {
       return await Group.find({ category: categoryId })

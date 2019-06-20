@@ -32,6 +32,10 @@ const GroupSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   }],
+  location: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'location'
+  },
   enabled: {
     type: Boolean,
     default: true
