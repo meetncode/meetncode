@@ -14,6 +14,7 @@ const GroupSchema = gql`
     createdAt: String!
     updatedAt: String!
     enabled: Boolean!
+    location: Location!
   }
 
   input GroupInput {
@@ -22,9 +23,10 @@ const GroupSchema = gql`
     private: Boolean
     category: ID
     events: [ID!]
-    admin: ID!
+    admin: ID
     members: [ID!]
     enabled: Boolean
+    location: ID
   }
 
   extend type Query {

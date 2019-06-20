@@ -4,10 +4,15 @@ const GroupResolvers = {
   Query: {
     getGroup: async(_, { id }) => {
       return await Group.findById(id)
-        .populate('category')
-        .populate('events')
-        .populate('admin')
-        .populate('members');
+      .populate('category')
+      .populate({
+        path: 'events',
+        populate: {
+          path: 'host attendees'
+        }
+      })
+      .populate('admin')
+      .populate('members');
     },
     getGroupsByCategory: async(_, { categoryId }) => {
       return await Group.find({ category: categoryId })
