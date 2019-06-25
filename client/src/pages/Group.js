@@ -10,28 +10,31 @@ const GET_GROUP = gql`
 {
   getGroup(id: "5d052ee1c5ac64718e2c2803"){
     name,
-    description
+		description,
+    events{
+			id
+    }
   }
 }`;
 
 export default class Group extends React.Component {
 	render() {
-		// return (
-		// 	<Query query={GET_GROUP}>
-		// 		{({ data, loading, error }) => {
-		// 			if (loading) return <p>Loading</p>;
-		// 			if (error) return <p>ERROR</p>;
-		// 			const { description, name } = data.getGroup
+		return (
+			<Query query={GET_GROUP}>
+				{({ data, loading, error }) => {
+					if (loading) return <p>Loading</p>;
+					if (error) return <p>ERROR</p>;
+					const { description, name, events } = data.getGroup
 					return (
 						<React.Fragment>
 							<Header />
 							<GroupHeader />
-							<GroupAbout />
+							<GroupAbout events={events}/>
 							<Footer />
 						</React.Fragment>
 					)
-		// 		}}
-		// 	</Query>
-		// )
+				}}
+			</Query>
+		)
 	}
 }
