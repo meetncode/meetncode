@@ -10,13 +10,19 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "@material-ui/styles": "^4.1.2",
     "apollo-boost": "^0.3.1",
-    "react": "^16.8.6",
+    "apollo-server": "^2.4.8",
+    "formik": "^1.5.7",
+    "formik-material-fields": "^0.0.6",
+    "graphql": "^14.2.1",
+    "react": "^16.8.0",
     "react-apollo": "^2.5.5",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.8.0",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

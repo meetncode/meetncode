@@ -1,74 +1,82 @@
 import React from 'react';
+import * as yup from "yup";
+import { withFormik } from "formik";
+import SignupFormContainer from "./SignupFormContainer";
 import './SignUpForm.css';
 
-class SignUpForm extends React.Component {
-	constructor(props) {
-        super(props);
-
-        // reset login status
-        {/*this.props.dispatch(userActions.logout());*/}
-
-        this.state = {
-            username: '',
-            password: '',
-            email: '',
-            submitted: false
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(e) {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-
-        this.setState({ submitted: true });
-        const { username, password } = this.state;
-        const { dispatch } = this.props;
-        {/* if (username && password) {
-             dispatch(userActions.login(username, password));
-         }*/}
-    }
-
-	render() {
-		const { loggingIn } = this.props;
-        const { username ,email ,password, submitted } = this.state;
-        return (
-            <div className="login-form-wrapper">
-                <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
-                        <label htmlFor="username">Your name</label>
-                        <input type="text" className="form-control" name="username" value={username} onChange={this.handleChange} />
-                        {submitted && !username &&
-                            <div className="help-block">Username is required</div>
-                        }
-                    </div>
-                    <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
-                        <label htmlFor="username">Email address</label>
-                        <input type="email" className="form-control" name="email" value={email} onChange={this.handleChange} />
-                        {submitted && !email &&
-                            <div className="help-block">Email is required</div>
-                        }
-                    </div>
-                    <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
-                        {submitted && !password &&
-                            <div className="help-block">Password is required</div>
-                        }
-                    </div>
-                    <div className="form-group">
-                        <button className="btn btn-primary">Register <i class="fas fa-angle-right"></i></button>
-                    </div>
-                </form>
-            </div>
-        );
-    }
+const SignupWrapper = SignupFormContainer
+const initialValues = {
+  firstName: '',
+  lastName: '',
+  password: '',
+  confirmPassword: '',
+  email: '',
+  agreeToTerms: false
 }
+const SignupValidation = yup.object().shape({
+  firstName: yup
+    .string()
+    .required(),
+  lastName: yup
+    .string()
+    .required(),
+  password: yup
+    .string()
+    .min(8)
+    .max(16)
+    .required(),
+  confirmPassword: yup
+    .string()
+    .min(8)
+    .max(16)
+    .required()
+    .test('passwords-match', 'Passwords must match ya fool', function(value) {
+      return this.parent.password === value;
+    }),
+  email: yup
+    .string()
+    .required(),
+  agreeToTerms: yup
+    .boolean()
+    .label('Terms')
+    .test(
+      'is-true',
+      'Must agree to terms to continue',
+      value => value === true
+    ),
 
-export default SignUpForm ;
+})
+
+export default withFormik({
+    mapPropsToValues: () => ({ firstName: '',lastName: '',password: '',confirmPassword: '',email: '',agreeToTerms: false }),
+    enableReinitialize: true,
+    // Handles our submission
+    handleSubmit: (values, { setSubmitting }) => {
+        // const GET_GROUP = gql`
+        // {
+        //   getGroup(id: "5d052ee1c5ac64718e2c2803"){
+        //     name,
+        //         description,
+        //     events{
+        //             host {
+        //         email
+        //       },
+        //       location {
+        //           address
+        //       },
+        //       attendees {
+        //         email,
+        //         firstName
+        //       },
+        //             name
+        //     }
+        //   }
+        // }`;
+        // This is where you could send the submitted values to the backend
+        console.log("Submitted Email:", values.email)
+        console.log("Submitted Password:", values.password)
+        // Simulates the delay of a real request
+        setTimeout(() => setSubmitting(false), 3 * 1000)
+    },
+    validationSchema: SignupValidation,
+})(SignupWrapper)
