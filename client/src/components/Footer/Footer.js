@@ -41,9 +41,9 @@ const Footer = () => {
           <div className="social-column list-content">
           <p>Social</p>
             <ul className="menu-wrapper">
-              <li className = "menu-item"><a href="http://www.twitter.com/meetup"><i class="fab fa-twitter" ></i> Twitter</a></li>
-              <li className = "menu-item"><a href="http://www.facebook.com/meetup"><i class="fab fa-facebook-square" ></i> Facebook</a></li>
-              <li className = "menu-item"><a href="http://www.dribble.com"><i class="far fa-basketball-ball"></i> Dribble</a></li>
+              <li className = "menu-item"><a href="http://www.twitter.com/meetup"><i className="fab fa-twitter" ></i> Twitter</a></li>
+              <li className = "menu-item"><a href="http://www.facebook.com/meetup"><i className="fab fa-facebook-square" ></i> Facebook</a></li>
+              <li className = "menu-item"><a href="http://www.dribble.com"><i className="far fa-basketball-ball"></i> Dribble</a></li>
             </ul>
           </div>
         </div>

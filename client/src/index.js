@@ -8,7 +8,19 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 const client =  new ApolloClient({
-  uri: 'http://localhost:4000/'
+  uri: 'http://localhost:4000/',
+  fetchOptions: {
+    credentials: 'include'
+  },
+  request: async (operation) => {
+    const token = await localStorage.getItem('token');
+    
+    operation.setContext({
+      headers: {
+        authorization: token
+      }
+    })
+  }
 });
 
 const AppWrapper = () => (
