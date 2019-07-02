@@ -12,24 +12,40 @@ const EventSchema = gql`
     date: String!
   }
 
-  input EventInput {
+  input UpdateEventInput {
     name: String
     host: ID
     description: String
     attendees: [ID]
     location: ID
+    date: String
+  }
+
+  input CreateEventInput {
+    name: String!
+    host: ID!
+    description: String!
+    attendees: [ID]
+    location: ID!
     date: String!
+  }
+
+  input GetEventsInput {
+    isUpcoming: Boolean
+    hostId: ID
+    country: String
+    city: String
+    attendees: [ID!]
   }
 
   extend type Query {
     getEvent(id:ID!): Event
-    getEventsByHost(hostId: ID!): [Event]
-    getEventsByLocation(country: String, city: String): [Event] 
+    getEvents(input: GetEventsInput): [Event]
   }
 
   extend type Mutation {
-    createEvent(input: EventInput): Event
-    updateEvent(id: ID! input: EventInput): Event
+    createEvent(input: CreateEventInput): Event
+    updateEvent(id: ID! input: UpdateEventInput): Event
   }
 `
 

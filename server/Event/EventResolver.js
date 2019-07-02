@@ -5,11 +5,26 @@ const EventResolvers = {
     getEvent: async(_, { id }) => {
       return await Event.findById(id).populate('host').populate('attendees');
     },
-    getEventsByHost: async(_, { hostId }) => {
-      return await Event.find({ host: hostId }).populate('host').populate('attendees');;
-    },
-    getEventsByLocation: async(_, { country, city }) => {
-      return await Event.find({ $or:[{ country }, { city }]}).populate('host').populate('attendees');;
+    getEvents: async(_, { input }) => {
+      const filter = {};
+      
+      if(input) {
+        const {
+          isUpcoming,
+          hostId,
+          country,
+          city,
+          attendees
+        } = input;
+  
+        if(isUpcoming) filter.date = { $gte: new Date() };
+        if(hostId) filter.host = hostId;
+        if(country) filter.country = country;
+        if(city) filter.city = city;
+        if(attendees) filter.attendees = { $all: attendees };
+      }
+
+      return await Event.find(filter).populate('host').populate('attendees');
     },
   },
   Mutation: {
