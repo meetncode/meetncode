@@ -4,6 +4,7 @@
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	grid-gap: 1em;
+	margin-bottom: 3em;
 }
 .group-about-wrapper {
 	max-width: 600px;
