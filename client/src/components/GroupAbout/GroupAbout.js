@@ -2,6 +2,8 @@ import React from 'react'
 import UpcomingEvents from '../GroupEvents/UpcomingEvents'
 import PastEvents from '../GroupEvents/PastEvents'
 import GroupSocial from './GroupSocial'
+import { gql } from 'apollo-boost'
+import { Query } from 'react-apollo'
 // import { gql } from 'apollo-boost';
 // import { Query } from 'react-apollo';
 
@@ -23,6 +25,40 @@ import GroupSocial from './GroupSocial'
 //   }
 // }`;
 
+const GET_UPCOMING_EVENTS = gql`
+{
+  getEvents(input: {
+    isUpcoming: true
+  }){
+    name,
+		date,
+    host{
+			firstName
+		},
+		description,
+    location{
+      address
+    }
+  }
+}`;
+
+const GET_PAST_EVENTS = gql`
+{
+  getEvents(input: {
+    isUpcoming: false
+  }){
+    name,
+		date,
+    host{
+			firstName
+		},
+		description,
+    location{
+      address
+    }
+  }
+}`;
+
 const details = 'HLorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, sint inventore. Dolorem a fugit laborum consectetur hic! Sit voluptatem obcaecati impedit, tempore inventore quaerat est ipsa, vero consequatur, hic consequuntur!';
 
 class GroupAbout extends React.Component {
@@ -30,8 +66,7 @@ class GroupAbout extends React.Component {
 		super(props);
 
 		this.state = {
-				readMore: false,
-				eventIds: []
+				readMore: false
 		}
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -42,14 +77,12 @@ class GroupAbout extends React.Component {
       readMore: !state.readMore
 		}))
 	}
-	componentDidMount(){
-		this.setState({
-			eventIds : this.props.events
-		})
-	}
+	// componentDidMount(){
+	// 	this.setState({
+	// 		upcomingEvents : this.props.events
+	// 	})
+	// }
 	render(){
-		// const eventId = {id: '5d062fbbd5704179959c7979'}
-		// const eventId = '5d062fbbd5704179959c7979'
 		return (
 					<div className="group-about-wrapper">
 						<div>
@@ -66,22 +99,26 @@ class GroupAbout extends React.Component {
 						console.log('name', name)	
 						<Query query={GET_EVENT} variables={{ eventId }}>
 					} */}
-						{/* <Query query={GET_EVENT} variables={{ eventId }}>
+						<Query query={GET_UPCOMING_EVENTS}>
 								{({ data, loading, error }) => {
 									if (loading) return <p>Loading</p>;
 									if (error) return <p>ERROR</p>;
-									const { name, host, location } = data.getEvent
-									const event = {
-										name, host, location
-									}
+									const upcomingEvents = data.getEvents
 									return (
-										<UpcomingEvents upcoming={event}/>
+										<UpcomingEvents upcoming={upcomingEvents}/>
 								)
 							}}
-							</Query> */}
-						{/* <UpcomingEvents upcoming={this.props.events}/> */}
-						<UpcomingEvents/>
-						<PastEvents/>
+						</Query>
+						<Query query={GET_PAST_EVENTS}>
+								{({ data, loading, error }) => {
+									if (loading) return <p>Loading</p>;
+									if (error) return <p>ERROR</p>;
+									const pastEvents = data.getEvents
+									return (
+										<PastEvents past={pastEvents}/>
+								)
+							}}
+						</Query>
 						<GroupSocial/>
 					</div>
 		)
