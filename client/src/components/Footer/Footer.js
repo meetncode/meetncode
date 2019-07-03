@@ -43,11 +43,8 @@ const Footer = () => {
             <ul className="menu-wrapper">
               <li className = "menu-item"><a href="http://www.twitter.com/meetup"><i className="fab fa-twitter" ></i> Twitter</a></li>
               <li className = "menu-item"><a href="http://www.facebook.com/meetup"><i className="fab fa-facebook-square" ></i> Facebook</a></li>
-<<<<<<< HEAD
               <li className = "menu-item"><a href="http://www.dribble.com"><i className="fas fa-basketball-ball"></i> Dribble</a></li>
-=======
               <li className = "menu-item"><a href="http://www.dribble.com"><i className="far fa-basketball-ball"></i> Dribble</a></li>
->>>>>>> b24cc6fb455f95401db287b145d62c26d24dd987
             </ul>
           </div>
         </div>
