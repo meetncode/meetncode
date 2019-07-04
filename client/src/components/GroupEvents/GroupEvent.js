@@ -4,7 +4,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import moment from 'moment';
+// import moment from 'moment';
+import dayjs from 'dayjs'
 
 const useStyles = {
   card: {
@@ -17,8 +18,10 @@ const useStyles = {
 
 export default function GroupEvent(props) {
   // const { name } = props
-  const formattedDate = (jsDate) => {return moment(Number(jsDate)).format('MMMM Do YYYY, h:mm a')}
-	return (
+  // const formattedDate = (jsDate) => {return moment(Number(jsDate)).format('MMMM Do YYYY, h:mm a')}
+  const formattedDate = (jsDate) => {return dayjs(Number(jsDate)).format('MMMM D YYYY, h:mm a')}
+
+  return (
     <Card style={useStyles.card}>
     {/* <Card style={{maxWidth: 575}}> */}
       <CardContent>
