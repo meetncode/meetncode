@@ -6,6 +6,7 @@ const EventSchema = gql`
     id: ID!
     name: String!
     host: User!
+    group: Group!
     description: String!
     attendees: [User]
     location: Location!
@@ -15,6 +16,7 @@ const EventSchema = gql`
   input UpdateEventInput {
     name: String
     host: ID
+    group: ID
     description: String
     attendees: [ID]
     location: ID
@@ -24,6 +26,7 @@ const EventSchema = gql`
   input CreateEventInput {
     name: String!
     host: ID!
+    group: ID!
     description: String!
     attendees: [ID]
     location: ID!
@@ -34,6 +37,7 @@ const EventSchema = gql`
     isUpcoming: Boolean
     hostId: ID
     country: String
+    groupId: ID
     city: String
     attendees: [ID!]
   }

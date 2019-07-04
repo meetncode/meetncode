@@ -1,6 +1,8 @@
 const { ApolloServer } = require('apollo-server');
 const mongoose = require('mongoose');
 
+const isAuth = require('./middleware/isAuth');
+
 require('dotenv').config()
 
 const resolvers = require('./resolvers');
@@ -12,7 +14,11 @@ mongoose.connect(uri, { useNewUrlParser: true })
 .then(console.log('Connected to database'))
 .catch(err => console.log(err));
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: isAuth
+});
 
 server.listen()
 .then(({ url }) => {
