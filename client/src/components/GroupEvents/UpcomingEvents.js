@@ -1,14 +1,19 @@
 import React from 'react'
 import GroupEvent from './GroupEvent'
 
-export default function UpcomingEvents() {
+export default function UpcomingEvents(props) {
 	return (
 		<div>
-			<div className="past-events-header">
-				<h4>Upcoming events (5+)</h4>
+			<div className="group-event-header">
+				<h4>Upcoming events ({props.upcoming.length >= 1 ? `${props.upcoming.length}+` : `${props.upcoming.length}`})</h4>
 				<a href="#">See all</a>
 			</div>
-			<GroupEvent />
+			{
+				props.upcoming.map((event, index) => {
+					return <GroupEvent className="group-event" key={index} event={event}/>
+				})
+				
+			}
 		</div>
 	)
 }
