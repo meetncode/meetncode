@@ -11,19 +11,6 @@
 .call-to-action {
 	margin: 2em 0;
 }
-.btn {
+.btn-link {
 	text-decoration: none;
-	padding: 0.5em 3em;
-	margin: 1em;
-	border-radius: 20px;
-	outline: none;
-	cursor: pointer;
-}
-.btn-white {
-	color: #000;
-	background: #fff;
-}
-.btn-transparent {
-	border: 2px solid #fff;
-	color: #fff;
 }

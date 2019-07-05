@@ -28,7 +28,7 @@
 	text-decoration: none;
 	color: #2e3e48;
 }
-.btn {
+/* .btn {
 	text-decoration: none;
 	padding: 0.8em 1em;
 	margin: 1em;
@@ -38,7 +38,7 @@
 	outline: none;
 	color: #fff;
 	cursor: pointer;
-}
+} */
 .btn-with-icon {
 	display: flex;
 }

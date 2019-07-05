@@ -13,16 +13,6 @@
 	padding-top: 3em;
 	padding-bottom: 3em;
 }
-
-.btn {
-	font-size: 1em;
-	text-decoration: none;
-	padding: 0.5em 3em;
-	margin: 1em;
-	border-radius: 20px;
-	outline: none;
-	cursor: pointer;
-}
 .create-group-image img {
 	max-width: 100%;
 	height: auto;
