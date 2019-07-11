@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import {  Form, Field, ErrorMessage } from 'formik';
 import { FormikTextField } from 'formik-material-fields';
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-const styles = ({
+import { gql } from 'apollo-boost'
+import { Query } from 'react-apollo'
+
+const styles= theme => ({
   container: {
     width: 300,
     minHeight: 300,
@@ -21,6 +24,13 @@ const styles = ({
     cursor: 'pointer',
   },
 });
+const LOGIN_TOKEN = gql`
+{
+    loginUser(
+      email: ${values.email}
+      password: ${values.password}
+    ){token}
+  }`;
 
 class LoginFormContainer extends React.Component {
     render() {
@@ -35,13 +45,21 @@ class LoginFormContainer extends React.Component {
                 />
                 <FormikTextField 
                   type="password" 
-                  name="Password" 
-                  placeholder="password"
+                  name="password" 
+                  placeholder="Password"
                   fullWidth
                 />
                 <button type="submit" className={classes.button} > Submit </button>
             </Form>
         )
+        // <Query query={LOGIN_TOKEN}>
+        //   {({ data, loading, error }) => {
+        //     if (loading) return <Loading />;
+        //     if (error) return <p>ERROR</p>;
+        //       console.log(data);
+        //       localStorage.setItem('token', token);
+        //   }}
+        // </Query>
     }
 }
 export default withStyles(styles)(LoginFormContainer);

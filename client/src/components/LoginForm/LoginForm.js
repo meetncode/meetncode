@@ -3,7 +3,8 @@ import * as yup from "yup";
 import { withFormik } from "formik";
 import LoginFormContainer from "./LoginFormContainer";
 import './LoginForm.css';
-//import { gql } from 'apollo-server';
+import { gql } from 'apollo-boost'
+import { Query } from 'react-apollo'
 
 const LoginWrapper = LoginFormContainer
 const initialValues = {
@@ -17,7 +18,7 @@ const LoginValidation = yup.object().shape({
     .required(),
   password: yup
     .string()
-    .min(8)
+    .min(5)
     .max(16)
     .required(),
 
@@ -28,31 +29,28 @@ export default withFormik({
     enableReinitialize: true,
     // Handles our submission
     handleSubmit: (values, { setSubmitting }) => {
-        // const GET_GROUP = gql`
-        // {
-        //   getGroup(id: "5d052ee1c5ac64718e2c2803"){
-        //     name,
-        //         description,
-        //     events{
-        //             host {
-        //         email
-        //       },
-        //       location {
-        //           address
-        //       },
-        //       attendees {
-        //         email,
-        //         firstName
-        //       },
-        //             name
-        //     }
-        //   }
-        // }`;
+      console.log("Submitted Email:", values.email)
+      console.log("Submitted Password:", values.password)
+      console.log(setSubmitting)
         // This is where you could send the submitted values to the backend
-        console.log("Submitted Email:", values.email)
-        console.log("Submitted Password:", values.password)
+        const LOGIN_TOKEN = gql`
+            {
+                loginUser(
+                  email: ${values.email}
+                  password: ${values.password}
+                ){token}
+              }`;
+              <Query query={LOGIN_TOKEN}>
+              {({ data, loading, error }) => {
+                if (loading) return <Loading />;
+                if (error) return <p>ERROR</p>;
+                  console.log(data);
+                  localStorage.setItem('token', token);
+              }}
+            </Query>
         // Simulates the delay of a real request
         setTimeout(() => setSubmitting(false), 3 * 1000)
     },
+    
     validationSchema: LoginValidation,
 })(LoginWrapper)
