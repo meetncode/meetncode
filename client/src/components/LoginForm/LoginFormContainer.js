@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import {  Form, Field, ErrorMessage } from 'formik';
+import * as yup from "yup";
+import {  Form, Field, ErrorMessage, Formik } from 'formik';
 import { FormikTextField } from 'formik-material-fields';
 import { withStyles } from '@material-ui/core/styles';
 
-import { gql } from 'apollo-boost'
+import { gql , graphql} from 'apollo-boost'
 import { Query } from 'react-apollo'
 
 const styles= theme => ({
@@ -24,19 +25,50 @@ const styles= theme => ({
     cursor: 'pointer',
   },
 });
-const LOGIN_TOKEN = gql`
-{
-    loginUser(
-      email: ${values.email}
-      password: ${values.password}
-    ){token}
-  }`;
+// const LOGIN_TOKEN = gql`
+// {
+//     loginUser(
+//       email: ${values.email}
+//       password: ${values.password}
+//     ){token}
+//   }`;
+const LoginValidation = yup.object().shape({
+  email: yup
+    .string()
+    .email()
+    .required(),
+  password: yup
+    .string()
+    .min(5)
+    .max(16)
+    .required(),
 
+});
 class LoginFormContainer extends React.Component {
     render() {
         const { classes } = this.props;
+       // async ()
         return (
-            <Form className={classes.container}> 
+          <Formik
+          initialValues = {{
+            email: '',
+            password: ''
+          }}
+
+          onSubmit ={(values, { setSubmitting }) => {
+            console.log("Submitted Email:", values.email)
+            console.log("Submitted Password:", values.password)
+              // This is where you could send the submitted values to the backend
+              
+      
+              // Simulates the delay of a real request
+              setTimeout(() => setSubmitting(false), 3 * 1000)
+          }}
+          validationSchema = {LoginValidation}
+          
+          >
+            {() =>(
+              <Form className={classes.container}> 
                 <FormikTextField 
                   type="text" 
                   name="email" 
@@ -50,16 +82,19 @@ class LoginFormContainer extends React.Component {
                   fullWidth
                 />
                 <button type="submit" className={classes.button} > Submit </button>
-            </Form>
+              </Form>
+            )}
+            
+          </Formik>
         )
-        // <Query query={LOGIN_TOKEN}>
+        {/* // <Query query={LOGIN_TOKEN}>
         //   {({ data, loading, error }) => {
         //     if (loading) return <Loading />;
         //     if (error) return <p>ERROR</p>;
         //       console.log(data);
         //       localStorage.setItem('token', token);
         //   }}
-        // </Query>
+        // </Query> */}
     }
 }
 export default withStyles(styles)(LoginFormContainer);
