@@ -53,11 +53,11 @@ const UserSchema = gql`
   type Query {
     getUser(id: ID!): User
     getUsersByGroup(groupId: ID!): [User]
-    loginUser(email: String! password: String!): AuthData
   }
 
   type Mutation {
-    signupUser(input: CreateUserInput): User
+    signupUser(input: CreateUserInput): AuthData
+    loginUser(email: String! password: String!): AuthData
     updateUser(id: ID! input: UserInput): User
   }
 `
