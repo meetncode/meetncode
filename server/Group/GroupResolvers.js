@@ -30,14 +30,17 @@ const GroupResolvers = {
     },
   },
   Mutation: {
-    createGroup: async (_, { input }) => {
+    createGroup: async (_, { input }, { isAuth }) => {
+      if(!isAuth) throw Error('You are not authorized to do this');
       const group =  await Group.create(input);
       return await group.populate('category')
         .populate('events')
         .populate('admin')
         .populate('members').execPopulate();
     },
-    updateGroup: async (_, { id, input }) => {
+    updateGroup: async (_, { id, input }, { isAuth }) => {
+      if(!isAuth) throw Error('You are not authorized to do this');
+      // TODO:protect to only allow the admin to update
       return await Group.findByIdAndUpdate(id, input, {
           new: true
       })
