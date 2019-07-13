@@ -29,11 +29,14 @@ const EventResolvers = {
     },
   },
   Mutation: {
-    createEvent: async (_, { input }) => {
+    createEvent: async (_, { input }, { isAuth }) => {
+      if(!isAuth) throw Error('You are not authorized to do this');
       const event =  await Event.create(input);
       return event.populate('host').populate('attendees').populate('group').execPopulate();
     },
-    updateEvent: async (_, { id, input }) => {
+    updateEvent: async (_, { id, input }, { isAuth }) => {
+      // TODO: only allow host to update the event
+      if(!isAuth) throw Error('You are not authorized to do this');
       return await Event.findByIdAndUpdate(id, input, {
           new: true
         }).populate('host').populate('group').populate('attendees').execPopulate();

@@ -5,14 +5,16 @@ const { User } = require('./UserModel');
 
 const UserResolvers = {
   Query: {
-    getUser: async(_, { id }) => {
+    getUser: async(_, { id }, { isAuth }) => {
+      if(!isAuth) throw Error('You are not authorized to do this');
       return await User.findById(id)
         .populate('events')
         .populate('categories')
         .populate('groups')
         .populate('location');
     },
-    getUsersByGroup: async(_, { groupId }) => {
+    getUsersByGroup: async(_, { groupId }, { isAuth }) => {
+      if(!isAuth) throw Error('You are not authorized to do this');
       return await User.find({ groups: { $in: groupId } })
         .populate('events')
         .populate('categories')
@@ -75,7 +77,8 @@ const UserResolvers = {
         tokenExpiration: 3
       }
     },
-    updateUser: async (_, { id, input }) => {
+    updateUser: async (_, { id, input }, { isAuth, userId }) => {
+      if(!isAuth || userId != id) throw Error('You are not authorized to do this');
       return await User.findByIdAndUpdate(id, input, {
           new: true
       });

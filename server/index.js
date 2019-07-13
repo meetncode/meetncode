@@ -14,6 +14,8 @@ mongoose.connect(uri, { useNewUrlParser: true })
 .then(console.log('Connected to database'))
 .catch(err => console.log(err));
 
+mongoose.set('useFindAndModify', false);
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
