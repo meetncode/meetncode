@@ -1,7 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+ const useStyles = makeStyles(theme => ({
+  btnWithIcon: {
+    display: 'flex'
+  }
+}));
 
 export default function GroupHeaderMenu(props) {
+	const classes = useStyles();
 	const { member } = props
 	return (
 		<div className="group-header-menu">
@@ -29,12 +38,12 @@ export default function GroupHeaderMenu(props) {
 			<div className="group-header-menu-actions">
 				{
 					member ?
-					<button className="btn btn-with-icon">You are a member <span className="down-arrow"><i className="fas fa-chevron-down"></i></span></button>
+					<Button variant="contained" className={classes.btnWithIcon}>You are a member <span className="down-arrow"><i className="fas fa-chevron-down"></i></span></Button>
 					: 
 					(
 						<React.Fragment>
-							<button className="btn">Join this group</button>
-							<button className="btn">...</button>
+							<Button variant="contained">Join this group</Button>
+							<Button variant="contained">......</Button>
 						</React.Fragment>
 					)
 				}

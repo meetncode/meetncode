@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {  Form, Field, ErrorMessage } from 'formik';
 import { FormikTextField } from 'formik-material-fields';
 import { withStyles } from '@material-ui/styles';
+import Button from '@material-ui/core/Button';
 
 const styles = ({
   container: {
@@ -39,7 +40,9 @@ class LoginFormContainer extends React.Component {
                   placeholder="password"
                   fullWidth
                 />
-                <button type="submit" className={classes.button} > Submit </button>
+                <Button type="submit" variant="contained" className={classes.button}>
+                  Submit
+                </Button>
             </Form>
         )
     }
