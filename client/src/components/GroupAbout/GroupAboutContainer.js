@@ -9,19 +9,23 @@ class GroupAboutContainer extends Component {
 		super(props);
 
 		this.state = {
-				eventIds: []
+				eventIds: [],
+				id: ''
 		}
 	}
 	componentDidMount(){
-		this.setState({
-			eventIds : this.props.events
-		})
+		// this.setState({
+		// 	eventIds : this.props.events
+		// })
+		// this.setState({
+		// 	id : this.props.id
+		// })
 	}
 	render() {
 		return (
 			<div className="group-about-container">
 				{/* <GroupAbout events={this.state.eventIds}/> */}
-				<GroupAbout/>
+				<GroupAbout id={this.props.id}/>
 				<div className="group-members">
 					<GroupOrganizer />
 					<GroupMembers />

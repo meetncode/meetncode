@@ -2,6 +2,7 @@ import React from 'react'
 import GroupEvent from './GroupEvent'
 
 export default function UpcomingEvents(props) {
+	const upcoming = props.upcoming.slice(0, 3)
 	return (
 		<div>
 			<div className="group-event-header">
@@ -9,10 +10,9 @@ export default function UpcomingEvents(props) {
 				<a href="#">See all</a>
 			</div>
 			{
-				props.upcoming.map((event, index) => {
+				upcoming.map((event, index) => {
 					return <GroupEvent className="group-event" key={index} event={event}/>
-				})
-				
+				})	
 			}
 		</div>
 	)

@@ -4,31 +4,12 @@ import PastEvents from '../GroupEvents/PastEvents'
 import GroupSocial from './GroupSocial'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
-// import { gql } from 'apollo-boost';
-// import { Query } from 'react-apollo';
-
-// const GET_EVENT = gql`
-// query Event($id: ID!){
-//   getEvent(id: $id){
-// 		name,
-// 		date,
-//     host {
-// 			email
-// 		},
-// 		location {
-// 				address
-// 		},
-// 		attendees {
-// 			email,
-// 			firstName
-// 		}
-//   }
-// }`;
 
 const GET_UPCOMING_EVENTS = gql`
 {
   getEvents(input: {
-    isUpcoming: true
+		isUpcoming: true,
+		groupId: "5d052ee1c5ac64718e2c2803"
   }){
     name,
 		date,
@@ -45,7 +26,8 @@ const GET_UPCOMING_EVENTS = gql`
 const GET_PAST_EVENTS = gql`
 {
   getEvents(input: {
-    isUpcoming: false
+    isUpcoming: false,
+		groupId: "5d052ee1c5ac64718e2c2803"
   }){
     name,
 		date,
@@ -77,11 +59,7 @@ class GroupAbout extends React.Component {
       readMore: !state.readMore
 		}))
 	}
-	// componentDidMount(){
-	// 	this.setState({
-	// 		upcomingEvents : this.props.events
-	// 	})
-	// }
+
 	render(){
 		return (
 					<div className="group-about-wrapper">
@@ -93,12 +71,6 @@ class GroupAbout extends React.Component {
 								<button className="more-group-details-text" onClick={this.handleClick}>Read more</button></p>
 							}
 						</div>
-						{/* {
-						host?
-						console.log('host', host) :
-						console.log('name', name)	
-						<Query query={GET_EVENT} variables={{ eventId }}>
-					} */}
 						<Query query={GET_UPCOMING_EVENTS}>
 								{({ data, loading, error }) => {
 									if (loading) return <p>Loading</p>;
