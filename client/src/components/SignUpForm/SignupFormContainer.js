@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import {  Form, Field, ErrorMessage,Formik } from 'formik';
+import {  Form, Formik } from 'formik';
 import { FormikTextField } from 'formik-material-fields';
 import { withStyles } from '@material-ui/core/styles';
 import * as yup from "yup"
+import { Mutation } from 'react-apollo'
+import SINUP_UP_USER from './signupUserMutation.graphql';
 
 const styles = ({
     container: {
@@ -46,62 +48,72 @@ const styles = ({
     email: yup
       .string()
       .required(),
-    agreeToTerms: yup
-      .boolean()
-      .label('Terms')
-      .test(
-        'is-true',
-        'Must agree to terms to continue',
-        value => value === true
-      ),
   
   })
-class SignupFormContainer extends Component {
+class SignupFormContainer extends React.Component {
 	render() {
-        const { classes } = this.props;
-        return (
-            <Formik  initialValues = {{
-                firstName: '',
-                lastName: '',
-                password: '',
-                confirmPassword: '',
-                email: '',
-                agreeToTerms: false
-                }}
-                validationSchema = {SignupValidation}
-            >
-                {()=>(
-                     <Form className={classes.container}> 
-                        <FormikTextField 
-                            type="text" 
-                            name="firstName" 
-                            placeholder="First Name"
-                        />
-                        <FormikTextField 
-                            type="text" 
-                            name="lastName" 
-                            placeholder="Last Name"
-                        />
-                        <FormikTextField 
-                            type="text" 
-                            name="email" 
-                            placeholder="Email"
-                        />
-                        <FormikTextField 
-                            type="password" 
-                            name="password" 
-                            placeholder="Password"
-                        />
-                        <FormikTextField 
-                            type="password" 
-                            name="confirmPassword" 
-                            placeholder="Confirmed Password"
-                        />
-                        <button type="submit" className={classes.button} > Submit </button>
+      const { classes } = this.props;
+      return (
+        <Mutation mutation={SINUP_UP_USER}>
+        { signupUser => 
+          <Formik  
+            initialValues = {{
+              firstName: '',
+              lastName: '',
+              password: '',
+              confirmPassword: '',
+              email: ''
+              }}
+
+            onSubmit ={async (values, { setSubmitting }) => {
+              //console.log(values);
+              const response = await signupUser({
+                variables: {email:values.email,password:values.password,firstName:values.firstName,lastName:values.lastName}
+              })
+              console.log(response)
+                // This is where you could send the submitted values to the backend
+              localStorage.setItem("token", response.data.signupUser.token); 
+        
+                // Simulates the delay of a real request
+                setTimeout(() => setSubmitting(false), 3 * 1000)
+            }}
+              
+            validationSchema = {SignupValidation}
+          >
+            {()=>(
+              <Form className={classes.container}> 
+                  <FormikTextField 
+                      type="text" 
+                      name="firstName" 
+                      placeholder="First Name"
+                  />
+                  <FormikTextField 
+                      type="text" 
+                      name="lastName" 
+                      placeholder="Last Name"
+                  />
+                  <FormikTextField 
+                      type="text" 
+                      name="email" 
+                      placeholder="Email"
+                  />
+                  <FormikTextField 
+                      type="password" 
+                      name="password" 
+                      placeholder="Password"
+                  />
+                  <FormikTextField 
+                      type="password" 
+                      name="confirmPassword" 
+                      placeholder="Confirmed Password"
+                  />
+                  <button type="submit" className={classes.button} > Sign Up </button>
                 </Form>
-                )}      
-        </Formik>
-		);
-	}
-}
+              )}    
+          </Formik>
+        }
+        </Mutation>
+      )
+    }
+  }
 export default withStyles(styles)(SignupFormContainer);
