@@ -1,0 +1,46 @@
+.user-profile-container {
+	max-width: 65%;
+	margin: 0 auto;
+	margin-bottom: 3em;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-gap: 1em;
+}
+.user-bio-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+.social-accounts {
+	max-width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 1em;
+	margin-top: 1em;
+	padding-left: 0;
+}
+.social-accounts-links {
+	display: flex;
+	justify-content: space-evenly;
+	width: 56%;
+}
+.social-accounts-links a {
+	text-decoration: none;
+	color: #000;
+	font-size: 1.3em;
+}
+.groups {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	justify-items: center;
+}
+.groups li {
+	text-align: center;
+}
+.user-preferences {
+	margin-top: 1.75em;
+}
+.profile {
+	text-align: center;
+}
