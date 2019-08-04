@@ -8,12 +8,7 @@ export default function PastEvents(props) {
 				<h4>Past events ({props.past.length >= 1 ? `${props.past.length}+` : `${props.past.length}`})</h4>
 				<a href="#">See all</a>
 			</div>
-			{
-				props.past.map((event, index) => {
-					return <GroupEvent className="group-event" key={index} event={event}/>
-				})
-				
-			}
+			<GroupEvent className="group-event" event={props.past[0]}/>
 		</div>
 	)
 }
