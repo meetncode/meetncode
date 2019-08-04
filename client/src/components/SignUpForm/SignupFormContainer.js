@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {  Form, Formik } from 'formik';
 import { FormikTextField } from 'formik-material-fields';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import * as yup from "yup"
 import { Mutation } from 'react-apollo'
 import SINUP_UP_USER from './signupUserMutation.graphql';
@@ -107,7 +108,9 @@ class SignupFormContainer extends React.Component {
                       name="confirmPassword" 
                       placeholder="Confirmed Password"
                   />
-                  <button type="submit" className={classes.button} > Sign Up </button>
+                  <Button variant="contained" className={classes.button}>
+                    Submit
+                  </Button>
                 </Form>
               )}    
           </Formik>

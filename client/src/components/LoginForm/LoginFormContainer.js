@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as yup from "yup";
 import {  Form, Formik } from 'formik';
 import { FormikTextField } from 'formik-material-fields';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { Mutation } from 'react-apollo'
 import LOGIN_USER_MUTATION from './loginUserMutation.graphql'
@@ -79,13 +80,14 @@ class LoginFormContainer extends React.Component {
                       placeholder="Password"
                       fullWidth
                     />
-                    <button type="submit" className={classes.button} > LogIn </button>
+                    <Button type="submit" variant="contained" className={classes.button}>
+                      Submit
+                    </Button>
                   </Form>
                 )}
                
               </Formik>
            }
-         </Mutation>
         )
     }
 }

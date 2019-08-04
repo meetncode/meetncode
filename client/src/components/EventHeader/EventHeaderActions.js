@@ -1,7 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    marginRight: '1em',
+  }
+}));
 
 const EventHeaderActions = () => {
+	const classes = useStyles();
 	return (
 		<div>
 			<div className="event-attendance">
@@ -10,8 +20,8 @@ const EventHeaderActions = () => {
 				<span className="spots-left">8 spots left</span>
 			</div>
 			<div className="event-actions">
-				<button className="attend btn">Check</button>
-				<button className="skip btn">Skip</button>
+				<Button variant="contained" color="primary" className={classes.button}>Attend</Button>
+				<Button variant="contained" color="primary" className={classes.button}>Skip</Button>
 			</div>
 			<div className="event-share">
 				<p>Share</p>

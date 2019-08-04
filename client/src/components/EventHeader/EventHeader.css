@@ -34,17 +34,6 @@
 .spots-left {
 	margin: 0 1em;
 }
-.btn {
-	text-decoration: none;
-	padding: 0.5em 3em;
-	margin: 1em;
-	border-radius: 20px;
-	background: linear-gradient(to left, #f27954, #a154f2);
-	border: none;
-	outline: none;
-	color: #fff;
-	cursor: pointer;
-}
 
 .event-share {
 	max-width: 100%;
