@@ -7,7 +7,7 @@ import Event from '../../pages/Event';
 import Login from '../../pages/Login';
 import SignUp from '../../pages/SignUp';
 import Group from '../../pages/Group';
-import CreateEditEvent from '../../pages/CreateEditEvent';
+import CreateEventPage from '../../pages/CreateEventPage';
 
 import './App.css';
 
@@ -25,7 +25,7 @@ class App extends React.Component {
           <Route path="/group/:id" component={Group} />
           {/* <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} /> */}
-          <Route path="/eventedit/:id" component={CreateEditEvent} />
+          <Route path="/:groupid/createevent" component={CreateEventPage} />
         </div>
       </Router>
       )

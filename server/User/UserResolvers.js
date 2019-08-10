@@ -50,7 +50,7 @@ const UserResolvers = {
       }
 
     },
-    loginUser: async(_, { email, password }) => {
+    loginUser: async(_, { email, password }, { isAuth }) => {
       const user = await User.findOne({ email });
       if(!user) {
         throw new Error('User does not exists');

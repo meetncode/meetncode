@@ -3,7 +3,7 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 import "./LocationPicker.css";
 
-const LocationPicker = ({ userLat = 36.896768, userLng = 126.619648, setFieldValue}) => {
+const LocationPicker = ({ userLat = 36.896768, userLng = 126.619648, onChange}) => {
   const [hasLocation, setHasLocation] = useState(false);
   const [lat, setLat] = useState(userLat);
   const [lng, setLng] = useState(userLng);
@@ -19,7 +19,7 @@ const LocationPicker = ({ userLat = 36.896768, userLng = 126.619648, setFieldVal
     setLat(latlng.lat);
     setLng(latlng.lng);
     setHasLocation(true);
-    setFieldValue('coordinates', [lat, lng])
+    onChange([lat, lng])
 
   };
 
