@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import { withRouter } from 'react-router-dom';
 import * as yup from "yup";
 import {  Form, Formik } from 'formik';
 import { FormikTextField } from 'formik-material-fields';
@@ -40,7 +41,8 @@ const LoginValidation = yup.object().shape({
 });
 class LoginFormContainer extends React.Component {
     render() {
-        const { classes } = this.props;
+        const { classes, history } = this.props;
+        console.log(this.props)
        // async ()
         return (
            <Mutation mutation={LOGIN_USER_MUTATION}>
@@ -55,12 +57,12 @@ class LoginFormContainer extends React.Component {
                 const response = await loginUser({
                   variables: {email:values.email,password:values.password}
                 })
-                console.log(response)
-                  // This is where you could send the submitted values to the backend
-                localStorage.setItem("token", response.data.loginUser.token); 
+
+                if(response){
+                  history.push(`/members/${response.data.loginUser.userId}`)
+                  localStorage.setItem("token", response.data.loginUser.token); 
+                }
           
-                  // Simulates the delay of a real request
-                  setTimeout(() => setSubmitting(false), 3 * 1000)
               }}
             
               validationSchema = {LoginValidation}
@@ -88,7 +90,8 @@ class LoginFormContainer extends React.Component {
                
               </Formik>
            }
+           </Mutation>
         )
     }
 }
-export default withStyles(styles)(LoginFormContainer);
+export default withRouter(withStyles(styles)(LoginFormContainer));
