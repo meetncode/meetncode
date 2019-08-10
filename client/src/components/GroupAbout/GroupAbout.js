@@ -5,23 +5,7 @@ import GroupSocial from './GroupSocial'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 
-const GET_UPCOMING_EVENTS = gql`
-{
-  getEvents(input: {
-		isUpcoming: true,
-		groupId: "5d052ee1c5ac64718e2c2803"
-  }){
-    name,
-		date,
-    host{
-			firstName
-		},
-		description,
-    location{
-      address
-    }
-  }
-}`;
+import GET_UPCOMING_EVENTS from './queryGetUpcomingEvents.graphql';
 
 const GET_PAST_EVENTS = gql`
 {
@@ -61,6 +45,7 @@ class GroupAbout extends React.Component {
 	}
 
 	render(){
+		const { id } = this.props;
 		return (
 					<div className="group-about-wrapper">
 						<div>
@@ -71,7 +56,12 @@ class GroupAbout extends React.Component {
 								<button className="more-group-details-text" onClick={this.handleClick}>Read more</button></p>
 							}
 						</div>
-						<Query query={GET_UPCOMING_EVENTS}>
+						<Query
+							query={GET_UPCOMING_EVENTS}
+							variables={{
+								groupId: id
+							}}
+						>
 								{({ data, loading, error }) => {
 									if (loading) return <p>Loading</p>;
 									if (error) return <p>ERROR</p>;
