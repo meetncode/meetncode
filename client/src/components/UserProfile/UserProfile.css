@@ -1,10 +1,15 @@
-.user-profile-container {
+.user-profile-container,
+.edit-profile-container {
 	max-width: 65%;
 	margin: 0 auto;
 	margin-bottom: 3em;
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	grid-gap: 1em;
+	min-height: 54vh;
+}
+.edit-profile-container {
+	grid-template-columns: 1fr;
 }
 .user-bio-header {
 	display: flex;
@@ -43,4 +48,29 @@
 }
 .profile {
 	text-align: center;
+}
+.edit-profile-form {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1em;
+}
+.edit-profile-form input,
+.edit-profile-form textarea {
+	width: 70%;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 10px;
+}
+.edit-profile-form button {
+	padding: 10px 30px;
+	border-radius: 5px;
+	font-size: 0.8em;
+}
+.edit-profile-form input,
+.edit-profile-form textarea,
+.edit-profile-form button {
+	outline: none;
 }

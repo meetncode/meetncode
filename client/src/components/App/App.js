@@ -23,7 +23,7 @@ class App extends React.Component {
           <Route path="/signup" component={SignUp} />
           <Route path="/group/:id" component={Group} />
           <Route path="/members/:id" component={UserProfile} />
-          <Route path="/members/:id/edit" component={EditUserProfile} />
+          <Route path="/edit/members/:id" component={EditUserProfile} />
           {/* <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} /> */}
         </div>
