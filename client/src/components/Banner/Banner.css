@@ -11,19 +11,14 @@
 .call-to-action {
 	margin: 2em 0;
 }
-.btn {
-	text-decoration: none;
-	padding: 0.5em 3em;
-	margin: 1em;
-	border-radius: 20px;
-	outline: none;
-	cursor: pointer;
-}
-.btn-white {
-	color: #000;
-	background: #fff;
-}
-.btn-transparent {
-	border: 2px solid #fff;
-	color: #fff;
+
+.banner {
+	background: url("./background.jpg") no-repeat;
+	height: calc(100vh - 32em);
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }

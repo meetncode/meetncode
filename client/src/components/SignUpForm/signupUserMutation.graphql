@@ -1,0 +1,13 @@
+mutation($firstName:String! $lastName:String! $email:String! $password:String!) {
+  signupUser(
+    input: {
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    }){ 
+    userId,
+    token,
+    tokenExpiration
+  }
+}
