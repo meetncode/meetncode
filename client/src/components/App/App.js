@@ -7,6 +7,8 @@ import Event from '../../pages/Event'
 import Login from '../../pages/Login'
 import SignUp from '../../pages/SignUp'
 import Group from '../../pages/Group'
+import UserProfile from '../../pages/UserProfile'
+import EditUserProfile from '../../pages/EditUserProfile'
 
 
 class App extends React.Component {
@@ -20,6 +22,8 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/group/:id" component={Group} />
+          <Route path="/members/:id" component={UserProfile} />
+          <Route path="/edit/members/:id" component={EditUserProfile} />
           {/* <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} /> */}
         </div>
