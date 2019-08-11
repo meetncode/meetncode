@@ -12,7 +12,7 @@ const LocationSchema = gql`
   input LocationInput {
     country: String!
     city: String!
-    locationCoordinates: CoordinatesInput!
+    locationCoordinates: CoordinatesInput
     address: String
   }
 
