@@ -5,6 +5,9 @@ import ApolloClient from 'apollo-boost';
 
 import App from './components/App/App';
 import { Provider } from 'react-redux';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DayJsUtils from '@date-io/dayjs';
+
 import store from './store';
 
 const client =  new ApolloClient({
@@ -25,7 +28,9 @@ const client =  new ApolloClient({
 
 const AppWrapper = () => (
   <ApolloProvider client={client}>
-    <App/>
+    <MuiPickersUtilsProvider utils={DayJsUtils}>
+      <App/>
+    </MuiPickersUtilsProvider>
   </ApolloProvider>
 );
 

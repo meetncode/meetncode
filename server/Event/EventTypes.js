@@ -19,7 +19,7 @@ const EventSchema = gql`
     group: ID
     description: String
     attendees: [ID]
-    location: ID
+    location: LocationInput
     date: String
   }
 
@@ -29,7 +29,7 @@ const EventSchema = gql`
     group: ID!
     description: String!
     attendees: [ID]
-    location: ID!
+    location: LocationInput!
     date: String!
   }
 

@@ -27,8 +27,25 @@ const EventSchema = new Schema({
     ref: 'user'
   }],
   location: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'location'
+    country: {
+      type: String,
+      require: true
+    },
+    city: {
+      type: String,
+      require: true
+    },
+    locationCoordinates: {
+      type: {
+        type: String,
+        enum: ['Point'],
+        required: true
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      },
+    },
   }
 }, { timestamps: true })
 

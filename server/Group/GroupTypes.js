@@ -26,7 +26,7 @@ const GroupSchema = gql`
     admin: ID
     members: [ID!]
     enabled: Boolean
-    location: ID
+    location: LocationInput
   }
 
   extend type Query {
