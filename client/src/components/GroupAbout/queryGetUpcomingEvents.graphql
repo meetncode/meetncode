@@ -1,0 +1,16 @@
+query GetUpcomingEvents($groupId: ID!) {
+  getEvents(input: {
+		isUpcoming: true,
+		groupId: $groupId
+  }){
+    name,
+		date,
+    host{
+			firstName
+		},
+		description,
+    location{
+      address
+    }
+  }
+}

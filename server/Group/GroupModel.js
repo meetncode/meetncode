@@ -33,8 +33,23 @@ const GroupSchema = new Schema({
     ref: 'user'
   }],
   location: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'location'
+    country: {
+      type: String,
+      require: true
+    },
+    city: {
+      type: String,
+      require: true
+    },
+    locationCoordinates: {
+      type: {
+        type: String,
+        enum: ['Point']
+      },
+      coordinates: {
+        type: [Number]
+      },
+    },
   },
   enabled: {
     type: Boolean,

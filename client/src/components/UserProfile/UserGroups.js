@@ -1,6 +1,9 @@
 import React from 'react'
 
-const UserGroups = () => {
+const UserGroups = (props) => {
+	// TODO:: Query groups here and get group info
+	const { groups } = props
+	console.log(groups)
 	return (
 		<div>
 			<h3>Your Groups</h3>

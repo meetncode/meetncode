@@ -1,17 +1,23 @@
 import React from 'react'
 
-const UserPreferences = () => {
+const UserPreferences = (props) => {
+	const { categories } = props
 	return (
 		<div>
 			<div className="header">
-				<h3>Interests</h3>
+				<h3>categories</h3>
 			</div>
 			<ul>
-				<li>Frontend</li>
-				<li>ReactJS</li>
-				<li>Css</li>
-				<li>UI Frameworks</li>
-				<li>Webpack</li>
+				{
+					categories ?
+					(
+						categories.map((category, index) => {
+							return <li key={index}>{category}</li>
+						})
+					)
+					: 
+					'No interests selected'
+				}
 			</ul>
 		</div>
 	)

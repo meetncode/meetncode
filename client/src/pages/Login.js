@@ -5,11 +5,11 @@ import LoginForm from '../components/LoginForm/LoginFormContainer'
 
 
 export default function Login() {
-    return (
-        <div>
-      <Header/>
-      <LoginForm/>
-      <Footer/>
+  return (
+    <div>
+      <Header />
+      <LoginForm />
+      <Footer />
     </div>
-    )
+  );
 }

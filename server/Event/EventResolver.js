@@ -30,7 +30,7 @@ const EventResolvers = {
   },
   Mutation: {
     createEvent: async (_, { input }, { isAuth }) => {
-      if(!isAuth) throw Error('You are not authorized to do this');
+      // if(!isAuth) throw Error('You are not authorized to do this');
       const event =  await Event.create(input);
       return event.populate('host').populate('attendees').populate('group').execPopulate();
     },

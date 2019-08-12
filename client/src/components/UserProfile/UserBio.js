@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import dayjs from 'dayjs'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -8,25 +9,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UserBio = () => {
+const UserBio = (props) => {
 	const classes = useStyles();
-	// const { firstname, lastname, location, createdAt } = this.PaymentResponse;
-	// const fullname = `${firstname} ${lastname}`
+	const { firstName, lastName, location, createdAt, bio } = props.bio;
+	const fullname = `${firstName} ${lastName}`
 	return (
 		<div>
 			<span className="user-bio-header">
-				<h3>John Smith</h3>
-				{/* <h3>{fullname}</h3> */}
+				<h3>{fullname}</h3>
 			</span>
 			<ul>
 				<li>
 					<strong>Location</strong>
-					<p>Gnjkmas</p>
+					<p>{location || 'N/A'}</p>
 				</li>
 				<li>
 					<strong>Member Since</strong>
-					<p>Gnjkmas</p>
-					{/* <p>{createdAt}</p> */}
+					<p>{dayjs(Number(createdAt)).format('MMMM D YYYY') || 'N/A'}</p>
 				</li>
 				<li className="social-accounts">
 					<strong>Social Profiles</strong>
@@ -38,12 +37,12 @@ const UserBio = () => {
 					</ul>
 				</li>
 			</ul>
-			{/* {
-				UserBio ?
-				<p>{userbio}</p>
+			{
+				bio ?
+				<p>{bio}</p>
 				:
 				<Button variant="contained" color="primary" className={classes.button}>Write something about yourself</Button>
-			} */}
+			}
 		</div>
 	)
 }

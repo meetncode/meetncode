@@ -1,0 +1,9 @@
+query GetUserBio($id: ID!){
+	getUser(id: $id){
+		id,
+    categories{
+      id
+    }
+	}
+}
+

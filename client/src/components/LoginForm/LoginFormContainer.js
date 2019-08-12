@@ -1,12 +1,12 @@
 import React from "react";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import * as yup from "yup";
-import {  Form, Formik } from 'formik';
-import { FormikTextField } from 'formik-material-fields';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import { Mutation } from 'react-apollo'
-import LOGIN_USER_MUTATION from './loginUserMutation.graphql'
+import { Form, Formik } from "formik";
+import { FormikTextField } from "formik-material-fields";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+import { Mutation } from "react-apollo";
+import LOGIN_USER_MUTATION from "./loginUserMutation.graphql";
 
 const styles= theme => ({
   container: {

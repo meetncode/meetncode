@@ -3,38 +3,35 @@ import UserPreferencesContainer from './UserPreferencesContainer'
 import UserBioContainer from './UserBioContainer';
 import './UserProfile.css'
 import { withRouter } from 'react-router-dom';
-import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 
-const token = localStorage.getItem('token')
-const GET_USER = gql`
-{
-  getUser(input: {
-		id: "5d2f387c885d7512ee803b74"
-  }){
-    firstName,
-    email
-  }
-}`;
+import GET_USER_BIO from './queryGetUserBio.graphql';
+import GET_USER_PREFS from './queryGetUserPrefs.graphql';
+
 class UserProfileContainer extends React.Component {
-	componentDidMount(){
-		console.log(this.props.history)
-		const { id } = this.props.match.params
-		console.log('token', token)
-	}
 	render(){
+		const { id } = this.props.match.params
 		return (
 			<div className="user-profile-container">
-				<Query query={GET_USER}>
+				<Query query={GET_USER_BIO} variables={{ id }}>
 						{({ data, loading, error }) => {
 							if (loading) return <p>Loading</p>;
 							if (error) return <p>ERROR</p>;
-							// const userData = data.getUser
+							const userBio = data.getUser
+							console.log(userBio)
 							return (
-								<React.Fragment>
-									<UserBioContainer />
-									<UserPreferencesContainer />
-								</React.Fragment>
+								<UserBioContainer userBio={userBio}/>
+						)
+					}}
+				</Query>
+				<Query query={GET_USER_PREFS} variables={{ id }}>
+						{({ data, loading, error }) => {
+							if (loading) return <p>Loading</p>;
+							if (error) return <p>ERROR</p>;
+							const userPrefs = data.getUser
+							console.log(userPrefs)
+							return (
+								<UserPreferencesContainer userPrefs={userPrefs}/>
 						)
 					}}
 				</Query>
