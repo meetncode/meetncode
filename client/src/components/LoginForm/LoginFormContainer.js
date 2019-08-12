@@ -8,23 +8,23 @@ import { withStyles } from "@material-ui/core/styles";
 import { Mutation } from "react-apollo";
 import LOGIN_USER_MUTATION from "./loginUserMutation.graphql";
 
-const styles= theme => ({
+const styles = theme => ({
   container: {
     width: 300,
     minHeight: 300,
-    margin: '0 auto',
-    textAlign: 'center',
+    margin: "0 auto",
+    textAlign: "center"
   },
   button: {
-    background: 'linear-gradient(to left, #f27954, #a154f2)',
-    padding: '0.5em 3em',
-    margin: '1em',
-    borderRadius: '20px',
-    border: 'none',
-    outline: 'none',
-    color: '#fff',
-    cursor: 'pointer',
-  },
+    background: "linear-gradient(to left, #f27954, #a154f2)",
+    padding: "0.5em 3em",
+    margin: "1em",
+    borderRadius: "20px",
+    border: "none",
+    outline: "none",
+    color: "#fff",
+    cursor: "pointer"
+  }
 });
 
 const LoginValidation = yup.object().shape({
@@ -34,10 +34,8 @@ const LoginValidation = yup.object().shape({
     .required(),
   password: yup
     .string()
-    .min(5)
     .max(16)
-    .required(),
-
+    .required()
 });
 class LoginFormContainer extends React.Component {
     render() {
