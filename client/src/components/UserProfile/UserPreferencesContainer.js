@@ -16,9 +16,8 @@ const useStyles = makeStyles(theme => ({
 
 const UserPreferencesContainer = (props) => {
 	const classes = useStyles();
-	const { userPrefs } = props
-	const id = userPrefs.id
-	const categories = userPrefs.categories
+	const { categories, id } = props.userPrefs
+
 	return (
 		<div className="user-preferences">
 			<Link to ={`/edit/members/${id}/`}>Edit Profile</Link>

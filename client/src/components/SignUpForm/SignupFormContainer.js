@@ -67,11 +67,9 @@ class SignupFormContainer extends React.Component {
               }}
 
             onSubmit ={async (values, { setSubmitting }) => {
-              //console.log(values);
               const response = await signupUser({
                 variables: {email:values.email,password:values.password,firstName:values.firstName,lastName:values.lastName}
               })
-              console.log(response)
                 // This is where you could send the submitted values to the backend
               localStorage.setItem("token", response.data.signupUser.token); 
         

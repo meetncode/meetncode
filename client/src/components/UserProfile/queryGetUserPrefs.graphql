@@ -1,4 +1,4 @@
-query GetUserBio($id: ID!){
+query GetUserCategories($id: ID!){
 	getUser(id: $id){
     id,
     categories{

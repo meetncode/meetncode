@@ -1,10 +1,9 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 
-import GET_USER_CATS from './queryGetUserInterests.graphql';
+import GET_USER_CATS from './queryGetCategory.graphql';
 
-const UserPreferences = (props) => {
-	const { categories } = props
+const UserPreferences = ({categories}) => {
 	return (
 		<div>
 			<div className="header">
@@ -14,14 +13,13 @@ const UserPreferences = (props) => {
 				{
 					categories ?
 					(
-						categories.map((category, index) => {
+						categories.map((category) => {
 							const { id } = category
 							return <Query query={GET_USER_CATS} variables={{ id }} key={category.id}>
 							{({ data, loading, error }) => {
 								if (loading) return <p>Loading</p>;
 								if (error) return <p>ERROR</p>;
 								const userCategory = data.getCategory
-								console.log(userCategory)
 								return (
 									<React.Fragment>
 										<li>

@@ -24,7 +24,6 @@ const EditUserProfileContainer = () => {
 					setTimeout(() => {
 						alert(JSON.stringify(values, null, 2));
 						actions.setSubmitting(false);
-						console.log('submitting')
 					}, 1000);
 				}}
 				render={props => (

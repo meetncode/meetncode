@@ -18,7 +18,6 @@ class UserProfileContainer extends React.Component {
 							if (loading) return <p>Loading</p>;
 							if (error) return <p>ERROR</p>;
 							const userBio = data.getUser
-							console.log(userBio)
 							return (
 								<UserBioContainer userBio={userBio}/>
 						)
@@ -29,7 +28,6 @@ class UserProfileContainer extends React.Component {
 							if (loading) return <p>Loading</p>;
 							if (error) return <p>ERROR</p>;
 							const userPrefs = data.getUser
-							console.log(userPrefs)
 							return (
 								<UserPreferencesContainer userPrefs={userPrefs}/>
 						)

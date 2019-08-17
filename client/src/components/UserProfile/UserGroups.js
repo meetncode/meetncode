@@ -17,7 +17,6 @@ const UserGroups = (props) => {
 						if (loading) return <p>Loading</p>;
 						if (error) return <p>ERROR</p>;
 						const userGroups = data.getGroup
-						console.log(userGroups)
 						return (
 							<React.Fragment>
 								<li>

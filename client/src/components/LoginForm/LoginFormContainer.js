@@ -42,9 +42,7 @@ const LoginValidation = yup.object().shape({
 class LoginFormContainer extends React.Component {
     render() {
         const { classes, history } = this.props;
-        console.log(this.props)
-       // async ()
-        return (
+       return (
            <Mutation mutation={LOGIN_USER_MUTATION}>
            { loginUser => 
               <Formik

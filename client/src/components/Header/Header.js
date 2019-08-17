@@ -3,8 +3,6 @@ import './Header.css'
 import { Link } from 'react-router-dom'
 import mySvg from './logo.svg'
 
-console.log(mySvg);
-
 const Header = () => {
 	return (
 		<div className="header-wrapper">
