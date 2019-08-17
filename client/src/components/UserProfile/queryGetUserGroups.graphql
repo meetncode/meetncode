@@ -1,0 +1,6 @@
+query GetUserGroups($id: ID!){
+	getGroup(id: $id){
+    name
+	}
+}
+

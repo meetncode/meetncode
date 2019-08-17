@@ -1,33 +1,35 @@
 import React from 'react'
+import { Query } from 'react-apollo'
+
+import GET_USER_GROUPS from './queryGetUserGroups.graphql';
 
 const UserGroups = (props) => {
-	// TODO:: Query groups here and get group info
 	const { groups } = props
-	console.log(groups)
 	return (
 		<div>
 			<h3>Your Groups</h3>
 			<ul className="groups">
-				<li>
-					<img src="https://via.placeholder.com/50" alt=""/>
-					<h5>Group Name</h5>
-				</li>
-				<li>
-					<img src="https://via.placeholder.com/50" alt=""/>
-					<h5>Group Name</h5>
-				</li>
-				<li>
-					<img src="https://via.placeholder.com/50" alt=""/>
-					<h5>Group Name</h5>
-				</li>
-				<li>
-					<img src="https://via.placeholder.com/50" alt=""/>
-					<h5>Group Name</h5>
-				</li>
-				<li>
-					<img src="https://via.placeholder.com/50" alt=""/>
-					<h5>Group Name</h5>
-				</li>
+			{
+				groups.map((group) => {
+					const { id } = group
+					return <Query query={GET_USER_GROUPS} variables={{ id }} key={group.id}>
+					{({ data, loading, error }) => {
+						if (loading) return <p>Loading</p>;
+						if (error) return <p>ERROR</p>;
+						const userGroups = data.getGroup
+						console.log(userGroups)
+						return (
+							<React.Fragment>
+								<li>
+									<img src="https://via.placeholder.com/50" alt=""/>
+									<h5>{userGroups.name}</h5>
+								</li>
+							</React.Fragment>
+					)
+					}}
+				</Query>
+				})
+			}
 			</ul>
 		</div>
 	)
