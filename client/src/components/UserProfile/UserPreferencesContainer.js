@@ -14,50 +14,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// class UserPreferencesContainer extends React.Component {
-// 	// constructor(props) {
-// 	// 	super(props);
-
-// 	// 	this.state = {
-// 	// 			editing: false
-// 	// 	}
-// 	// 	this.handleClickEdit = this.handleClickEdit.bind(this);
-// 	// }
-
-// 	// handleClickEdit() {
-// 	// 	// this.setState({
-// 	// 	// 	editing: !this.state.editing
-// 	// 	// })
-// 	// 	<Redirect to="/"/>
-// 	// }
-// 	render() {
-// 		const classes = useStyles();
-// 		return (
-// 			<div className="user-preferences">
-// 				<Button color="primary" className={classes.button} onClick={this.handleClickEdit}>Edit Profile</Button>
-// 				<div className="profile">
-// 					<img src="https://via.placeholder.com/180" alt=""/>
-// 					<Button variant="outlined" color="primary" className={classes.button}>Remove Photo</Button>
-// 				</div>
-// 				<UserPreferences />
-// 			</div>
-// 		)
-// 	}
-// }
-
-// export default UserPreferencesContainer;
-
-const UserPreferencesContainer = () => {
+const UserPreferencesContainer = (props) => {
 	const classes = useStyles();
-	const id = 123
+	const { categories, id } = props.userPrefs
+
 	return (
 		<div className="user-preferences">
 			<Link to ={`/edit/members/${id}/`}>Edit Profile</Link>
 			<div className="profile">
 				<img src="https://via.placeholder.com/180" alt=""/>
-				{/* <Button variant="outlined" color="primary" className={classes.button}>Remove Photo</Button> */}
+				<Button variant="outlined" color="primary" className={classes.button}>Remove Photo</Button>
 			</div>
-			<UserPreferences />
+			<UserPreferences categories={categories}/>
 		</div>
 	)
 }

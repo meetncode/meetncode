@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import { withRouter } from "react-router-dom";
 import * as yup from "yup";
 import { Form, Formik } from "formik";
 import { FormikTextField } from "formik-material-fields";
@@ -37,54 +38,56 @@ const LoginValidation = yup.object().shape({
     .required()
 });
 class LoginFormContainer extends React.Component {
-  render() {
-    const { classes } = this.props;
-    // async ()
-    return (
-      <Mutation mutation={LOGIN_USER_MUTATION}>
-        {loginUser => (
-          <Formik
-            initialValues={{
-              email: "",
-              password: ""
-            }}
-            onSubmit={async (values, { setSubmitting }) => {
-              const response = await loginUser({
-                variables: { email: values.email, password: values.password }
-              });
-              // This is where you could send the submitted values to the backend
-              localStorage.setItem("token", response.data.loginUser.token);
+    render() {
+        const { classes, history } = this.props;
+       return (
+           <Mutation mutation={LOGIN_USER_MUTATION}>
+           { loginUser => 
+              <Formik
+              initialValues = {{
+                email: '',
+                password: ''
+              }}
+              
+              onSubmit ={async (values, { setSubmitting }) => {
+                const response = await loginUser({
+                  variables: {email:values.email,password:values.password}
+                })
 
-            }}
-            validationSchema={LoginValidation}
-          >
-            {() => (
-              <Form className={classes.container}>
-                <FormikTextField
-                  type="text"
-                  name="email"
-                  placeholder="email"
-                  fullWidth
-                />
-                <FormikTextField
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  fullWidth
-                />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  className={classes.button}
-                >
-                  Submit
-                </Button>
-              </Form>
-            )}
-          </Formik>
-        )}
-      </Mutation>
-    );
-  }
+                if(response){
+                  history.push(`/members/${response.data.loginUser.userId}`)
+                  localStorage.setItem("token", response.data.loginUser.token); 
+                }
+          
+              }}
+            
+              validationSchema = {LoginValidation}
+              
+              >
+                {() =>(
+                  <Form className={classes.container}> 
+                    <FormikTextField 
+                      type="text" 
+                      name="email" 
+                      placeholder="email"
+                      fullWidth
+                    />
+                    <FormikTextField 
+                      type="password" 
+                      name="password" 
+                      placeholder="Password"
+                      fullWidth
+                    />
+                    <Button type="submit" variant="contained" className={classes.button}>
+                      Submit
+                    </Button>
+                  </Form>
+                )}
+               
+              </Formik>
+           }
+           </Mutation>
+        )
+    }
 }
-export default withStyles(styles)(LoginFormContainer);
+export default withRouter(withStyles(styles)(LoginFormContainer));

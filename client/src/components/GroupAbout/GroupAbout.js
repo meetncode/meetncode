@@ -38,7 +38,6 @@ class GroupAbout extends React.Component {
 	}
 
 	handleClick() {
-		console.log(this.props.events)
     this.setState(state => ({
       readMore: !state.readMore
 		}))

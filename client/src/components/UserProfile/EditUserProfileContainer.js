@@ -3,6 +3,9 @@ import { Formik } from 'formik';
 import './UserProfile.css'
 import { Link } from 'react-router-dom';
 
+import GET_USER_BIO from './queryGetUserBio.graphql';
+import GET_USER_PREFS from './queryGetUserPrefs.graphql';
+
 const EditUserProfileContainer = () => {
 	// const { image } = this.props
 	const image = 'https://via.placeholder.com/180'
@@ -21,7 +24,6 @@ const EditUserProfileContainer = () => {
 					setTimeout(() => {
 						alert(JSON.stringify(values, null, 2));
 						actions.setSubmitting(false);
-						console.log('submitting')
 					}, 1000);
 				}}
 				render={props => (
