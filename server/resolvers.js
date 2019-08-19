@@ -4,14 +4,14 @@ const { UserResolvers } = require('./User/UserResolvers');
 const { EventResolvers } = require('./Event/EventResolver');
 const { GroupResolvers } = require('./Group/GroupResolvers');
 const { CategoryResolvers } = require('./Category/CategoryResolvers');
-const { LocationResolvers } = require('./Location/LocationResolver');
+const { OtherResolvers } = require('./Other/OtherResolvers');
 
 const resolvers = merge(
   UserResolvers,
   EventResolvers,
   GroupResolvers,
   CategoryResolvers,
-  LocationResolvers
+  OtherResolvers
 );
 
 module.exports = resolvers;
