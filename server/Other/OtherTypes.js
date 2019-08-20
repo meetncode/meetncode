@@ -26,15 +26,16 @@ const LocationSchema = gql`
     coordinates: [Float!]
   }
 
-  extend type Query {
-    getLocation(id: ID): Location
-    getLocationByCity(city: String): [Location]
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
   }
 
   extend type Mutation {
-    createLocation(input: LocationInput): Location
-    updateLocation(id: ID, input: LocationInput): Location
+    singleUpload(file: Upload!): File!
   }
+
 `
 
 module.exports = LocationSchema;
