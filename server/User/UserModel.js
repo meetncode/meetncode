@@ -18,10 +18,6 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  location: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'location'
-  },
   hometown: String,
   language: String,
   birthday: Date,

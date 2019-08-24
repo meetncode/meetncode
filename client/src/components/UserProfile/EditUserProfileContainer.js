@@ -1,111 +1,95 @@
 import React from 'react'
-import { Formik } from 'formik';
+import { withRouter } from "react-router-dom";
+import { Mutation } from "react-apollo";
+import { Formik, Form, Field } from "formik";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+import CurrentUser from "../CurrentUser";
+import CustomTextField from "../FormikComponents/CustomTextField";
+import CustomBirthdayInput from "../FormikComponents/CustomBirthdayInput";
+import CustomTextarea from "../FormikComponents/CustomTextarea";
 import './UserProfile.css'
-import { Link } from 'react-router-dom';
 
-import GET_USER_BIO from './queryGetUserBio.graphql';
-import GET_USER_PREFS from './queryGetUserPrefs.graphql';
+import EDIT_USER_MUTATION from "./editUserMutation.graphql";
 
-const EditUserProfileContainer = () => {
-	// const { image } = this.props
-	const image = 'https://via.placeholder.com/180'
-	return (
-		<div className="edit-profile-container">
-			{
-				//TODO:: get initial values from backend
-			}
-			<div className="bread-crum">
-				<Link to ={`/members/${id}/`}>Back</Link>
-				<h4>Edit your profile</h4>
-			</div>
-			<Formik
-				initialValues={{ name: 'jared', email: 'example@email.com', membership: 'Aug 9 2019', image, interest: 'Frontend, ReactJS, Css, UI Frameworks, Webpack', linkedin: '/', facebook: '/', twitter: '/'}}
-				onSubmit={(values, actions) => {
-					setTimeout(() => {
-						alert(JSON.stringify(values, null, 2));
-						actions.setSubmitting(false);
-					}, 1000);
-				}}
-				render={props => (
-					<form onSubmit={props.handleSubmit} class="edit-profile-form">
-						{
-							image ?
-							(
-								<img src={image} alt=""/>
-							)
-						:
-						(
-							<input
-								type="file"
-								onChange={props.handleChange}
-								onBlur={props.handleBlur}
-								value={props.values.image}
-								name="image"
-							/>
-						)
-					}
-						<input
-							type="text"
-							onChange={props.handleChange}
-							onBlur={props.handleBlur}
-							value={props.values.name}
-							name="name"
-						/>
-						<input
-							type="email"
-							onChange={props.handleChange}
-							onBlur={props.handleBlur}
-							value={props.values.email}
-							name="email"
-							disabled
-						/>
-						<input
-							type="text"
-							onChange={props.handleChange}
-							onBlur={props.handleBlur}
-							value={props.values.membership}
-							name="membership"
-							disabled
-						/>
-						
-					<textarea 
-						name="interest" 
-						id="interest" 
-						cols="30" 
-						rows="5" 
-						onChange={props.handleChange}
-						onBlur={props.handleBlur} 
-						value={props.values.interest}
-					/>
-					<input
-						type="url"
-						onChange={props.handleChange}
-						onBlur={props.handleBlur}
-						value={props.values.facebook}
-						name="facebook"
-					/>
-					<input
-						type="url"
-						onChange={props.handleChange}
-						onBlur={props.handleBlur}
-						value={props.values.linkedin}
-						name="linkedin"
-					/>
-					<input
-						type="url"
-						onChange={props.handleChange}
-						onBlur={props.handleBlur}
-						value={props.values.twitter}
-						name="twitter"
-					/>
+const styles = theme => ({
+  button: {
+    background: "linear-gradient(to left, #f27954, #a154f2)",
+    padding: "0.5em 3em",
+    margin: "1em",
+    borderRadius: "20px",
+    border: "none",
+    outline: "none",
+    color: "#fff",
+    cursor: "pointer"
+  }
+});
 
-						{props.errors.name && <div id="feedback">{props.errors.name}</div>}
-						<button type="submit">Submit</button>
-					</form>
+const EditUserProfileContainer = (props) => {
+	const { classes } = props;
+		return (
+			<Mutation mutation={EDIT_USER_MUTATION}>
+				{(updateUser) => (
+					<div>
+						<h1>Create your Event</h1>
+						<CurrentUser>
+							{({ user }) => (
+								<Formik
+									initialValues={{
+										firstName: user.firstName,
+										lastName: user.lastName,
+										birthday: user.birthday,
+										bio: user.bio
+									}}
+									onSubmit={async (values, { resetForm }) => {
+										await updateUser({
+											variables: {
+												id: user.id,
+												input: {
+													...values
+												}
+											}
+										});
+										resetForm();
+									}}
+								>
+									{() => (
+										<Form className="edit-user-form">
+											<Field
+												name="firstName"
+												component={CustomTextField}
+												label="firstName"
+											/>
+											<Field
+												name="lastName"
+												component={CustomTextField}
+												label="lastName"
+											/>
+											<Field
+												name="birthday"
+												label="birthday"
+												component={CustomBirthdayInput}
+												autoOk
+											/>
+											<Field
+												name="bio"
+												component={CustomTextarea}
+												label="bio"
+												placeholder="Write something about yourself"
+												className="edit-user-profile__bio"
+											/>
+											<Button type="submit" variant="contained" className={classes.button}>
+                      Submit
+                    </Button>
+										</Form>
+									)}
+								</Formik>
+							)}
+						</CurrentUser>
+					</div>
 				)}
-			/>
-		</div>
-	)
-}
-
-export default EditUserProfileContainer;
+			</Mutation>
+		);
+	};
+	
+export default withRouter(withStyles(styles)(EditUserProfileContainer));
