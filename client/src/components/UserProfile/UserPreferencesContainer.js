@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 const UserPreferencesContainer = (props) => {
 	const classes = useStyles();
-	const { categories, id } = props.userPrefs
+	const { categories, id } = props.userPrefs;
 
 	return (
 		<div className="user-preferences">
