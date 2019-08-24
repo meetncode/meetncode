@@ -10,6 +10,7 @@ import Group from '../../pages/Group';
 import UserProfile from '../../pages/UserProfile';
 import EditUserProfile from '../../pages/EditUserProfile';
 import CreateEventPage from '../../pages/CreateEventPage';
+import CreateGroupPage from '../../pages/CreateGroupPage';
 
 
 class App extends React.Component {
@@ -22,12 +23,11 @@ class App extends React.Component {
           <Route path="/event/:id" component={Event} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/group/:id" component={Group} />
+          <Route exact path="/group/:id" component={Group} />
           <Route path="/members/:id" component={UserProfile} />
           <Route path="/edit/members/:id" component={EditUserProfile} />
-          {/* <Route path="/login" component={Login} />
-          <Route path="/signup" component={SignUp} /> */}
-          <Route path="/:groupid/create-event" component={CreateEventPage} />
+          <Route path="/group/:groupid/create-event" component={CreateEventPage} />
+          <Route path="/create-group" component={CreateGroupPage} />
         </div>
       </Router>
       )

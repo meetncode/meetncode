@@ -1,5 +1,5 @@
 import React from 'react'
-import './CreateGroup.css'
+import './CreateGroupCTA.css'
 import image from './background.jpg'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
   }
 }));
 
-const CreateGroup = () => {
+const CreateGroupCTA = () => {
 	const classes = useStyles();
 	return (
 		<div className="create-group">
@@ -29,4 +29,4 @@ const CreateGroup = () => {
 	)
 }
 
-export default CreateGroup;
+export default CreateGroupCTA;

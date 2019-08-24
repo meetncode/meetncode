@@ -1,19 +1,22 @@
-.create-group {
-	background: #171c22;
-	min-height: 15vh;
-	color: #fff;
-}
-.create-group-wrapper {
-	max-width: 70%;
+.create-group-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	position: relative;
+	width: 740px;
+	min-height: 480px;
 	margin: 0 auto;
-	display: grid;
-	grid-template-columns: 2fr 1fr;
 }
-.create-group-info {
-	padding-top: 3em;
-	padding-bottom: 3em;
+.create-group-form input,
+.create-group-form textarea {
+	outline: none;
 }
-.create-group-image img {
-	max-width: 100%;
-	height: auto;
+.create-group-form__description {
+	display: flex;
+	flex-direction: column;
+	padding: 1em 0 !important;
+	width: 100% !important;
+}
+.create-group-form__map {
+	margin: 2em 0 !important;
 }
