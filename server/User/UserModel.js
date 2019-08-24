@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   },
   hometown: String,
   language: String,
-  birthday: Date,
+  birthday: String,
   gender: String,
   bio: String,
   events: [{

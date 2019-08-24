@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import CurrentUser from "../CurrentUser";
 import CustomTextField from "../FormikComponents/CustomTextField";
-import CustomBirthdayInput from "../FormikComponents/CustomBirthdayInput";
+import CustomDateInput from "../FormikComponents/CustomDateInput";
 import CustomTextarea from "../FormikComponents/CustomTextarea";
 import './UserProfile.css'
 
@@ -39,13 +39,16 @@ const EditUserProfileContainer = (props) => {
 										firstName: user.firstName,
 										lastName: user.lastName,
 										birthday: user.birthday,
-										bio: user.bio
+										bio: user.bio,
+										birthday: user.birthday
 									}}
 									onSubmit={async (values, { resetForm }) => {
+										const birthday = values.birthday.$d
 										await updateUser({
 											variables: {
 												id: user.id,
 												input: {
+													birthday: `${birthday}`,
 													...values
 												}
 											}
@@ -68,7 +71,7 @@ const EditUserProfileContainer = (props) => {
 											<Field
 												name="birthday"
 												label="birthday"
-												component={CustomBirthdayInput}
+												component={CustomDateInput}
 												autoOk
 											/>
 											<Field
