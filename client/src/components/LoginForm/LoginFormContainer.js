@@ -83,7 +83,6 @@ class LoginFormContainer extends React.Component {
                     </Button>
                   </Form>
                 )}
-               
               </Formik>
            }
            </Mutation>

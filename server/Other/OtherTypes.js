@@ -29,7 +29,7 @@ const LocationSchema = gql`
   type File {
     filename: String!
     mimetype: String!
-    encoding: String!
+    url: String!
   }
 
   extend type Mutation {
