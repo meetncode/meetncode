@@ -46,7 +46,7 @@ const requestLink = new ApolloLink(
     })
 );
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors)
