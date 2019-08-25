@@ -29,8 +29,16 @@ const GroupSchema = gql`
     location: LocationInput
   }
 
+  input GroupsInput {
+    name: String
+    category: ID
+    country: String
+    city: String
+  }
+
   extend type Query {
     getGroup(id: ID!): Group
+    getGroups(input: GroupsInput): [Group]
     getGroupsByCategory(categoryId: ID!): [Group]
     getGroupsByLocation(country: String, city: String): [Group]
   }
