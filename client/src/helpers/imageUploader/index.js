@@ -2,7 +2,7 @@ import { client } from '../../index';
 
 import MUTATION_UPLOAD_FILE from './mutationUploadFile.graphql';
 
-const uploadImage = async (image) => {
+const imageUploader = async (image) => {
   const res = await client.mutate({
     mutation: MUTATION_UPLOAD_FILE,
     variables: {
@@ -13,4 +13,4 @@ const uploadImage = async (image) => {
   return res.data.singleUpload;
 }
 
-export default uploadImage;
+export default imageUploader;
