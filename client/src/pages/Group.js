@@ -3,12 +3,13 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import GroupHeader from '../components/GroupHeader/GroupHeaderContainer'
 import GroupAbout from '../components/GroupAbout/GroupAboutContainer'
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 const GET_GROUP = gql`
 {
   getGroup(id: "5d052ee1c5ac64718e2c2803"){
+		id,
     name,
 		description,
     events{
@@ -24,12 +25,12 @@ export default class Group extends React.Component {
 				{({ data, loading, error }) => {
 					if (loading) return <p>Loading</p>;
 					if (error) return <p>ERROR</p>;
-					const { description, name, events } = data.getGroup
+					const { id, events } = data.getGroup
 					return (
 						<React.Fragment>
 							<Header />
 							<GroupHeader />
-							<GroupAbout events={events}/>
+							<GroupAbout id={id} events={events}/>
 							<Footer />
 						</React.Fragment>
 					)

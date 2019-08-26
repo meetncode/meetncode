@@ -1,0 +1,29 @@
+query GetUserBio($id: ID!){
+	getUser(id: $id){
+		firstName,
+    lastName,
+    email,
+    location{
+      country,
+      city,
+      locationCoordinates{
+        coordinates
+      },
+      address
+    },
+    hometown,
+    language,
+    birthday,
+    gender,
+    bio,
+    events{
+      id
+    },
+    groups{
+      id
+    },
+    enabled,
+    createdAt
+	}
+}
+

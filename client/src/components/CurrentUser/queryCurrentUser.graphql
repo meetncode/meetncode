@@ -1,0 +1,29 @@
+query CurrentUser {
+  currentUser {
+    id
+    firstName
+    lastName
+    email
+    location {
+      city
+      country
+    }
+    hometown
+    language
+    birthday
+    gender
+    bio
+    categories {
+      id
+      name
+    }
+    events {
+      id
+      name
+    }
+    groups {
+      id
+      name
+    }
+  }
+}

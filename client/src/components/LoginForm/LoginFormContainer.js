@@ -1,28 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
+import { withRouter } from "react-router-dom";
 import * as yup from "yup";
-import {  Form, Formik } from 'formik';
-import { FormikTextField } from 'formik-material-fields';
-import { withStyles } from '@material-ui/core/styles';
-import { Mutation } from 'react-apollo'
-import LOGIN_USER_MUTATION from './loginUserMutation.graphql'
+import { Form, Formik } from "formik";
+import { FormikTextField } from "formik-material-fields";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+import { Mutation } from "react-apollo";
+import LOGIN_USER_MUTATION from "./loginUserMutation.graphql";
 
-const styles= theme => ({
+const styles = theme => ({
   container: {
     width: 300,
     minHeight: 300,
-    margin: '0 auto',
-    textAlign: 'center',
+    margin: "0 auto",
+    textAlign: "center"
   },
   button: {
-    background: 'linear-gradient(to left, #f27954, #a154f2)',
-    padding: '0.5em 3em',
-    margin: '1em',
-    borderRadius: '20px',
-    border: 'none',
-    outline: 'none',
-    color: '#fff',
-    cursor: 'pointer',
-  },
+    background: "linear-gradient(to left, #f27954, #a154f2)",
+    padding: "0.5em 3em",
+    margin: "1em",
+    borderRadius: "20px",
+    border: "none",
+    outline: "none",
+    color: "#fff",
+    cursor: "pointer"
+  }
 });
 
 const LoginValidation = yup.object().shape({
@@ -32,16 +34,13 @@ const LoginValidation = yup.object().shape({
     .required(),
   password: yup
     .string()
-    .min(5)
     .max(16)
-    .required(),
-
+    .required()
 });
 class LoginFormContainer extends React.Component {
     render() {
-        const { classes } = this.props;
-       // async ()
-        return (
+        const { classes, history } = this.props;
+       return (
            <Mutation mutation={LOGIN_USER_MUTATION}>
            { loginUser => 
               <Formik
@@ -54,12 +53,12 @@ class LoginFormContainer extends React.Component {
                 const response = await loginUser({
                   variables: {email:values.email,password:values.password}
                 })
-                console.log(response)
-                  // This is where you could send the submitted values to the backend
-                localStorage.setItem("token", response.data.loginUser.token); 
+
+                if(response){
+                  history.push(`/members/${response.data.loginUser.userId}`)
+                  localStorage.setItem("token", response.data.loginUser.token); 
+                }
           
-                  // Simulates the delay of a real request
-                  setTimeout(() => setSubmitting(false), 3 * 1000)
               }}
             
               validationSchema = {LoginValidation}
@@ -79,14 +78,15 @@ class LoginFormContainer extends React.Component {
                       placeholder="Password"
                       fullWidth
                     />
-                    <button type="submit" className={classes.button} > LogIn </button>
+                    <Button type="submit" variant="contained" className={classes.button}>
+                      Submit
+                    </Button>
                   </Form>
                 )}
-               
               </Formik>
            }
-         </Mutation>
+           </Mutation>
         )
     }
 }
-export default withStyles(styles)(LoginFormContainer);
+export default withRouter(withStyles(styles)(LoginFormContainer));

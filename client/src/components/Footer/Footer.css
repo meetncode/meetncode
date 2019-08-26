@@ -2,7 +2,7 @@
 .footer-menu-wrap {
 	font-style: normal;
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 0.85em;
 	line-height: 22px;
 	color: #cbcfd4;
 	text-decoration: none;
@@ -43,7 +43,6 @@
 	display: inline-block;
 	width: 25%;
 	vertical-align: top;
-	
 }
 .list-content:last-child {
 	padding-left: 35px;

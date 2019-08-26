@@ -2,10 +2,9 @@ const { gql } = require('apollo-server');
 
 const LocationSchema = gql`
   type Location {
-    id: ID!
     country: String!
     city: String!
-    location: Coordinates!
+    locationCoordinates: Coordinates!
     address: String
     enabled: Boolean
   }
@@ -13,7 +12,7 @@ const LocationSchema = gql`
   input LocationInput {
     country: String!
     city: String!
-    location: CoordinatesInput!
+    locationCoordinates: CoordinatesInput
     address: String
   }
 
@@ -27,15 +26,16 @@ const LocationSchema = gql`
     coordinates: [Float!]
   }
 
-  extend type Query {
-    getLocation(id: ID): Location
-    getLocationByCity(city: String): [Location]
+  type File {
+    filename: String!
+    mimetype: String!
+    url: String!
   }
 
   extend type Mutation {
-    createLocation(input: LocationInput): Location
-    updateLocation(id: ID, input: LocationInput): Location
+    singleUpload(file: Upload!): File!
   }
+
 `
 
 module.exports = LocationSchema;

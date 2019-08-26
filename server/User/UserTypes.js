@@ -53,6 +53,7 @@ const UserSchema = gql`
   type Query {
     getUser(id: ID!): User
     getUsersByGroup(groupId: ID!): [User]
+    currentUser: User
   }
 
   type Mutation {

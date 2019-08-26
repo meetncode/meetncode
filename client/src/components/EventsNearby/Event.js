@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '@material-ui/core/Button';
 
 const Event = () => {
 	return (
@@ -9,7 +10,7 @@ const Event = () => {
 			<p className="event-location">Needs a location</p>
 			<div className="event-attend">
 				<p className="event-attendees">10 attendees</p>
-				<button>Attend</button>
+				<Button variant="contained">Attend</Button>
 			</div>
 		</div>
 	)
