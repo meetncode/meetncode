@@ -7,7 +7,7 @@ import Event from '../../pages/Event'
 import Login from '../../pages/Login'
 import SignUp from '../../pages/SignUp'
 import Group from '../../pages/Group'
-
+import EventExplorer from '../../pages/EventExplorer'
 
 class App extends React.Component {
   render(){
@@ -16,6 +16,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Route exact path="/" component={Home} />
+          <Route exact path="/event" component={EventExplorer} />
           <Route path="/event/:id" component={Event} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />

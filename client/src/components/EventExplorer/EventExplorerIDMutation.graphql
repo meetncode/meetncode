@@ -1,0 +1,14 @@
+query($id:ID! = "5cffb8bd9bff172cd1968e2f") {
+    getEvents(
+        input: {
+            hostId: $id
+        }
+    ){
+        name,
+        date,
+        description,
+        location{
+            address
+        }
+    }
+}
