@@ -38,7 +38,8 @@ const UserSchema = new Schema({
   enabled: {
     type: Boolean,
     default: true
-  }
+  },
+  picture: String
 }, { timestamps: true })
 
 const User =  mongoose.model('user', UserSchema);

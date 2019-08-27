@@ -14,7 +14,8 @@ query GetUserBio($id: ID!){
       id
     },
     enabled,
-    createdAt
+    createdAt,
+    picture
 	}
 }
 

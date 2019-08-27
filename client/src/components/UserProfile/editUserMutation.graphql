@@ -4,6 +4,7 @@ mutation updateUser($id: ID!, $input: UserInput!){
     lastName,
     language,
     birthday,
-    bio
+    bio,
+    picture
   }
 }

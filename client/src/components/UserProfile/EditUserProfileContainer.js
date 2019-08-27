@@ -8,6 +8,7 @@ import CurrentUser from "../CurrentUser";
 import CustomTextField from "../FormikComponents/CustomTextField";
 import CustomDateInput from "../FormikComponents/CustomDateInput";
 import CustomTextarea from "../FormikComponents/CustomTextarea";
+import CustomFileInput from "../FormikComponents/CustomFileInput";
 import './UserProfile.css'
 
 import EDIT_USER_MUTATION from "./editUserMutation.graphql";
@@ -40,7 +41,8 @@ const EditUserProfileContainer = (props) => {
 										lastName: user.lastName,
 										birthday: user.birthday,
 										bio: user.bio,
-										birthday: user.birthday
+										birthday: user.birthday,
+										picture: user.picture
 									}}
 									onSubmit={async (values, { resetForm }) => {
 										const birthday = values.birthday.$d
@@ -80,6 +82,11 @@ const EditUserProfileContainer = (props) => {
 												label="bio"
 												placeholder="Write something about yourself"
 												className="edit-user-profile__bio"
+											/>
+											<Field 
+												name="picture"
+												component={CustomFileInput}
+												label="picture"
 											/>
 											<Button type="submit" variant="contained" className={classes.button}>
                       Submit
