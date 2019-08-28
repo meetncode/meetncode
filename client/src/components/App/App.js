@@ -14,6 +14,11 @@ import EventExplorer from '../../pages/EventExplorer'
 
 
 class App extends React.Component {
+  requireAuth(nextState,replace){
+    console.log(this.authenticated());
+    if(!this.authenticated());
+    replace('/login');
+  }
   render(){
     const { title } = this.props
     return (
@@ -25,8 +30,8 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/group/:id" component={Group} />
-          <Route path="/members/:id" component={UserProfile} />
-          <Route path="/edit/members/:id" component={EditUserProfile} />
+          <Route path="/members/:id" component={UserProfile} onEnter={this.requireAuth}/>
+          <Route path="/edit/members/:id" component={EditUserProfile} onEnter={this.requireAuth}/>
           {/* <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} /> */}
           <Route path="/:groupid/create-event" component={CreateEventPage} />

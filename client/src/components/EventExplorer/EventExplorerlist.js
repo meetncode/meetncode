@@ -11,7 +11,6 @@ import Grid from '@material-ui/core/Grid';
 
   }));
   export default function EventExplorerlist(props) {
-    console.log(props);
     const classes = useStyles();
     return (
         <Paper className={classes.paper}>

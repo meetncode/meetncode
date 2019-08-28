@@ -15,7 +15,7 @@ const EditUserProfileContainer = () => {
 				//TODO:: get initial values from backend
 			}
 			<div className="bread-crum">
-				<Link to ={`/members/${id}/`}>Back</Link>
+				{/* <Link to ={`/members/${id}/`}>Back</Link> */}
 				<h4>Edit your profile</h4>
 			</div>
 			<Formik
