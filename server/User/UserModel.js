@@ -18,13 +18,9 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  location: {	
-    type: mongoose.Schema.Types.ObjectId,	
-    ref: 'location'	
-  },
   hometown: String,
   language: String,
-  birthday: Date,
+  birthday: String,
   gender: String,
   bio: String,
   events: [{
@@ -42,7 +38,8 @@ const UserSchema = new Schema({
   enabled: {
     type: Boolean,
     default: true
-  }
+  },
+  picture: String
 }, { timestamps: true })
 
 const User =  mongoose.model('user', UserSchema);

@@ -3,7 +3,7 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import GroupHeader from '../components/GroupHeader/GroupHeaderContainer'
 import GroupAbout from '../components/GroupAbout/GroupAboutContainer'
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 const GET_GROUP = gql`

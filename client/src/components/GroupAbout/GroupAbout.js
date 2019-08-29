@@ -2,7 +2,7 @@ import React from 'react'
 import UpcomingEvents from '../GroupEvents/UpcomingEvents'
 import PastEvents from '../GroupEvents/PastEvents'
 import GroupSocial from './GroupSocial'
-import { gql } from 'apollo-boost'
+import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
 import GET_UPCOMING_EVENTS from './queryGetUpcomingEvents.graphql';

@@ -13,7 +13,8 @@ import CustomSelect from "../FormikComponents/CustomSelect";
 import CustomLocationPicker from "../FormikComponents/CustomLocationPicker";
 
 
-const CreateGroup = ({ match }) => {
+const CreateGroup = (props) => {
+  const { history } = props;
   return (
     <Mutation mutation={MUTATION_CREATE_GROUP}>
       {(createGroup, { loading }) => (
@@ -35,13 +36,10 @@ const CreateGroup = ({ match }) => {
                       type: "Point",
                       coordinates: []
                     }
-									},
-									category: {
-										name: ""
 									}
                 }}
-                onSubmit={async (values, { resetForm }) => {
-                  await createGroup({
+                onSubmit={async (values) => {
+                  const response = await createGroup({
                     variables: {
                       input: {
                         ...values,
@@ -49,7 +47,9 @@ const CreateGroup = ({ match }) => {
                       }
                     }
                   });
-                  resetForm();
+                  if(response){
+                    await history.push(`/group/${response.data.createGroup.id}`)
+                  }
                 }}
               >
                 {() => (
@@ -65,11 +65,11 @@ const CreateGroup = ({ match }) => {
                       label="Description"
                       className="create-group-form__description"
                     />
-										<Field
+										{/* <Field
                       name="category.name"
                       component={CustomTextField}
                       label="Category"
-                    />
+                    /> */}
                     <Field
                       name="location.country"
                       label="Country"

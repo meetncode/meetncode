@@ -14,6 +14,29 @@ const GroupResolvers = {
       .populate('admin')
       .populate('members');
     },
+    getGroups: async(_, { input }) => {
+      let filter = {};
+
+      if(input) {
+        const {
+          name,
+          category,
+          country,
+          city
+        } = input;
+
+        if(name) filter.name = { $regex: name };
+        if(category) filter.category = category;
+        if(country) filter['location.country'] = country;
+        if(city) filter['location.city'] = city;
+      }
+
+      return await Group.find(filter)
+        .populate('category')
+        .populate('events')
+        .populate('admin')
+        .populate('members');
+    },
     getGroupsByCategory: async(_, { categoryId }) => {
       return await Group.find({ category: categoryId })
         .populate('category')

@@ -3,15 +3,6 @@ query GetUserBio($id: ID!){
 		firstName,
     lastName,
     email,
-    location{
-      country,
-      city,
-      locationCoordinates{
-        coordinates
-      },
-      address
-    },
-    hometown,
     language,
     birthday,
     gender,
@@ -23,7 +14,8 @@ query GetUserBio($id: ID!){
       id
     },
     enabled,
-    createdAt
+    createdAt,
+    picture
 	}
 }
 
