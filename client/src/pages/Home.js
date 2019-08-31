@@ -12,15 +12,15 @@ import HowItWorks from '../components/HowItWorks/HowItWorks'
 export default function Home() {
 	return (
 		<div>
-      <Header></Header>
-      <Banner></Banner>
-      <Tags></Tags>
-      <EventsNearby></EventsNearby>
-      <GroupsNearby></GroupsNearby>
-      <CreateGroupCTA></CreateGroupCTA>
-      <Categories></Categories>
-      <HowItWorks></HowItWorks>
-      <Footer></Footer>
+      <Header/>
+      <Banner />
+      <Tags/>
+      <EventsNearby/>
+      <GroupsNearby/>
+      <CreateGroupCTA/>
+      <Categories/>
+      <HowItWorks/>
+      <Footer/>
     </div>
 	)
 }

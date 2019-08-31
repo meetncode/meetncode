@@ -48,7 +48,7 @@ const CreateGroup = (props) => {
                     }
                   });
                   if(response){
-                    await history.push(`/group/${response.data.createGroup.id}`)
+                    history.push(`/group/${response.data.createGroup.id}`)
                   }
                 }}
               >
