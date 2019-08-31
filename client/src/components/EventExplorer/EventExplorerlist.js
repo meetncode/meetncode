@@ -4,26 +4,24 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
   const useStyles = makeStyles(theme => ({
-    root: {
-      flexGrow: 1,
-      overflow: 'hidden',
+    
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
     },
-
   }));
   export default function EventExplorerlist(props) {
     const classes = useStyles();
+    const image = 'https://via.placeholder.com/180'
     return (
+      <Grid item xs={4}>
         <Paper className={classes.paper}>
-            <Grid container wrap="nowrap" spacing={2}>
-              <Grid item>
-                  <div className="event-time">1 pm</div>
-              </Grid>
-              <Grid item xs={8}>
-                  <div className="group-name">{props.event.name} </div>
-                  <div className="titlename">{props.event.description}</div>
-                  <div className="count-host">5 Friends going</div>
-              </Grid>
-            </Grid>
+          <img src={image} alt=""/>
+          <div className="group-name">{props.event.name} </div>
+          <div className="titlename">{props.event.description}</div>
+          <div className="count-host">5 Friends going</div>
         </Paper>
+      </Grid>
     )
   }
