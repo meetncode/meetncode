@@ -16,14 +16,18 @@ const useStyles = makeStyles(theme => ({
 
 const UserPreferencesContainer = (props) => {
 	const classes = useStyles();
-	const { categories, id } = props.userPrefs;
+	const { categories, id, picture } = props.userPrefs;
 
 	return (
 		<div className="user-preferences">
-			<Link to ={`/edit/members/${id}/`}>Edit Profile</Link>
+			<Link to ={`/edit/members/${id}/`} className="edit-profile"><Button variant="outlined" color="primary" className={classes.button}>Edit Profile</Button></Link>
 			<div className="profile">
-				<img src="https://via.placeholder.com/180" alt=""/>
-				<Button variant="outlined" color="primary" className={classes.button}>Remove Photo</Button>
+				{
+					picture ?
+					<img src={picture} alt="" className="profile-picture"/>
+					:
+					<img src="https://via.placeholder.com/180" alt=""/>
+				}
 			</div>
 			<UserPreferences categories={categories}/>
 		</div>

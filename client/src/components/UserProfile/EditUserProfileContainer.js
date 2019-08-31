@@ -29,15 +29,17 @@ class EditUserProfileContainer extends React.Component{
 	constructor(props) {
 		super(props);
 		this.fileInput = React.createRef();
+
 	}
 
 	render(){
 	const { classes } = this.props;
+
 		return (
 			<Mutation mutation={EDIT_USER_MUTATION}>
 				{(updateUser) => (
 					<div>
-						<h1>Create your Event</h1>
+						<h1 className="page-title">Edit your account</h1>
 						<CurrentUser>
 							{({ user }) => (
 								<Formik
@@ -51,8 +53,6 @@ class EditUserProfileContainer extends React.Component{
 									}}
 									onSubmit={async (values, { resetForm }) => {
 										const birthday = values.birthday.$d
-
-										console.log('values', values)
 										await updateUser({
 											variables: {
 												id: user.id,
@@ -90,15 +90,31 @@ class EditUserProfileContainer extends React.Component{
 												placeholder="Write something about yourself"
 												className="edit-user-profile__bio"
 											/>
-											<input 
+											{
+												values.picture ?
+												<div className="profile edit-profile-picture">
+													<img src={values.picture} alt="" className="profile-picture"/>
+													<input 
+														type="file" 
+														ref={this.fileInput} 
+														onChange={async () => {
+															const result = await imageUploader(this.fileInput.current.files[0])
+															setFieldValue('picture', result.url)
+															}
+															} />
+												</div>
+												:
+												(
+												<input 
 												type="file" 
 												ref={this.fileInput} 
 												onChange={async () => {
 													const result = await imageUploader(this.fileInput.current.files[0])
-													{/*Add loading feature*/}
 													setFieldValue('picture', result.url)
 													}
-												} />
+													} />
+												)
+											}
 											<Button type="submit" variant="contained" className={classes.button}>
                       Submit
                     </Button>
