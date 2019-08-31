@@ -1,16 +1,17 @@
 import React from "react";
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
-import CreateEvent from '../components/CreateEvent';
 
-const CreateEventPage = () => {
+import CreateGroup from '../components/CreateGroup';
+
+const CreateGroupPage = () => {
   return (
     <div>
       <Header/>
-      <CreateEvent />
+      <CreateGroup />
       <Footer/>
     </div>
   );
 };
 
-export default CreateEventPage;
+export default CreateGroupPage;

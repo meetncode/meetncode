@@ -74,3 +74,27 @@
 .edit-profile-form button {
 	outline: none;
 }
+/*Edit User Profile*/
+.edit-user-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	position: relative;
+	width: 740px;
+	min-height: 480px;
+	margin: 0 auto;
+}
+.edit-user-form input,
+.edit-user-form textarea {
+	outline: none;
+}
+.edit-user-profile__bio {
+	display: block;
+	padding: 10px;
+	resize: none;
+	max-height: 85px !important;
+	overflow: scroll !important;
+	height: 85px !important;
+	width: 100%;
+	margin: 0;
+}
