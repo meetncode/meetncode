@@ -8,9 +8,8 @@ import CurrentUser from "../CurrentUser";
 import CustomTextField from "../FormikComponents/CustomTextField";
 import CustomDateInput from "../FormikComponents/CustomDateInput";
 import CustomTextarea from "../FormikComponents/CustomTextarea";
-import CustomFileInput from "../FormikComponents/CustomFileInput";
-import './UserProfile.css'
-
+import "./UserProfile.css"
+import imageUploader from "../../helpers/imageUploader";
 import EDIT_USER_MUTATION from "./editUserMutation.graphql";
 
 const styles = theme => ({
@@ -26,13 +25,21 @@ const styles = theme => ({
   }
 });
 
-const EditUserProfileContainer = (props) => {
-	const { classes } = props;
+class EditUserProfileContainer extends React.Component{
+	constructor(props) {
+		super(props);
+		this.fileInput = React.createRef();
+
+	}
+
+	render(){
+	const { classes } = this.props;
+
 		return (
 			<Mutation mutation={EDIT_USER_MUTATION}>
 				{(updateUser) => (
 					<div>
-						<h1>Create your Event</h1>
+						<h1 className="page-title">Edit your account</h1>
 						<CurrentUser>
 							{({ user }) => (
 								<Formik
@@ -58,7 +65,7 @@ const EditUserProfileContainer = (props) => {
 										resetForm();
 									}}
 								>
-									{() => (
+									{({ values, setFieldValue }) => (
 										<Form className="edit-user-form">
 											<Field
 												name="firstName"
@@ -83,11 +90,31 @@ const EditUserProfileContainer = (props) => {
 												placeholder="Write something about yourself"
 												className="edit-user-profile__bio"
 											/>
-											<Field 
-												name="picture"
-												component={CustomFileInput}
-												label="picture"
-											/>
+											{
+												values.picture ?
+												<div className="profile edit-profile-picture">
+													<img src={values.picture} alt="" className="profile-picture"/>
+													<input 
+														type="file" 
+														ref={this.fileInput} 
+														onChange={async () => {
+															const result = await imageUploader(this.fileInput.current.files[0])
+															setFieldValue('picture', result.url)
+															}
+															} />
+												</div>
+												:
+												(
+												<input 
+												type="file" 
+												ref={this.fileInput} 
+												onChange={async () => {
+													const result = await imageUploader(this.fileInput.current.files[0])
+													setFieldValue('picture', result.url)
+													}
+													} />
+												)
+											}
 											<Button type="submit" variant="contained" className={classes.button}>
                       Submit
                     </Button>
@@ -100,6 +127,7 @@ const EditUserProfileContainer = (props) => {
 				)}
 			</Mutation>
 		);
+		};
 	};
 	
 export default withRouter(withStyles(styles)(EditUserProfileContainer));

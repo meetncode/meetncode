@@ -8,6 +8,7 @@ query CurrentUser {
       city
       country
     }
+    picture
     hometown
     language
     birthday

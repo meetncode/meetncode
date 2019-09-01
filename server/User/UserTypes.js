@@ -19,7 +19,7 @@ const UserSchema = gql`
     enabled: Boolean
     createdAt: String
     updatedAt: String,
-    picture: Upload
+    picture: String
   }
 
   input CreateUserInput {
@@ -43,7 +43,7 @@ const UserSchema = gql`
     categories: [ID!]
     groups: [ID!]
     enabled: Boolean,
-    picture: Upload
+    picture: String
   }
 
   type AuthData {
