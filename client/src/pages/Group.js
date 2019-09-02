@@ -7,8 +7,8 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 const GET_GROUP = gql`
-{
-  getGroup(id: "5d052ee1c5ac64718e2c2803"){
+query GetGroup($id: ID!){
+  getGroup(id: $id){
 		id,
     name,
 		description,
@@ -20,8 +20,9 @@ const GET_GROUP = gql`
 
 export default class Group extends React.Component {
 	render() {
+		const { id } = this.props.match.params
 		return (
-			<Query query={GET_GROUP}>
+			<Query query={GET_GROUP} variables={{ id }}>
 				{({ data, loading, error }) => {
 					if (loading) return <p>Loading</p>;
 					if (error) return <p>ERROR</p>;

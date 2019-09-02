@@ -18,7 +18,8 @@ const UserSchema = gql`
     groups: [Group]
     enabled: Boolean
     createdAt: String
-    updatedAt: String
+    updatedAt: String,
+    picture: String
   }
 
   input CreateUserInput {
@@ -41,7 +42,8 @@ const UserSchema = gql`
     bio: String
     categories: [ID!]
     groups: [ID!]
-    enabled: Boolean
+    enabled: Boolean,
+    picture: String
   }
 
   type AuthData {

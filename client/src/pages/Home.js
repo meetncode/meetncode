@@ -6,21 +6,21 @@ import Tags from '../components/Tags/TagsContainer'
 import Categories from '../components/Categories/Categories'
 import EventsNearby from '../components/EventsNearby/EventsNearby'
 import GroupsNearby from '../components/GroupsNearby/GroupsNearby'
-import CreateGroup from '../components/CreateGroup/CreateGroup'
+import CreateGroupCTA from '../components/CreateGroupCTA/CreateGroupCTA'
 import HowItWorks from '../components/HowItWorks/HowItWorks'
 
 export default function Home() {
 	return (
 		<div>
-      <Header></Header>
-      <Banner></Banner>
-      <Tags></Tags>
-      <EventsNearby></EventsNearby>
-      <GroupsNearby></GroupsNearby>
-      <CreateGroup></CreateGroup>
-      <Categories></Categories>
-      <HowItWorks></HowItWorks>
-      <Footer></Footer>
+      <Header/>
+      <Banner />
+      <Tags/>
+      <EventsNearby/>
+      <GroupsNearby/>
+      <CreateGroupCTA/>
+      <Categories/>
+      <HowItWorks/>
+      <Footer/>
     </div>
 	)
 }

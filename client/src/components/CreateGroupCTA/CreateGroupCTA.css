@@ -1,0 +1,19 @@
+.create-group {
+	background: #171c22;
+	min-height: 15vh;
+	color: #fff;
+}
+.create-group-wrapper {
+	max-width: 70%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+}
+.create-group-info {
+	padding-top: 3em;
+	padding-bottom: 3em;
+}
+.create-group-image img {
+	max-width: 100%;
+	height: auto;
+}

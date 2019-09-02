@@ -19,12 +19,29 @@ const UserSchema = new Schema({
     required: true
   },
   location: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'location'
+    country: {
+      type: String,
+      require: true
+    },
+    city: {
+      type: String,
+      require: true
+    },
+    locationCoordinates: {
+      type: {
+        type: String,
+        enum: ['Point'],
+        required: true
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      },
+    },
   },
   hometown: String,
   language: String,
-  birthday: Date,
+  birthday: String,
   gender: String,
   bio: String,
   events: [{
@@ -42,7 +59,8 @@ const UserSchema = new Schema({
   enabled: {
     type: Boolean,
     default: true
-  }
+  },
+  picture: String
 }, { timestamps: true })
 
 const User =  mongoose.model('user', UserSchema);
