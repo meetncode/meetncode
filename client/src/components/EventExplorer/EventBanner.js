@@ -12,8 +12,7 @@ const useStyles = makeStyles(theme => ({
         color: 'white',
     },
   }));
-
-export default function EventBanner() {
+ const EventBanner=()=>{
     const classes = useStyles();
     return (
         <Typography component="section" variant="caption" align="center" classes={{root: classes.root}}>
@@ -26,3 +25,5 @@ export default function EventBanner() {
         </Typography>  
     )
 }
+
+export default EventBanner

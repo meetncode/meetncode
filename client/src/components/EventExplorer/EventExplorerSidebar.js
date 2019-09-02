@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function EventExplorerSidebar() {
+const EventExplorerSidebar=()=>{
     const classes = useStyles();
     return (
         <Container maxWidth="sm">
@@ -40,3 +40,4 @@ export default function EventExplorerSidebar() {
         </Container>
     )
 }
+export default EventExplorerSidebar

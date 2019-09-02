@@ -10,12 +10,8 @@ import Group from '../../pages/Group';
 import UserProfile from '../../pages/UserProfile';
 import EditUserProfile from '../../pages/EditUserProfile';
 import CreateEventPage from '../../pages/CreateEventPage';
-<<<<<<< HEAD
-import EventExplorer from '../../pages/EventExplorer'
-=======
 import CreateGroupPage from '../../pages/CreateGroupPage';
->>>>>>> 894820ec9248824b3bb17d5898553bc42057b255
-
+import EventExplorer from '../../pages/EventExplorer'
 
 class App extends React.Component {
   requireAuth(nextState,replace){

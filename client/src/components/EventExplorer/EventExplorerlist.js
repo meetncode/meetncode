@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
       color: theme.palette.text.secondary,
     },
   }));
-  export default function EventExplorerlist(props) {
+const EventExplorerlist = (props)=>{
     const classes = useStyles();
     const image = 'https://via.placeholder.com/180'
     return (
@@ -25,3 +25,4 @@ import Grid from '@material-ui/core/Grid';
       </Grid>
     )
   }
+  export default EventExplorerlist

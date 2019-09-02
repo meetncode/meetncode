@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function EventExplorerOwn() {
+ const EventExplorerOwn=()=>{
     return (
         <div>
             
         </div>
     )
 }
+export default EventExplorerOwn
