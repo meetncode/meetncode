@@ -6,6 +6,7 @@ import EventExplorerRelated from './EventExplorerRelated'
 import GetGroupByLocation from './EventExplorerIDMutation.graphql'
 import QUERY_CURRENT_USER from '../CurrentUser/queryCurrentUser.graphql';
 import { Query } from 'react-apollo'
+import CurrentUser from "../CurrentUser";
 
 class EventExplorerContainer extends Component {
     // state = {
@@ -25,19 +26,24 @@ class EventExplorerContainer extends Component {
         // })   
         return (
             <React.Fragment>
-                <EventBanner/>
-                {/* <EventExplorerSearch searchChange={this.onSearchChange}/> */}
-                <EventExplorerSearch/>
-                <EventExploreOwn/>
                 <Query query={QUERY_CURRENT_USER}>
                     {({loading, data}) => {
                         if(loading || !data) {
                         return null;
                         }
                         console.log(data);
-                        <EventExplorerRelated />
+                        return (
+                            <div>
+                                <EventBanner/>
+                                <EventExplorerSearch user={data.currentUser}/>
+                                <EventExploreOwn user={data.currentUser}/>
+                                <EventExplorerRelated user={data.currentUser} />
+                            </div>
+                        )
                     }}
+                    
                 </Query>
+                {/* <EventExplorerSearch searchChange={this.onSearchChange}/> */}
                 {/* <EventExplorerRelated location={filteredLocation}/> */}
             </React.Fragment>
         )

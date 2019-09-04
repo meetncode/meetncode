@@ -4,7 +4,7 @@ import { Query } from 'react-apollo'
 import GetUserCountry from './EventExplorerlist';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import { className } from 'postcss-selector-parser';
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,8 +13,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const EventExplorerRelated =(props)=> {
-    console.log(props);
+const EventExplorerRelated =(prop)=> {
+    console.log(prop);
     const classes = useStyles();
     const { country } = "Thailand";
     return (
@@ -42,4 +42,4 @@ const EventExplorerRelated =(props)=> {
       </div>
     )
 }
-export default EventExplorerRelated
+export default withRouter(EventExplorerRelated)
