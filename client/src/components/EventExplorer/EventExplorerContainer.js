@@ -31,7 +31,7 @@ class EventExplorerContainer extends Component {
                         if(loading || !data) {
                         return null;
                         }
-                        console.log(data);
+                        // console.log(data);
                         return (
                             <div>
                                 <EventBanner/>

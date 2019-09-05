@@ -1,7 +1,7 @@
 import React from 'react'
-import EventExplorerID from './EventExplorerIDMutation.graphql';
 import { Query } from 'react-apollo'
-import GetUserCountry from './EventExplorerlist';
+import EventExplorerlist from './EventExplorerlist';
+import GetUserCountry from './EventExplorerIDMutation.graphql';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
@@ -14,12 +14,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const EventExplorerRelated =(prop)=> {
-    console.log(prop);
+    // console.log(prop);
     const classes = useStyles();
     const { country } = "Thailand";
     return (
       <div className={classes.root}>
         <Grid container spacing={3} wrap="nowrap">
+          console.log({country});
           <Query query={GetUserCountry} variables={{country}} >
             {({ loading, error, data }) => {
               if (loading) {

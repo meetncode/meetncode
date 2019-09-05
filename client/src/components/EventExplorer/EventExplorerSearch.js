@@ -62,9 +62,9 @@ const useStyles = makeStyles(theme => ({
 
 const dudUrl = 'http://www.google.com';
 const EventExplorerSearch = (props,match) => {
-    console.log(props);
+    // console.log(props);
 
-    console.log(match.params);
+    // console.log(match.params);
     const classes = useStyles();
     return (
         <React.Fragment>
