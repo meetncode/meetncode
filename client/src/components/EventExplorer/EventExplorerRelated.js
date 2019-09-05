@@ -20,7 +20,6 @@ const EventExplorerRelated =(prop)=> {
     return (
       <div className={classes.root}>
         <Grid container spacing={3} wrap="nowrap">
-          console.log({country});
           <Query query={GetUserCountry} variables={{country}} >
             {({ loading, error, data }) => {
               if (loading) {
@@ -29,7 +28,6 @@ const EventExplorerRelated =(prop)=> {
               if (error) {
                   return <div>error</div>
               }
-              console.log(data);
               const Events = data.getGroupsByLocation;
               return (
                 Events.map((event,index) => {
