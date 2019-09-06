@@ -22,13 +22,15 @@ const GroupResolvers = {
           name,
           category,
           country,
-          city
+          city,
+          admin
         } = input;
 
         if(name) filter.name = { $regex: name };
         if(category) filter.category = category;
         if(country) filter['location.country'] = country;
         if(city) filter['location.city'] = city;
+        if(admin) filter.admin = admin; 
       }
 
       return await Group.find(filter)

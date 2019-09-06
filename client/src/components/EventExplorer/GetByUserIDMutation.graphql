@@ -1,0 +1,17 @@
+query Get_Groups_ByUser($userid:ID) {
+  getGroups(input:{
+      admin: $userid
+    }
+  ){
+    id,
+    admin{
+      id,
+      firstName
+    }
+    name,
+    members{
+      id,
+      firstName
+    }
+  }
+}

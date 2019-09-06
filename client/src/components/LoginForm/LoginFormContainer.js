@@ -64,7 +64,7 @@ class LoginFormContainer extends React.Component {
               validationSchema = {LoginValidation}
               
               >
-                {() =>(
+                {(errors) =>(
                   <Form className={classes.container}> 
                     <FormikTextField 
                       type="text" 

@@ -11,15 +11,21 @@ import UserProfile from '../../pages/UserProfile';
 import EditUserProfile from '../../pages/EditUserProfile';
 import CreateEventPage from '../../pages/CreateEventPage';
 import CreateGroupPage from '../../pages/CreateGroupPage';
-
+import EventExplorer from '../../pages/EventExplorer'
 
 class App extends React.Component {
+  requireAuth(nextState,replace){
+    console.log(this.authenticated());
+    if(!this.authenticated());
+    replace('/login');
+  }
   render(){
     const { title } = this.props
     return (
       <Router>
         <div>
           <Route exact path="/" component={Home} />
+          <Route exact path="/event" component={EventExplorer} />
           <Route path="/event/:id" component={Event} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />

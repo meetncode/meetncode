@@ -1,0 +1,33 @@
+query GetUserCountry($country:String) {
+    getGroupsByLocation(country: $country){
+    id,
+    name,
+		description,
+    private,
+    category{
+      id,
+      name
+    },
+    events{
+      name,
+      host{
+        id,
+        firstName,
+        lastName
+      }
+      group{
+        id,
+        name
+      }
+    },
+    admin{
+      id,
+      firstName,
+    }
+    members{
+      id,
+      firstName,
+      lastName
+    },
+  }
+}
