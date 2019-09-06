@@ -34,6 +34,7 @@ const GroupSchema = gql`
     category: ID
     country: String
     city: String
+    admin: ID
   }
 
   extend type Query {
