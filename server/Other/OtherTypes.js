@@ -4,7 +4,7 @@ const LocationSchema = gql`
   type Location {
     country: String!
     city: String!
-    locationCoordinates: Coordinates!
+    locationCoordinates: Coordinates
     address: String
     enabled: Boolean
   }
