@@ -15,6 +15,7 @@ const GroupSchema = gql`
     updatedAt: String!
     enabled: Boolean!
     location: Location!
+    picture: String
   }
 
   input GroupInput {
@@ -27,6 +28,7 @@ const GroupSchema = gql`
     members: [ID!]
     enabled: Boolean
     location: LocationInput
+    picture: String
   }
 
   input GroupsInput {

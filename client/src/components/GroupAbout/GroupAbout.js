@@ -62,7 +62,8 @@ class GroupAbout extends React.Component {
 						>
 								{({ data, loading, error }) => {
 									if (loading) return <p>Loading</p>;
-									if (error) return <p>ERROR</p>;
+									// if (error) return <p>ERROR</p>;
+									if (error) return <UpcomingEvents />;
 									const upcomingEvents = data.getEvents
 									return (
 										<UpcomingEvents upcoming={upcomingEvents}/>
@@ -74,7 +75,8 @@ class GroupAbout extends React.Component {
 							}}>
 								{({ data, loading, error }) => {
 									if (loading) return <p>Loading</p>;
-									if (error) return <p>ERROR</p>;
+									// if (error) return <p>ERROR</p>;
+									if (error) return <PastEvents/>
 									const pastEvents = data.getEvents
 									return (
 										<PastEvents past={pastEvents}/>

@@ -18,7 +18,6 @@ class GroupHeaderContainer extends Component {
 }
 	render() {
 		const { id } = this.props.match.params
-		console.log('-----', id)
 
 		return (
 			<Query query={GET_GROUP} variables={{ id }}>

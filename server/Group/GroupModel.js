@@ -54,7 +54,8 @@ const GroupSchema = new Schema({
   enabled: {
     type: Boolean,
     default: true
-  }
+  },
+  picture: String
 }, { timestamps: true });
 
 const Group = mongoose.model('group', GroupSchema);
