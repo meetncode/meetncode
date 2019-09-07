@@ -58,6 +58,7 @@
 	max-height: 210px;
 	border-radius: 50%;
 }
+.group-link,
 .edit-profile {
 	text-decoration: none;
 	cursor: pointer;

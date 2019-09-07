@@ -1,0 +1,16 @@
+query GetPastEvents($groupId: ID!) {
+  getEvents(input: {
+		isUpcoming: false,
+		groupId: $groupId
+  }){
+    name,
+		date,
+    host{
+			firstName
+		},
+		description,
+    location{
+      address
+    }
+  }
+}

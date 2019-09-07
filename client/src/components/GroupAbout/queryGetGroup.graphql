@@ -1,0 +1,9 @@
+query GetGroup($id: ID!){
+	getGroup(id: $id){
+		name,
+    description,
+    category{
+			id
+		}
+  }
+}
