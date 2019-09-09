@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
@@ -9,13 +9,22 @@ import LOGIN_USER_MUTATION from "./loginUserMutation.graphql";
 
 import CustomTextField from "../FormikComponents/CustomTextField";
 import Button from "../Button";
+import CustomAlert from "../CustomAlert";
 
 const styles = theme => ({
-  container: {
+  formContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  form: {
     width: 300,
     minHeight: 300,
-    margin: "0 auto",
+    margin: "1rem",
     textAlign: "center"
+  },
+  field: {
+    marginBottom: "0.5rem"
   },
   button: {
     background: "linear-gradient(to left, #f27954, #a154f2)",
@@ -39,20 +48,28 @@ const LoginValidation = yup.object().shape({
     .max(16)
     .required()
 });
-class LoginFormContainer extends React.Component {
-  render() {
-    const { classes, history } = this.props;
-    return (
-      <Mutation mutation={LOGIN_USER_MUTATION}>
-        {(loginUser, { loading }) => (
+const LoginFormContainer = ({ classes, history }) => {
+  const [error, setError] = useState({
+    status: false,
+    message: ""
+  });
+  return (
+    <Mutation mutation={LOGIN_USER_MUTATION}>
+      {(loginUser, { loading, data }) => (
+        <div className={classes.formContainer}>
           <Formik
             initialValues={{
               email: "",
               password: ""
             }}
-            onSubmit={async (values, { setSubmitting }) => {
+            onSubmit={async values => {
               const response = await loginUser({
                 variables: { email: values.email, password: values.password }
+              }).catch(e => {
+                setError({
+                  status: true,
+                  message: e.graphQLErrors[0].message
+                });
               });
 
               if (response) {
@@ -63,16 +80,18 @@ class LoginFormContainer extends React.Component {
             validationSchema={LoginValidation}
           >
             {() => (
-              <Form className={classes.container}>
+              <Form className={classes.form}>
                 <Field
                   type="text"
+                  className={classes.field}
                   component={CustomTextField}
                   name="email"
-                  placeholder="email"
+                  placeholder="Email"
                   fullWidth
                 />
                 <Field
                   type="password"
+                  className={classes.field}
                   name="password"
                   component={CustomTextField}
                   placeholder="Password"
@@ -86,12 +105,25 @@ class LoginFormContainer extends React.Component {
                 >
                   Submit
                 </Button>
+                {error.status && (
+                  <CustomAlert
+                    isOpen
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right"
+                    }}
+                    autoHideDuration={5000}
+                    type="error"
+                    message={error.message}
+                    onClose={() => setError({ status: false, message: "" })}
+                  />
+                )}
               </Form>
             )}
           </Formik>
-        )}
-      </Mutation>
-    );
-  }
-}
+        </div>
+      )}
+    </Mutation>
+  );
+};
 export default withRouter(withStyles(styles)(LoginFormContainer));
