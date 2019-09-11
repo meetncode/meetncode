@@ -2,8 +2,8 @@ const { gql } = require('apollo-server');
 
 const LocationSchema = gql`
   type Location {
-    country: String!
-    city: String!
+    country: String
+    city: String
     locationCoordinates: Coordinates
     address: String
     enabled: Boolean
