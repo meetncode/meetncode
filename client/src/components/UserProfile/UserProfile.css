@@ -116,3 +116,11 @@
 	width: 100%;
 	margin: 0;
 }
+
+.header-panel {
+	display: flex;
+	max-width: 67%;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+}
