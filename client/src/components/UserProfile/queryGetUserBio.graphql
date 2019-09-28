@@ -1,5 +1,6 @@
 query GetUserBio($id: ID!){
 	getUser(id: $id){
+    id
 		firstName,
     lastName,
     email,

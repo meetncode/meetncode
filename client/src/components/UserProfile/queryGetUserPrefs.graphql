@@ -1,7 +1,7 @@
 query GetUserCategories($id: ID!){
 	getUser(id: $id){
-    id,
-    picture,
+    id
+    picture
     categories{
       id
     }
