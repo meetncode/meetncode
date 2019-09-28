@@ -16,10 +16,7 @@ class UserProfileContainer extends React.Component {
 				<Query query={GET_USER_BIO} variables={{ id }}>
 						{({ data, loading, error }) => {
 							if (loading) return <p>Loading</p>;
-							if (error) {
-								console.log(error)
-								return <p>ERROR1</p>
-							};
+							if (error) return <p>ERROR</p>;
 							const userBio = data.getUser
 							return (
 								<UserBioContainer userBio={userBio}/>
@@ -29,7 +26,7 @@ class UserProfileContainer extends React.Component {
 				<Query query={GET_USER_PREFS} variables={{ id }}>
 						{({ data, loading, error }) => {
 							if (loading) return <p>Loading</p>;
-							if (error) return <p>ERROR2</p>;
+							if (error) return <p>ERROR</p>;
 							const userPrefs = data.getUser
 							return (
 								<UserPreferencesContainer userPrefs={userPrefs}/>
