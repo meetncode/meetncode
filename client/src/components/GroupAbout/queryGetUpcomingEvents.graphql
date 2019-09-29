@@ -3,6 +3,7 @@ query GetUpcomingEvents($groupId: ID!) {
 		isUpcoming: true,
 		groupId: $groupId
   }){
+    id,
     name,
 		date,
     host{

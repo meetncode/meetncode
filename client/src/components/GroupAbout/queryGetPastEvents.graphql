@@ -3,6 +3,7 @@ query GetPastEvents($groupId: ID!) {
 		isUpcoming: false,
 		groupId: $groupId
   }){
+    id,
     name,
 		date,
     host{

@@ -2,7 +2,6 @@ import React from 'react'
 import UpcomingEvents from '../GroupEvents/UpcomingEvents'
 import PastEvents from '../GroupEvents/PastEvents'
 import GroupSocial from './GroupSocial'
-import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
 import GET_UPCOMING_EVENTS from './queryGetUpcomingEvents.graphql';
@@ -26,11 +25,18 @@ class GroupAbout extends React.Component {
 	}
 
 	render(){
-		const { id } = this.props;
+		const { group } = this.props;
 		return (
 					<div className="group-about-wrapper">
-
-						<Query
+						<div>
+							<h4>What we're about</h4>
+							{
+								!this.state.readMore && group.description.length <= 2100  ?
+								<p className="group-details-text">{group.description} </p> : <p className="group-details-text more-group-details">{group.description.substring(0,250)}
+								<button className="more-group-details-text" onClick={this.handleClick}>Read more</button></p>
+							}
+						</div>
+						{/* <Query
 							query={GET_GROUP}
 							variables={{
 								id
@@ -45,13 +51,13 @@ class GroupAbout extends React.Component {
 											<h4>What we're about</h4>
 											{
 												!this.state.readMore && group.description.length <= 2100  ?
-												<p className="group-details-text">{details.description} </p> : <p className="group-details-text more-group-details">{details.description.substring(0,250)}
+												<p className="group-details-text">{group.description} </p> : <p className="group-details-text more-group-details">{group.description.substring(0,250)}
 												<button className="more-group-details-text" onClick={this.handleClick}>Read more</button></p>
 											}
 										</div>
 								)
 							}}
-						</Query>
+						</Query> */}
 
 
 						<Query
