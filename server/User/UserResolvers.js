@@ -10,24 +10,21 @@ const UserResolvers = {
       return await User.findById(id)
         .populate('events')
         .populate('categories')
-        .populate('groups')
-        .populate('location');
+        .populate('groups');
     },
     getUsersByGroup: async(_, { groupId }, { isAuth }) => {
       // if(!isAuth) throw Error('You are not authorized to do this');
       return await User.find({ groups: { $in: groupId } })
         .populate('events')
         .populate('categories')
-        .populate('groups')
-        .populate('location');
+        .populate('groups');
     },
     currentUser: async(_, __, { isAuth, userId }) => {
       // if(!isAuth) throw Error('You are not authorized to do this');
       return await User.findById(userId)
         .populate('events')
         .populate('categories')
-        .populate('groups')
-        .populate('location');
+        .populate('groups');
     }
   },
   Mutation: {
