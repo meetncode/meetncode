@@ -1,7 +1,7 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-
-import GET_USER_GROUPS from './queryGetUserGroups.graphql';
+import PropTypes from 'prop-types'
+import GET_USER_GROUPS from './queryGetUserGroups.graphql'
 
 const UserGroups = (props) => {
 	const { groups } = props
@@ -32,6 +32,10 @@ const UserGroups = (props) => {
 			</ul>
 		</div>
 	)
+}
+
+UserGroups.propTypes = {
+  groups: PropTypes.object
 }
 
 export default UserGroups;

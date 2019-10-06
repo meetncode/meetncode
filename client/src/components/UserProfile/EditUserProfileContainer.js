@@ -1,16 +1,16 @@
 import React from 'react'
-import { withRouter } from "react-router-dom";
-import { Mutation } from "react-apollo";
-import { Formik, Form, Field } from "formik";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
-import CurrentUser from "../CurrentUser";
-import CustomTextField from "../FormikComponents/CustomTextField";
-import CustomDateInput from "../FormikComponents/CustomDateInput";
-import CustomTextarea from "../FormikComponents/CustomTextarea";
+import { withRouter } from "react-router-dom"
+import { Mutation } from "react-apollo"
+import { Formik, Form, Field } from "formik"
+import Button from "@material-ui/core/Button"
+import { withStyles } from "@material-ui/core/styles"
+import CurrentUser from "../CurrentUser"
+import CustomTextField from "../FormikComponents/CustomTextField"
+import CustomDateInput from "../FormikComponents/CustomDateInput"
+import CustomTextarea from "../FormikComponents/CustomTextarea"
 import "./UserProfile.css"
-import imageUploader from "../../helpers/imageUploader";
-import EDIT_USER_MUTATION from "./editUserMutation.graphql";
+import imageUploader from "../../helpers/imageUploader"
+import EDIT_USER_MUTATION from "./editUserMutation.graphql"
 
 const styles = theme => ({
   button: {
@@ -23,17 +23,17 @@ const styles = theme => ({
     color: "#fff",
     cursor: "pointer"
   }
-});
+})
 
 class EditUserProfileContainer extends React.Component{
 	constructor(props) {
-		super(props);
-		this.fileInput = React.createRef();
+		super(props)
+		this.fileInput = React.createRef()
 
 	}
 
 	render(){
-	const { classes } = this.props;
+	const { classes } = this.props
 
 		return (
 			<Mutation mutation={EDIT_USER_MUTATION}>
@@ -61,8 +61,8 @@ class EditUserProfileContainer extends React.Component{
 													...values
 												}
 											}
-										});
-										resetForm();
+										})
+										resetForm()
 									}}
 								>
 									{({ values, setFieldValue }) => (
@@ -126,8 +126,8 @@ class EditUserProfileContainer extends React.Component{
 					</div>
 				)}
 			</Mutation>
-		);
-		};
-	};
+		)
+		}
+	}
 	
-export default withRouter(withStyles(styles)(EditUserProfileContainer));
+export default withRouter(withStyles(styles)(EditUserProfileContainer))

@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import dayjs from 'dayjs'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -45,6 +46,14 @@ const UserBio = (props) => {
 			}
 		</div>
 	)
+}
+
+UserBio.propTypes = {
+	firstName: PropTypes.string,
+	lastName: PropTypes.string,
+	location: PropTypes.object,
+	createdAt: PropTypes.string,
+	bio: PropTypes.string
 }
 
 export default UserBio;

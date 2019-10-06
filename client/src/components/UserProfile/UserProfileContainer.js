@@ -1,12 +1,12 @@
 import React from 'react'
 import UserPreferencesContainer from './UserPreferencesContainer'
-import UserBioContainer from './UserBioContainer';
+import UserBioContainer from './UserBioContainer'
 import './UserProfile.css'
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 import { Query } from 'react-apollo'
 
-import GET_USER_BIO from './queryGetUserBio.graphql';
-import GET_USER_PREFS from './queryGetUserPrefs.graphql';
+import GET_USER_BIO from './queryGetUserBio.graphql'
+import GET_USER_PREFS from './queryGetUserPrefs.graphql'
 
 class UserProfileContainer extends React.Component {
 	render(){
@@ -15,8 +15,8 @@ class UserProfileContainer extends React.Component {
 			<div className="user-profile-container">
 				<Query query={GET_USER_BIO} variables={{ id }}>
 						{({ data, loading, error }) => {
-							if (loading) return <p>Loading</p>;
-							if (error) return <p>ERROR</p>;
+							if (loading) return <p>Loading</p>
+							if (error) return <p>ERROR</p>
 							const userBio = data.getUser
 							return (
 								<UserBioContainer userBio={userBio}/>
@@ -25,8 +25,8 @@ class UserProfileContainer extends React.Component {
 				</Query>
 				<Query query={GET_USER_PREFS} variables={{ id }}>
 						{({ data, loading, error }) => {
-							if (loading) return <p>Loading</p>;
-							if (error) return <p>ERROR</p>;
+							if (loading) return <p>Loading</p>
+							if (error) return <p>ERROR</p>
 							const userPrefs = data.getUser
 							return (
 								<UserPreferencesContainer userPrefs={userPrefs}/>
@@ -38,5 +38,5 @@ class UserProfileContainer extends React.Component {
 	}
 }
 
-export default withRouter(UserProfileContainer);
-// export default UserProfileContainer;
+export default withRouter(UserProfileContainer)
+// export default UserProfileContainer

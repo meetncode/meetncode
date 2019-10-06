@@ -1,7 +1,7 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-
-import GET_USER_CATS from './queryGetCategory.graphql';
+import PropTypes from 'prop-types'
+import GET_USER_CATS from './queryGetCategory.graphql'
 
 const UserPreferences = ({categories}) => {
 	return (
@@ -17,8 +17,8 @@ const UserPreferences = ({categories}) => {
 							const { id } = category
 							return <Query query={GET_USER_CATS} variables={{ id }} key={category.id}>
 							{({ data, loading, error }) => {
-								if (loading) return <p>Loading</p>;
-								if (error) return <p>ERROR</p>;
+								if (loading) return <p>Loading</p>
+								if (error) return <p>ERROR</p>
 								const userCategory = data.getCategory
 								return (
 									<React.Fragment>
@@ -40,4 +40,8 @@ const UserPreferences = ({categories}) => {
 	)
 }
 
-export default UserPreferences;
+UserPreferences.propTypes = {
+  categories: PropTypes.object
+}
+
+export default UserPreferences
