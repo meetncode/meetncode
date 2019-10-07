@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import * as yup from "yup";
 import { Mutation } from "react-apollo";
-import Snackbar from '@material-ui/core/Snackbar';
 
 import CustomTextField from "../FormikComponents/CustomTextField";
 import Button from "../Button";

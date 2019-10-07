@@ -2,6 +2,7 @@ import React from 'react'
 import Category from './Category'
 import './Categories.css'
 
+// TODO:: get from backend
 const Categories = () => {
 	return (
 		<div className="category-container">

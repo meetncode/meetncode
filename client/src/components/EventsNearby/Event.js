@@ -1,6 +1,7 @@
 import React from 'react'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 
+// TODO: get from backend
 const Event = () => {
 	return (
 		<div className="event">
@@ -16,4 +17,4 @@ const Event = () => {
 	)
 }
 
-export default Event;
+export default Event

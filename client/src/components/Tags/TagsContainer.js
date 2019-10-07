@@ -2,6 +2,7 @@ import React from 'react'
 import Tag from './Tag'
 import './Tags'
 
+// TODO:: need to get this from backend
 const TagsContainer = () => {
 	return (
 		<div className="tags-container">

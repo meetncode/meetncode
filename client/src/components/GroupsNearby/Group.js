@@ -1,6 +1,7 @@
 import React from 'react'
 import code from './code.jpg'
 
+// TODO: need to get from backend
 const Group = () => {
 	return (
 		<div className="group">
@@ -16,4 +17,4 @@ const Group = () => {
 	)
 }
 
-export default Group;
+export default Group

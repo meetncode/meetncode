@@ -1,20 +1,20 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { Mutation } from "react-apollo";
-import { Formik, Form, Field } from "formik";
+import React from "react"
+import { withRouter } from "react-router-dom"
+import { Mutation } from "react-apollo"
+import { Formik, Form, Field } from "formik"
 import './CreateGroup.css'
-import MUTATION_CREATE_GROUP from "./createGroupMutation.graphql";
-import CurrentUser from "../CurrentUser";
+import MUTATION_CREATE_GROUP from "./createGroupMutation.graphql"
+import CurrentUser from "../CurrentUser"
 
-import CustomTextField from "../FormikComponents/CustomTextField";
-import CustomDateTimePicker from "../FormikComponents/CustomDateTimePicker";
-import CustomTextarea from "../FormikComponents/CustomTextarea";
-import CustomSelect from "../FormikComponents/CustomSelect";
-import CustomLocationPicker from "../FormikComponents/CustomLocationPicker";
+import CustomTextField from "../FormikComponents/CustomTextField"
+import CustomDateTimePicker from "../FormikComponents/CustomDateTimePicker"
+import CustomTextarea from "../FormikComponents/CustomTextarea"
+import CustomSelect from "../FormikComponents/CustomSelect"
+import CustomLocationPicker from "../FormikComponents/CustomLocationPicker"
 
 
 const CreateGroup = (props) => {
-  const { history } = props;
+  const { history } = props
   return (
     <Mutation mutation={MUTATION_CREATE_GROUP}>
       {(createGroup, { loading }) => (
@@ -46,7 +46,7 @@ const CreateGroup = (props) => {
                         admin: user.id
                       }
                     }
-                  });
+                  })
                   if(response){
                     history.push(`/group/${response.data.createGroup.id}`)
                   }
@@ -113,7 +113,7 @@ const CreateGroup = (props) => {
         </div>
       )}
     </Mutation>
-  );
-};
+  )
+}
 
-export default withRouter(CreateGroup);
+export default withRouter(CreateGroup)

@@ -1,5 +1,6 @@
 import React from 'react'
 import GroupEvent from './GroupEvent'
+import PropTypes from 'prop-types'
 
 export default function PastEvents(props) {
 	return (
@@ -11,4 +12,8 @@ export default function PastEvents(props) {
 			<GroupEvent className="group-event" event={props.past[0]}/>
 		</div>
 	)
+}
+
+PastEvents.PropTypes = {
+	past: PropTypes.object.isRequired
 }

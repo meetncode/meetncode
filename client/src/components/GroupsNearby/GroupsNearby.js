@@ -2,6 +2,7 @@ import React from 'react'
 import Group from './Group'
 import './Groups.css';
 
+// TODO: need to get from backend
 const GroupsNearby = () => {
 	return (
 		<div className="groups-container">

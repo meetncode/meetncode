@@ -1,16 +1,16 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { Mutation } from "react-apollo";
-import { Formik, Form, Field } from "formik";
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { Mutation } from 'react-apollo'
+import { Formik, Form, Field } from 'formik'
 
-import MUTATION_CREATE_EVENT from "./mutationCreateEvent.graphql";
-import CurrentUser from "../CurrentUser";
+import MUTATION_CREATE_EVENT from './mutationCreateEvent.graphql'
+import CurrentUser from '../CurrentUser'
 
-import CustomTextField from "../FormikComponents/CustomTextField";
-import CustomDateTimePicker from "../FormikComponents/CustomDateTimePicker";
-import CustomTextarea from "../FormikComponents/CustomTextarea";
-import CustomSelect from "../FormikComponents/CustomSelect";
-import CustomLocationPicker from "../FormikComponents/CustomLocationPicker";
+import CustomTextField from '../FormikComponents/CustomTextField'
+import CustomDateTimePicker from '../FormikComponents/CustomDateTimePicker'
+import CustomTextarea from '../FormikComponents/CustomTextarea'
+import CustomSelect from '../FormikComponents/CustomSelect'
+import CustomLocationPicker from '../FormikComponents/CustomLocationPicker'
 
 
 const CreateEditEvent = ({ match }) => {
@@ -23,15 +23,15 @@ const CreateEditEvent = ({ match }) => {
             {({ user }) => (
               <Formik
                 initialValues={{
-                  name: "",
+                  name: '',
                   date: null,
-                  description: "",
+                  description: '',
                   location: {
-                    country: "",
-                    city: "",
-                    address: "",
+                    country: '',
+                    city: '',
+                    address: '',
                     locationCoordinates: {
-                      type: "Point",
+                      type: 'Point',
                       coordinates: []
                     }
                   }
@@ -45,63 +45,63 @@ const CreateEditEvent = ({ match }) => {
                         host: user.id
                       }
                     }
-                  });
-                  resetForm();
+                  })
+                  resetForm()
                 }}
               >
                 {() => (
                   <Form>
                     <Field
-                      name="name"
+                      name='name'
                       component={CustomTextField}
-                      label="Name"
+                      label='Name'
                     />
                     <Field
-                      name="date"
-                      label="Date"
+                      name='date'
+                      label='Date'
                       component={CustomDateTimePicker}
                       autoOk
                       disablePast
                     />
                     <Field
-                      name="description"
+                      name='description'
                       component={CustomTextarea}
-                      label="Description"
+                      label='Description'
                     />
                     <Field
-                      name="location.country"
-                      label="Country"
+                      name='location.country'
+                      label='Country'
                       component={CustomSelect}
                       options={[
                         {
-                          value: "Thailand",
-                          label: "Thailand"
+                          value: 'Thailand',
+                          label: 'Thailand'
                         },
                         {
-                          value: "Myanmar",
-                          label: "Myanmar"
+                          value: 'Myanmar',
+                          label: 'Myanmar'
                         },
                         {
-                          value: "Korea",
-                          label: "Korea"
+                          value: 'Korea',
+                          label: 'Korea'
                         }
                       ]}
                     />
                     <Field
-                      name="location.city"
+                      name='location.city'
                       component={CustomTextField}
-                      label="City"
+                      label='City'
                     />
                     <Field
-                      name="location.address"
+                      name='location.address'
                       component={CustomTextField}
-                      label="Address"
+                      label='Address'
                     />
                     <Field
-                      name="location.locationCoordinates.coordinates"
+                      name='location.locationCoordinates.coordinates'
                       component={CustomLocationPicker}
                     />
-                    <button type="submit">Submit</button>
+                    <button type='submit'>Submit</button>
                   </Form>
                 )}
               </Formik>
@@ -110,7 +110,7 @@ const CreateEditEvent = ({ match }) => {
         </div>
       )}
     </Mutation>
-  );
-};
+  )
+}
 
-export default withRouter(CreateEditEvent);
+export default withRouter(CreateEditEvent)

@@ -2,6 +2,7 @@ import React from 'react'
 import Event from './Event'
 import './Events.css'
 
+// TODO: get from backend
 const EventsNearby = () => {
 	return (
 		<div className="events-container">
@@ -16,4 +17,4 @@ const EventsNearby = () => {
 	)
 }
 
-export default EventsNearby;
+export default EventsNearby

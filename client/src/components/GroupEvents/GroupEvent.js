@@ -1,29 +1,25 @@
 import React from 'react'
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-// import moment from 'moment';
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 import dayjs from 'dayjs'
+import PropTypes from 'prop-types'
 
 const useStyles = {
   card: {
     width: 600,
     marginBottom: 20
   }
-};
+}
 
-// const description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus inventore eos sint in enim consectetur ex nisi ab minus delectus, veritatis dolor quos quas quo eaque alias quasi, nesciunt dolores! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus inventore eos sint in enim consectetur ex nisi ab minus delectus, veritatis dolor quos quas quo eaque alias quasi, nesciunt dolores!'
 
 export default function GroupEvent(props) {
-  // const { name } = props
-  // const formattedDate = (jsDate) => {return moment(Number(jsDate)).format('MMMM Do YYYY, h:mm a')}
   const formattedDate = (jsDate) => {return dayjs(Number(jsDate)).format('MMMM D YYYY, h:mm a')}
 
   return (
     <Card style={useStyles.card}>
-    {/* <Card style={{maxWidth: 575}}> */}
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
         {/* Thu, July 31, 6:30 PM */}
@@ -49,4 +45,8 @@ export default function GroupEvent(props) {
       </CardActions>
     </Card>
 	)
+}
+
+GroupEvent.PropTypes = {
+  event: PropTypes.object.isRequired
 }
