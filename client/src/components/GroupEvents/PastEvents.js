@@ -14,6 +14,6 @@ export default function PastEvents(props) {
 	)
 }
 
-PastEvents.PropTypes = {
+PastEvents.propTypes = {
 	past: PropTypes.object.isRequired
 }

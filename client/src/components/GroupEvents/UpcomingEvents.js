@@ -19,6 +19,6 @@ export default function UpcomingEvents(props) {
 	)
 }
 
-UpcomingEvents.PropTypes = {
+UpcomingEvents.propTypes = {
 	upcoming: PropTypes.object.isRequired
 }

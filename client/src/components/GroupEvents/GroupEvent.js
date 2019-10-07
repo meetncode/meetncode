@@ -47,6 +47,6 @@ export default function GroupEvent(props) {
 	)
 }
 
-GroupEvent.PropTypes = {
+GroupEvent.propTypes = {
   event: PropTypes.object.isRequired
 }

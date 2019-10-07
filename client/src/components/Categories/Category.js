@@ -11,7 +11,7 @@ const Category = (props) => {
 	)
 }
 
-Category.PropTypes = {
+Category.propTypes = {
 	category: PropTypes.string
 }
 

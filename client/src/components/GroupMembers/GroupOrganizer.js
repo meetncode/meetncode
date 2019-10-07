@@ -18,7 +18,7 @@ const GroupOrganizer = (props) =>{
 	)
 }
 
-GroupOrganizer.PropTypes = {
+GroupOrganizer.propTypes = {
 	host: PropTypes.object
 }
 

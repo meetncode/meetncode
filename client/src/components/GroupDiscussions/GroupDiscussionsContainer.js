@@ -14,6 +14,6 @@ export default class GroupDiscussionsContainer extends Component {
 	}
 }
 
-GroupDiscussionsContainer.PropTypes = {
+GroupDiscussionsContainer.propTypes = {
 	count: PropTypes.number
 }
