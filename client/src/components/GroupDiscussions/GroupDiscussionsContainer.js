@@ -8,7 +8,7 @@ export default class GroupDiscussionsContainer extends Component {
 			<div>
 				{/* <h4>Discussions ({this.props.count})</h4> */}
 				<h4>Discussions (12)</h4>
-				<a href="#">See all</a>
+				<a href='#'>See all</a>
 			</div>
 		)
 	}

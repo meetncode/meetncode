@@ -1,6 +1,6 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const CustomButton = ({ loading, children, ...props}) => {
   return (
@@ -10,4 +10,4 @@ const CustomButton = ({ loading, children, ...props}) => {
   )
 }
 
-export default CustomButton;
+export default CustomButton

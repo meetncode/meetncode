@@ -1,27 +1,27 @@
 import React from 'react'
-import { withRouter } from "react-router-dom"
-import { Mutation } from "react-apollo"
-import { Formik, Form, Field } from "formik"
-import Button from "@material-ui/core/Button"
-import { withStyles } from "@material-ui/core/styles"
-import CurrentUser from "../CurrentUser"
-import CustomTextField from "../FormikComponents/CustomTextField"
-import CustomDateInput from "../FormikComponents/CustomDateInput"
-import CustomTextarea from "../FormikComponents/CustomTextarea"
-import "./UserProfile.css"
-import imageUploader from "../../helpers/imageUploader"
-import EDIT_USER_MUTATION from "./editUserMutation.graphql"
+import { withRouter } from 'react-router-dom'
+import { Mutation } from 'react-apollo'
+import { Formik, Form, Field } from 'formik'
+import Button from '@material-ui/core/Button'
+import { withStyles } from '@material-ui/core/styles'
+import CurrentUser from '../CurrentUser'
+import CustomTextField from '../FormikComponents/CustomTextField'
+import CustomDateInput from '../FormikComponents/CustomDateInput'
+import CustomTextarea from '../FormikComponents/CustomTextarea'
+import './UserProfile.css'
+import imageUploader from '../../helpers/imageUploader'
+import EDIT_USER_MUTATION from './editUserMutation.graphql'
 
 const styles = theme => ({
   button: {
-    background: "linear-gradient(to left, #f27954, #a154f2)",
-    padding: "0.5em 3em",
-    margin: "1em",
-    borderRadius: "20px",
-    border: "none",
-    outline: "none",
-    color: "#fff",
-    cursor: "pointer"
+    background: 'linear-gradient(to left, #f27954, #a154f2)',
+    padding: '0.5em 3em',
+    margin: '1em',
+    borderRadius: '20px',
+    border: 'none',
+    outline: 'none',
+    color: '#fff',
+    cursor: 'pointer'
   }
 })
 
@@ -39,7 +39,7 @@ class EditUserProfileContainer extends React.Component{
 			<Mutation mutation={EDIT_USER_MUTATION}>
 				{(updateUser) => (
 					<div>
-						<h1 className="page-title">Edit your account</h1>
+						<h1 className='page-title'>Edit your account</h1>
 						<CurrentUser>
 							{({ user }) => (
 								<Formik
@@ -66,36 +66,36 @@ class EditUserProfileContainer extends React.Component{
 									}}
 								>
 									{({ values, setFieldValue }) => (
-										<Form className="edit-user-form">
+										<Form className='edit-user-form'>
 											<Field
-												name="firstName"
+												name='firstName'
 												component={CustomTextField}
-												label="firstName"
+												label='firstName'
 											/>
 											<Field
-												name="lastName"
+												name='lastName'
 												component={CustomTextField}
-												label="lastName"
+												label='lastName'
 											/>
 											<Field
-												name="birthday"
-												label="birthday"
+												name='birthday'
+												label='birthday'
 												component={CustomDateInput}
 												autoOk
 											/>
 											<Field
-												name="bio"
+												name='bio'
 												component={CustomTextarea}
-												label="bio"
-												placeholder="Write something about yourself"
-												className="edit-user-profile__bio"
+												label='bio'
+												placeholder='Write something about yourself'
+												className='edit-user-profile__bio'
 											/>
 											{
 												values.picture ?
-												<div className="profile edit-profile-picture">
-													<img src={values.picture} alt="" className="profile-picture"/>
+												<div className='profile edit-profile-picture'>
+													<img src={values.picture} alt='' className='profile-picture'/>
 													<input 
-														type="file" 
+														type='file' 
 														ref={this.fileInput} 
 														onChange={async () => {
 															const result = await imageUploader(this.fileInput.current.files[0])
@@ -106,7 +106,7 @@ class EditUserProfileContainer extends React.Component{
 												:
 												(
 												<input 
-												type="file" 
+												type='file' 
 												ref={this.fileInput} 
 												onChange={async () => {
 													const result = await imageUploader(this.fileInput.current.files[0])
@@ -115,7 +115,7 @@ class EditUserProfileContainer extends React.Component{
 													} />
 												)
 											}
-											<Button type="submit" variant="contained" className={classes.button}>
+											<Button type='submit' variant='contained' className={classes.button}>
                       Submit
                     </Button>
 										</Form>

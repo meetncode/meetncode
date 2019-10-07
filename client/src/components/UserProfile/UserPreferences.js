@@ -6,7 +6,7 @@ import GET_USER_CATS from './queryGetCategory.graphql'
 const UserPreferences = ({categories}) => {
 	return (
 		<div>
-			<div className="header">
+			<div className='header'>
 				<h3>Interets</h3>
 			</div>
 			<ul>

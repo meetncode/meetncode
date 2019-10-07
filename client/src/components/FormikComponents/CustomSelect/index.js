@@ -1,6 +1,6 @@
-import React from "react";
-import TextField from "@material-ui/core/TextField";
-import { MenuItem } from "@material-ui/core";
+import React from 'react'
+import TextField from '@material-ui/core/TextField'
+import { MenuItem } from '@material-ui/core'
 
 const CustomSelect = ({ form, field, options, ...props }) => {
   return (
@@ -8,7 +8,7 @@ const CustomSelect = ({ form, field, options, ...props }) => {
       select
       value={field.value}
       onChange={e => {
-        form.setFieldValue(field.name, e.target.value);
+        form.setFieldValue(field.name, e.target.value)
       }}
       {...props}
     >
@@ -18,7 +18,7 @@ const CustomSelect = ({ form, field, options, ...props }) => {
         </MenuItem>
       ))}
     </TextField>
-  );
-};
+  )
+}
 
-export default CustomSelect;
+export default CustomSelect

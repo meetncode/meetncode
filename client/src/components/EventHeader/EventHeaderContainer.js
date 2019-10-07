@@ -5,8 +5,8 @@ import './EventHeader.css'
 
 const EventHeaderContainer = () => {
 	return (
-		<div className="event-header-container">
-			<div className="event-header-wrapper">
+		<div className='event-header-container'>
+			<div className='event-header-wrapper'>
 				<EventHeaderDetails></EventHeaderDetails>
 				<EventHeaderActions></EventHeaderActions>
 				</div>

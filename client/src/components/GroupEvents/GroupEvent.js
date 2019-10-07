@@ -21,18 +21,18 @@ export default function GroupEvent(props) {
   return (
     <Card style={useStyles.card}>
       <CardContent>
-        <Typography color="textSecondary" gutterBottom>
+        <Typography color='textSecondary' gutterBottom>
         {/* Thu, July 31, 6:30 PM */}
         {formattedDate(props.event.date)}
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography variant='h5' component='h2'>
           {props.event.name}
         </Typography>
-        <Typography color="textSecondary">
-         <i className="fas fa-map-marker-alt"></i>
+        <Typography color='textSecondary'>
+         <i className='fas fa-map-marker-alt'></i>
           <span style={{ marginLeft: '10px' }}>Cat Cafe</span>
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant='body2' component='p'>
           {
             props.event.description.length > 260 ?
             props.event.description.slice(0, 260) + '...' :
@@ -41,7 +41,7 @@ export default function GroupEvent(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="medium" variant="outlined" color="primary"> Attend</Button>
+        <Button size='medium' variant='outlined' color='primary'> Attend</Button>
       </CardActions>
     </Card>
 	)

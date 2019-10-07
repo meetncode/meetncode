@@ -19,14 +19,14 @@ const UserPreferencesContainer = (props) => {
 	const { categories, id, picture } = props.userPrefs
 
 	return (
-		<div className="user-preferences">
-			<Link to ={`/edit/members/${id}/`} className="edit-profile"><Button variant="outlined" color="primary" className={classes.button}>Edit Profile</Button></Link>
-			<div className="profile">
+		<div className='user-preferences'>
+			<Link to ={`/edit/members/${id}/`} className='edit-profile'><Button variant='outlined' color='primary' className={classes.button}>Edit Profile</Button></Link>
+			<div className='profile'>
 				{
 					picture ?
-					<img src={picture} alt="" className="profile-picture"/>
+					<img src={picture} alt='' className='profile-picture'/>
 					:
-					<img src="https://via.placeholder.com/180" alt=""/>
+					<img src='https://via.placeholder.com/180' alt=''/>
 				}
 			</div>
 			<UserPreferences categories={categories}/>

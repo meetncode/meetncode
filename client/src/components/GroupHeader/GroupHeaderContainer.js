@@ -7,8 +7,8 @@ import './GroupHeader.css'
 // 		return (
 // 			<Query query={GET_GROUPDETAILS}>
 // 				{({ data, loading, error }) => {
-// 					if (loading) return <p>Loading</p>;
-// 					if (error) return <p>ERROR</p>;
+// 					if (loading) return <p>Loading</p>
+// 					if (error) return <p>ERROR</p>
 // 					const { name, 
 // 									admin,
 // 									events,
@@ -34,16 +34,16 @@ import './GroupHeader.css'
 
 export default class GroupHeaderContainer extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 
 		this.state = {
 				member: true
-		};
+		}
 
 }
 	render() {
 		return (
-			<div className="group-header-container"> 
+			<div className='group-header-container'> 
 				<GroupHeaderBanner />
 				<GroupHeaderMenu member={this.state.member}/>
 			</div>

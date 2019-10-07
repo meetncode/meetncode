@@ -12,7 +12,7 @@ class UserProfileContainer extends React.Component {
 	render(){
 		const { id } = this.props.match.params
 		return (
-			<div className="user-profile-container">
+			<div className='user-profile-container'>
 				<Query query={GET_USER_BIO} variables={{ id }}>
 						{({ data, loading, error }) => {
 							if (loading) return <p>Loading</p>
