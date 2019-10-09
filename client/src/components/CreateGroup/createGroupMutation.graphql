@@ -3,5 +3,6 @@ mutation CreateGroup($input: GroupInput!){
     id
     name
     description
+    picture
   }
 }

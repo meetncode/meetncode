@@ -39,7 +39,10 @@ class EditUserProfileContainer extends React.Component{
 			<Mutation mutation={EDIT_USER_MUTATION}>
 				{(updateUser) => (
 					<div>
-						<h1 className='page-title'>Edit your account</h1>
+						<div className="header-panel">
+							<h3 className="page-title">Edit your account</h3>
+							<button onClick={this.props.history.goBack}>Back</button>
+						</div>
 						<CurrentUser>
 							{({ user }) => (
 								<Formik

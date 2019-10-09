@@ -39,7 +39,7 @@ const LocationPicker = ({ userLat = 51.509865, userLng = -0.118092, onChange}) =
     >
       <TileLayer
         className='tile-layer'
-        attribution='&ampcopy <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors'
+        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
       {marker}

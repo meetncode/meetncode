@@ -30,7 +30,7 @@ export default class Group extends React.Component {
 					return (
 						<React.Fragment>
 							<Header />
-							<GroupHeader />
+							<GroupHeader id={id} />
 							<GroupAbout id={id} events={events}/>
 							<Footer />
 						</React.Fragment>

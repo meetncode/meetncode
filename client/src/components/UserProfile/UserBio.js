@@ -28,7 +28,8 @@ const UserBio = (props) => {
 					<strong>Member Since</strong>
 					<p>{dayjs(Number(createdAt)).format('MMMM D YYYY') || 'N/A'}</p>
 				</li>
-				<li className='social-accounts'>
+				{/*TODO:: No social media profiles in database at the moment*/}
+				<li className="social-accounts">
 					<strong>Social Profiles</strong>
 					<ul className='social-accounts-links'>
 					<li><a href='#'><i className='fab fa-facebook-square'></i></a></li>

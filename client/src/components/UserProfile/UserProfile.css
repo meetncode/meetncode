@@ -58,6 +58,7 @@
 	max-height: 210px;
 	border-radius: 50%;
 }
+.group-link,
 .edit-profile {
 	text-decoration: none;
 	cursor: pointer;
@@ -114,4 +115,12 @@
 	height: 85px !important;
 	width: 100%;
 	margin: 0;
+}
+
+.header-panel {
+	display: flex;
+	max-width: 67%;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
 }

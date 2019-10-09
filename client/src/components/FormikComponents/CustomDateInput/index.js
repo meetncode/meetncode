@@ -1,6 +1,5 @@
-import React from 'react'
-import { DatePicker } from '@material-ui/pickers'
-import dayjs from 'dayjs'
+import React from "react";
+import { DatePicker } from "@material-ui/pickers";
 
 const CustomDateInput = ({ form, field, ...props }) => {
   return (

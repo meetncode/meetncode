@@ -12,9 +12,16 @@ import CustomTextarea from '../FormikComponents/CustomTextarea'
 import CustomSelect from '../FormikComponents/CustomSelect'
 import CustomLocationPicker from '../FormikComponents/CustomLocationPicker'
 
+import imageUploader from '../../helpers/imageUploader'
 
-const CreateGroup = (props) => {
-  const { history } = props
+class CreateGroup extends React.Component {
+  constructor(props) {
+		super(props)
+		this.fileInput = React.createRef()
+
+  }
+  render(){
+  const { history } = this.props
   return (
     <Mutation mutation={MUTATION_CREATE_GROUP}>
       {(createGroup, { loading }) => (
@@ -28,6 +35,7 @@ const CreateGroup = (props) => {
 									private: false,
 									enabled: true,
                   description: '',
+                  picture: '',
                   location: {
                     country: '',
                     city: '',
@@ -38,18 +46,25 @@ const CreateGroup = (props) => {
                     }
 									}
                 }}
+                handleImageUpload={async() => {
+                  const result = await imageUploader(this.fileInput.current.files[0])
+                  await setFieldValue('picture', result.url)
+                }}
                 onSubmit={async (values) => {
-                  const response = await createGroup({
-                    variables: {
-                      input: {
-                        ...values,
-                        admin: user.id
+                  // await this.handleImageUpload()
+									// if(result){
+                    const response = await createGroup({
+                      variables: {
+                        input: {
+                          ...values,
+                          admin: user.id
+                        }
                       }
+                    })
+                    if(response){
+                      history.push(`/group/${response.data.createGroup.id}`)
                     }
-                  })
-                  if(response){
-                    history.push(`/group/${response.data.createGroup.id}`)
-                  }
+                  // }
                 }}
               >
                 {() => (
@@ -104,6 +119,15 @@ const CreateGroup = (props) => {
                       component={CustomLocationPicker}
                       className='create-group-form__map'
                     />
+                    <input 
+												type='file' 
+												ref={this.fileInput} 
+												onChange={async () => {
+                          const result = await imageUploader(this.fileInput.current.files[0])
+                          setFieldValue('picture', result.url)
+                          }
+                          } 
+                    />
                     <button type='submit'>Submit</button>
                   </Form>
                 )}
@@ -114,6 +138,7 @@ const CreateGroup = (props) => {
       )}
     </Mutation>
   )
+  }
 }
 
 export default withRouter(CreateGroup)

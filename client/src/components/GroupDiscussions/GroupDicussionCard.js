@@ -31,7 +31,7 @@ export default function GroupDiscussionCard() {
         <Typography variant='body2' component='p'>
           well meaning and kindly.
           <br />
-          {''a benevolent smile''}
+          {'a benevolent smile'}
         </Typography>
       </CardContent>
       <CardActions>
