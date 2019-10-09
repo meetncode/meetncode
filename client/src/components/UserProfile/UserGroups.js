@@ -9,15 +9,15 @@ const UserGroups = (props) => {
 	return (
 		<div>
 			<h3>Your Groups</h3>
-			<ul className="groups">
+			<ul className='groups'>
 			{
 				groups.map((group) => {
 					const { id } = group
 					const url = `/group/${id}`
 					return <Query query={GET_USER_GROUPS} variables={{ id }} key={group.id}>
 					{({ data, loading, error }) => {
-						if (loading) return <p>Loading</p>;
-						if (error) return <p>ERROR</p>;
+						if (loading) return <p>Loading</p>
+						if (error) return <p>ERROR</p>
 						const userGroups = data.getGroup
 						return (
 							<React.Fragment>
@@ -38,4 +38,8 @@ const UserGroups = (props) => {
 	)
 }
 
-export default UserGroups;
+UserGroups.propTypes = {
+  groups: PropTypes.object
+}
+
+export default UserGroups

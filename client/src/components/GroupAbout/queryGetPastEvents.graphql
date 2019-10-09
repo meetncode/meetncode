@@ -3,13 +3,13 @@ query GetPastEvents($groupId: ID!) {
 		isUpcoming: false,
 		groupId: $groupId
   }){
-    id,
-    name,
-		date,
+    id
+    name
+		date
     host{
 			firstName
-		},
-		description,
+		}
+		description
     location{
       address
     }

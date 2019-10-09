@@ -1,5 +1,6 @@
 import React from 'react'
 import GroupEvent from './GroupEvent'
+import PropTypes from 'prop-types'
 
 export default function UpcomingEvents(props) {
 	const upcoming = props.upcoming.slice(0, 3)
@@ -26,4 +27,8 @@ export default function UpcomingEvents(props) {
 		}
 		</div>
 	)
+}
+
+UpcomingEvents.propTypes = {
+	upcoming: PropTypes.object.isRequired
 }

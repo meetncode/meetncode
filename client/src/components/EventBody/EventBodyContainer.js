@@ -7,8 +7,8 @@ import './EventBody.css'
 export default class EventBodyContainer extends Component {
 	render() {
 		return (
-			<div className="event-body-container">
-				<div className="event-body-wrapper">
+			<div className='event-body-container'>
+				<div className='event-body-wrapper'>
 					<EventDetails></EventDetails>
 					<EventLocation></EventLocation>
 					<EventsRelatedContainer></EventsRelatedContainer>

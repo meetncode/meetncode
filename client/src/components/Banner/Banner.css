@@ -13,7 +13,7 @@
 }
 
 .banner {
-	background: url("./background.jpg") no-repeat;
+	background: url('./background.jpg') no-repeat;
 	height: calc(100vh - 32em);
 	background-position: center;
 	background-size: cover;

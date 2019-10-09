@@ -1,12 +1,12 @@
 query GetGroup($id: ID!){
 	getGroup(id: $id){
-		id,
-		name,
-    description,
+		id
+		name
+    description
 		admin{
-			firstName,
+			firstName
 			lastName
-		},
+		}
     category{
 			id
 		}

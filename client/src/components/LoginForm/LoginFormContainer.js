@@ -1,42 +1,42 @@
-import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
-import * as yup from "yup";
-import { Form, Formik, Field } from "formik";
-import { withStyles } from "@material-ui/core/styles";
-import { Mutation } from "react-apollo";
+import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
+import * as yup from 'yup'
+import { Form, Formik, Field } from 'formik'
+import { withStyles } from '@material-ui/core/styles'
+import { Mutation } from 'react-apollo'
 
-import LOGIN_USER_MUTATION from "./loginUserMutation.graphql";
+import LOGIN_USER_MUTATION from './loginUserMutation.graphql'
 
-import CustomTextField from "../FormikComponents/CustomTextField";
-import Button from "../Button";
-import CustomAlert from "../CustomAlert";
+import CustomTextField from '../FormikComponents/CustomTextField'
+import Button from '../Button'
+import CustomAlert from '../CustomAlert'
 
 const styles = theme => ({
   formContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   form: {
     width: 300,
     minHeight: 300,
-    margin: "1rem",
-    textAlign: "center"
+    margin: '1rem',
+    textAlign: 'center'
   },
   field: {
-    marginBottom: "0.5rem"
+    marginBottom: '0.5rem'
   },
   button: {
-    background: "linear-gradient(to left, #f27954, #a154f2)",
-    padding: "0.5em 3em",
-    margin: "1em",
-    borderRadius: "20px",
-    border: "none",
-    outline: "none",
-    color: "#fff",
-    cursor: "pointer"
+    background: 'linear-gradient(to left, #f27954, #a154f2)',
+    padding: '0.5em 3em',
+    margin: '1em',
+    borderRadius: '20px',
+    border: 'none',
+    outline: 'none',
+    color: '#fff',
+    cursor: 'pointer'
   }
-});
+})
 
 const LoginValidation = yup.object().shape({
   email: yup
@@ -47,20 +47,20 @@ const LoginValidation = yup.object().shape({
     .string()
     .max(16)
     .required()
-});
+})
 const LoginFormContainer = ({ classes, history }) => {
   const [error, setError] = useState({
     status: false,
-    message: ""
-  });
+    message: ''
+  })
   return (
     <Mutation mutation={LOGIN_USER_MUTATION}>
       {(loginUser, { loading, data }) => (
         <div className={classes.formContainer}>
           <Formik
             initialValues={{
-              email: "",
-              password: ""
+              email: '',
+              password: ''
             }}
             onSubmit={async values => {
               const response = await loginUser({
@@ -69,12 +69,12 @@ const LoginFormContainer = ({ classes, history }) => {
                 setError({
                   status: true,
                   message: e.graphQLErrors[0].message
-                });
-              });
+                })
+              })
 
               if (response) {
-                history.push(`/members/${response.data.loginUser.userId}`);
-                localStorage.setItem("token", response.data.loginUser.token);
+                history.push(`/members/${response.data.loginUser.userId}`)
+                localStorage.setItem('token', response.data.loginUser.token)
               }
             }}
             validationSchema={LoginValidation}
@@ -82,24 +82,24 @@ const LoginFormContainer = ({ classes, history }) => {
             {() => (
               <Form className={classes.form}>
                 <Field
-                  type="text"
+                  type='text'
                   className={classes.field}
                   component={CustomTextField}
-                  name="email"
-                  placeholder="Email"
+                  name='email'
+                  placeholder='Email'
                   fullWidth
                 />
                 <Field
-                  type="password"
+                  type='password'
                   className={classes.field}
-                  name="password"
+                  name='password'
                   component={CustomTextField}
-                  placeholder="Password"
+                  placeholder='Password'
                   fullWidth
                 />
                 <Button
-                  type="submit"
-                  variant="contained"
+                  type='submit'
+                  variant='contained'
                   className={classes.button}
                   loading={loading}
                 >
@@ -109,13 +109,13 @@ const LoginFormContainer = ({ classes, history }) => {
                   <CustomAlert
                     isOpen
                     anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right"
+                      vertical: 'top',
+                      horizontal: 'right'
                     }}
                     autoHideDuration={5000}
-                    type="error"
+                    type='error'
                     message={error.message}
-                    onClose={() => setError({ status: false, message: "" })}
+                    onClose={() => setError({ status: false, message: '' })}
                   />
                 )}
               </Form>
@@ -124,6 +124,6 @@ const LoginFormContainer = ({ classes, history }) => {
         </div>
       )}
     </Mutation>
-  );
-};
-export default withRouter(withStyles(styles)(LoginFormContainer));
+  )
+}
+export default withRouter(withStyles(styles)(LoginFormContainer))

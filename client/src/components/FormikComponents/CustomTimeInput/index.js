@@ -1,5 +1,5 @@
-import React from "react";
-import { TimePicker } from "@material-ui/pickers";
+import React from 'react'
+import { TimePicker } from '@material-ui/pickers'
 
 const CustomTimeImput = ({ field, form, ...props}) => {
   return (
@@ -8,7 +8,7 @@ const CustomTimeImput = ({ field, form, ...props}) => {
       onChange={time => form.setFieldValue(field.name, time)}
       {...props}
     />
-  );
-};
+  )
+}
 
-export default CustomTimeImput;
+export default CustomTimeImput

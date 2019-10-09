@@ -1,6 +1,6 @@
-import React from "react";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-import { Field } from "apollo-engine-reporting-protobuf";
+import React from 'react'
+import TextareaAutosize from '@material-ui/core/TextareaAutosize'
+import { Field } from 'apollo-engine-reporting-protobuf'
 
 const CustomTextarea = ({ field, form, label, ...props }) => {
   return (
@@ -13,7 +13,7 @@ const CustomTextarea = ({ field, form, label, ...props }) => {
         {...props}
       />
     </div>
-  );
-};
+  )
+}
 
-export default CustomTextarea;
+export default CustomTextarea

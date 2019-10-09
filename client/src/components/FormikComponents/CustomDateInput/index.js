@@ -8,7 +8,7 @@ const CustomDateInput = ({ form, field, ...props }) => {
       onChange={date => form.setFieldValue(field.name, date)}
       {...props}
     />
-  );
+  )
 }
 
-export default CustomDateInput;
+export default CustomDateInput
