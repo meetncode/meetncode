@@ -1,0 +1,17 @@
+query GetGroup($id: ID!){
+	getGroup(id: $id){
+    id,
+		name,
+    description,
+    admin{
+			firstName,
+			lastName
+		},
+    category{
+			id
+		},
+    members{
+      id
+    }
+  }
+}

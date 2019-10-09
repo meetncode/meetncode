@@ -4,10 +4,6 @@ query CurrentUser {
     firstName
     lastName
     email
-    location {
-      city
-      country
-    }
     picture
     hometown
     language

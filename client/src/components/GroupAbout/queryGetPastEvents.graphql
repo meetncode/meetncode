@@ -1,6 +1,6 @@
-query GetUpcomingEvents($groupId: ID!) {
+query GetPastEvents($groupId: ID!) {
   getEvents(input: {
-		isUpcoming: true,
+		isUpcoming: false,
 		groupId: $groupId
   }){
     id,

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Query } from 'react-apollo'
+import { Link } from 'react-router-dom';
 
 import GET_USER_GROUPS from './queryGetUserGroups.graphql';
 
@@ -12,6 +13,7 @@ const UserGroups = (props) => {
 			{
 				groups.map((group) => {
 					const { id } = group
+					const url = `/group/${id}`
 					return <Query query={GET_USER_GROUPS} variables={{ id }} key={group.id}>
 					{({ data, loading, error }) => {
 						if (loading) return <p>Loading</p>;
@@ -20,8 +22,10 @@ const UserGroups = (props) => {
 						return (
 							<React.Fragment>
 								<li>
-									<img src="https://via.placeholder.com/50" alt=""/>
-									<h5>{userGroups.name}</h5>
+									<Link to={url} className="group-link">
+										<img src="https://via.placeholder.com/50" alt=""/>
+										<h5>{userGroups.name}</h5>
+									</Link>
 								</li>
 							</React.Fragment>
 					)
