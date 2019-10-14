@@ -6,9 +6,9 @@ const EventDetails = () => {
 		<div>
 			<h4>Details</h4>
 			{details.length <= 2100 ?
-				<p className="event-details-text">{details} </p>: <p className="event-details-text more-event-details">{details.substring(0,2110)} 
+				<p className='event-details-text'>{details} </p>: <p className='event-details-text more-event-details'>{details.substring(0,2110)} 
 				{/*Add fog effect to overflowing text*/}
-				<span className="more-event-details-text">Show more event details</span></p>}
+				<span className='more-event-details-text'>Show more event details</span></p>}
 		</div>
 	)
 }

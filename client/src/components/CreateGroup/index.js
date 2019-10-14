@@ -1,20 +1,27 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { Mutation } from "react-apollo";
-import { Formik, Form, Field } from "formik";
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { Mutation } from 'react-apollo'
+import { Formik, Form, Field } from 'formik'
 import './CreateGroup.css'
-import MUTATION_CREATE_GROUP from "./createGroupMutation.graphql";
-import CurrentUser from "../CurrentUser";
+import MUTATION_CREATE_GROUP from './createGroupMutation.graphql'
+import CurrentUser from '../CurrentUser'
 
-import CustomTextField from "../FormikComponents/CustomTextField";
-import CustomDateTimePicker from "../FormikComponents/CustomDateTimePicker";
-import CustomTextarea from "../FormikComponents/CustomTextarea";
-import CustomSelect from "../FormikComponents/CustomSelect";
-import CustomLocationPicker from "../FormikComponents/CustomLocationPicker";
+import CustomTextField from '../FormikComponents/CustomTextField'
+import CustomDateTimePicker from '../FormikComponents/CustomDateTimePicker'
+import CustomTextarea from '../FormikComponents/CustomTextarea'
+import CustomSelect from '../FormikComponents/CustomSelect'
+import CustomLocationPicker from '../FormikComponents/CustomLocationPicker'
 
+import imageUploader from '../../helpers/imageUploader'
 
-const CreateGroup = (props) => {
-  const { history } = props;
+class CreateGroup extends React.Component {
+  constructor(props) {
+		super(props)
+		this.fileInput = React.createRef()
+
+  }
+  render(){
+  const { history } = this.props
   return (
     <Mutation mutation={MUTATION_CREATE_GROUP}>
       {(createGroup, { loading }) => (
@@ -24,87 +31,104 @@ const CreateGroup = (props) => {
             {({ user }) => (
               <Formik
                 initialValues={{
-                  name: "",
+                  name: '',
 									private: false,
 									enabled: true,
-                  description: "",
+                  description: '',
+                  picture: '',
                   location: {
-                    country: "",
-                    city: "",
-                    address: "",
+                    country: '',
+                    city: '',
+                    address: '',
                     locationCoordinates: {
-                      type: "Point",
+                      type: 'Point',
                       coordinates: []
                     }
 									}
                 }}
+                handleImageUpload={async() => {
+                  const result = await imageUploader(this.fileInput.current.files[0])
+                  await setFieldValue('picture', result.url)
+                }}
                 onSubmit={async (values) => {
-                  const response = await createGroup({
-                    variables: {
-                      input: {
-                        ...values,
-                        admin: user.id
+                  // await this.handleImageUpload()
+									// if(result){
+                    const response = await createGroup({
+                      variables: {
+                        input: {
+                          ...values,
+                          admin: user.id
+                        }
                       }
+                    })
+                    if(response){
+                      history.push(`/group/${response.data.createGroup.id}`)
                     }
-                  });
-                  if(response){
-                    history.push(`/group/${response.data.createGroup.id}`)
-                  }
+                  // }
                 }}
               >
                 {() => (
-                  <Form className="create-group-form">
+                  <Form className='create-group-form'>
                     <Field
-                      name="name"
+                      name='name'
                       component={CustomTextField}
-                      label="Name"
+                      label='Name'
                     />
                     <Field
-                      name="description"
+                      name='description'
                       component={CustomTextarea}
-                      label="Description"
-                      className="create-group-form__description"
+                      label='Description'
+                      className='create-group-form__description'
                     />
 										{/* <Field
-                      name="category.name"
+                      name='category.name'
                       component={CustomTextField}
-                      label="Category"
+                      label='Category'
                     /> */}
                     <Field
-                      name="location.country"
-                      label="Country"
+                      name='location.country'
+                      label='Country'
                       component={CustomSelect}
                       options={[
                         {
-                          value: "Thailand",
-                          label: "Thailand"
+                          value: 'Thailand',
+                          label: 'Thailand'
                         },
                         {
-                          value: "Myanmar",
-                          label: "Myanmar"
+                          value: 'Myanmar',
+                          label: 'Myanmar'
                         },
                         {
-                          value: "Korea",
-                          label: "Korea"
+                          value: 'Korea',
+                          label: 'Korea'
                         }
                       ]}
                     />
                     <Field
-                      name="location.city"
+                      name='location.city'
                       component={CustomTextField}
-                      label="City"
+                      label='City'
                     />
                     <Field
-                      name="location.address"
+                      name='location.address'
                       component={CustomTextField}
-                      label="Address"
+                      label='Address'
                     />
                     <Field
-                      name="location.locationCoordinates.coordinates"
+                      name='location.locationCoordinates.coordinates'
                       component={CustomLocationPicker}
-                      className="create-group-form__map"
+                      className='create-group-form__map'
                     />
-                    <button type="submit">Submit</button>
+                    <input 
+												type='file' 
+												ref={this.fileInput} 
+												onChange={async () => {
+                          const result = await imageUploader(this.fileInput.current.files[0])
+                          setFieldValue('picture', result.url)
+                          }
+                          } 
+                    />
+                    <button type='submit'>Submit</button>
                   </Form>
                 )}
               </Formik>
@@ -113,7 +137,8 @@ const CreateGroup = (props) => {
         </div>
       )}
     </Mutation>
-  );
-};
+  )
+  }
+}
 
-export default withRouter(CreateGroup);
+export default withRouter(CreateGroup)

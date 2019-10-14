@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import './App.css';
 import Home from '../../pages/Home';
 import Event from '../../pages/Event';
@@ -12,6 +11,7 @@ import UserProfile from '../../pages/UserProfile';
 import EditUserProfile from '../../pages/EditUserProfile';
 import CreateEventPage from '../../pages/CreateEventPage';
 import CreateGroupPage from '../../pages/CreateGroupPage';
+
 import AuthenticatedRoute from '../Routes/AuthenticatedRoute';
 
 class App extends React.Component {

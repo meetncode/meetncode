@@ -1,6 +1,7 @@
 import React from 'react'
 import UserBio from './UserBio'
 import UserGroups from './UserGroups'
+import PropTypes from 'prop-types'
 
 const UserBioContainer = (props) => {
 	const { userBio } = props
@@ -13,4 +14,8 @@ const UserBioContainer = (props) => {
 	)
 }
 
-export default UserBioContainer;
+UserBioContainer.propTypes = {
+  userBio: PropTypes.object
+}
+
+export default UserBioContainer

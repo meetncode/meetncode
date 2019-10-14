@@ -2,12 +2,13 @@ import React from 'react'
 import Category from './Category'
 import './Categories.css'
 
+// TODO:: get from backend
 const Categories = () => {
 	return (
-		<div className="category-container">
-			<div className="category-wrapper">
+		<div className='category-container'>
+			<div className='category-wrapper'>
 			<h1>Categories</h1>
-			<ul className="categories">
+			<ul className='categories'>
 				<Category></Category>
 				<Category></Category>
 				<Category></Category>
@@ -17,4 +18,4 @@ const Categories = () => {
 	)
 }
 
-export default Categories;
+export default Categories

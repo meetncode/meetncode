@@ -1,5 +1,5 @@
-import React from 'react';
-import LocationPicker from '../../LocationPicker';
+import React from 'react'
+import LocationPicker from '../../LocationPicker'
 
 
 const CustomLocationPicker = ({ form, field, options, ...props }) => {
@@ -12,4 +12,4 @@ const CustomLocationPicker = ({ form, field, options, ...props }) => {
   )
 }
 
-export default CustomLocationPicker;
+export default CustomLocationPicker

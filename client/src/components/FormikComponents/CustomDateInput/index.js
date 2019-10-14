@@ -1,6 +1,5 @@
 import React from "react";
 import { DatePicker } from "@material-ui/pickers";
-import dayjs from 'dayjs'
 
 const CustomDateInput = ({ form, field, ...props }) => {
   return (
@@ -9,7 +8,7 @@ const CustomDateInput = ({ form, field, ...props }) => {
       onChange={date => form.setFieldValue(field.name, date)}
       {...props}
     />
-  );
+  )
 }
 
-export default CustomDateInput;
+export default CustomDateInput

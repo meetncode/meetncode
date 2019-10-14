@@ -5,15 +5,15 @@ import mySvg from './logo.svg'
 
 const Header = () => {
 	return (
-		<div className="header-wrapper">
+		<div className='header-wrapper'>
 			<img src={mySvg} style={{ 'maxWidth': 40, 'margin': '1em' }}/>
-			<div className="menu-bar-wrapper">
-				<Link to="/create-group">start a new group</Link>
-				<Link to="/login">Login</Link>
-				<Link to="/signup">register</Link>
+			<div className='menu-bar-wrapper'>
+				<Link to='/create-group'>start a new group</Link>
+				<Link to='/login'>Login</Link>
+				<Link to='/signup'>register</Link>
 			</div>
 		</div>
 	)
 }
 
-export default Header;
+export default Header
