@@ -1,22 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { ApolloProvider } from "react-apollo";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ApolloProvider } from 'react-apollo';
 
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createUploadLink } from 'apollo-upload-client';
-import { onError } from "apollo-link-error";
-import { ApolloLink, Observable } from "apollo-link";
+import { onError } from 'apollo-link-error';
+import { ApolloLink, Observable } from 'apollo-link';
 
-import App from "./components/App/App";
-import { Provider } from "react-redux";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DayJsUtils from "@date-io/dayjs";
+import App from './components/App/App';
+import { Provider } from 'react-redux';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DayJsUtils from '@date-io/dayjs';
 
-import store from "./store";
+import store from './store';
 
 const request = async operation => {
-  const token = await localStorage.getItem("token");
+  const token = await localStorage.getItem('token');
 
   operation.setContext({
     headers: {
@@ -59,8 +59,8 @@ export const client = new ApolloClient({
     }),
     requestLink,
     new createUploadLink({
-      uri: "http://localhost:4000/",
-      credentials: "same-origin"
+      uri: 'http://localhost:4000/',
+      credentials: 'same-origin'
     })
   ]),
   cache: new InMemoryCache()
@@ -78,5 +78,5 @@ ReactDOM.render(
   <Provider store={store}>
     <AppWrapper />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
