@@ -1,11 +1,11 @@
-import { IS_LOGGED_IN, LOGOUT } from '../../actions/isAuthenticated';
+import { LOGIN, LOGOUT } from '../../actions/isAuthenticated';
 import checkAuthentication from './checkAuthentication';
 
 const initialState = checkAuthentication();
 
 const isAuthenticated = (state = initialState, action) => {
   switch (action.type) {
-    case IS_LOGGED_IN:
+    case LOGIN:
       return (state = true);
     case LOGOUT:
       return (state = false);
