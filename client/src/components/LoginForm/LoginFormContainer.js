@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-import * as yup from 'yup';
-import { Form, Formik, Field } from 'formik';
-import { withStyles } from '@material-ui/core/styles';
-import { Mutation } from 'react-apollo';
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { withRouter } from 'react-router-dom'
+import * as yup from 'yup'
+import { Form, Formik, Field } from 'formik'
+import { withStyles } from '@material-ui/core/styles'
+import { Mutation } from 'react-apollo'
 
-import LOGIN_USER_MUTATION from './loginUserMutation.graphql';
+import LOGIN_USER_MUTATION from './loginUserMutation.graphql'
 
-import CustomTextField from '../FormikComponents/CustomTextField';
-import Button from '../Button';
-import CustomAlert from '../CustomAlert';
-import { login } from '../../actions/isAuthenticated';
+import CustomTextField from '../FormikComponents/CustomTextField'
+import Button from '../Button'
+import CustomAlert from '../CustomAlert'
+import { login } from '../../actions/isAuthenticated'
 
 const styles = theme => ({
   formContainer: {
@@ -39,7 +39,7 @@ const styles = theme => ({
     color: '#fff',
     cursor: 'pointer'
   }
-});
+})
 
 const LoginValidation = yup.object().shape({
   email: yup
@@ -50,12 +50,12 @@ const LoginValidation = yup.object().shape({
     .string()
     .max(16)
     .required()
-});
+})
 const LoginFormContainer = ({ classes, history, dispatch }) => {
   const [error, setError] = useState({
     status: false,
     message: ''
-  });
+  })
 
   return (
     <Mutation mutation={LOGIN_USER_MUTATION}>
@@ -73,12 +73,12 @@ const LoginFormContainer = ({ classes, history, dispatch }) => {
                 setError({
                   status: true,
                   message: e.graphQLErrors[0].message
-                });
-              });
+                })
+              })
 
               if (response) {
-                dispatch(login(response.data.loginUser.token));
-                history.push(`/members/${response.data.loginUser.userId}`);
+                dispatch(login(response.data.loginUser.token))
+                history.push(`/members/${response.data.loginUser.userId}`)
               }
             }}
             validationSchema={LoginValidation}
@@ -128,11 +128,11 @@ const LoginFormContainer = ({ classes, history, dispatch }) => {
         </div>
       )}
     </Mutation>
-  );
-};
+  )
+}
 
 export default compose(
   withRouter,
   connect(),
   withStyles(styles)
-)(LoginFormContainer);
+)(LoginFormContainer)

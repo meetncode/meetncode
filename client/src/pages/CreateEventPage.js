@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
-import CreateEvent from '../components/CreateEvent';
+import CreateEvent from '../components/CreateEvent'
 
 const CreateEventPage = () => {
   return (
@@ -10,7 +10,7 @@ const CreateEventPage = () => {
       <CreateEvent />
       <Footer/>
     </div>
-  );
-};
+  )
+}
 
-export default CreateEventPage;
+export default CreateEventPage

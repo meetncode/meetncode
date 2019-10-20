@@ -1,16 +1,16 @@
-import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { Form, Formik, Field } from 'formik';
-import { withRouter } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
-import * as yup from 'yup';
-import { Mutation } from 'react-apollo';
+import React from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { Form, Formik, Field } from 'formik'
+import { withRouter } from 'react-router-dom'
+import { withStyles } from '@material-ui/core/styles'
+import * as yup from 'yup'
+import { Mutation } from 'react-apollo'
 
-import CustomTextField from '../FormikComponents/CustomTextField';
-import Button from '../Button';
+import CustomTextField from '../FormikComponents/CustomTextField'
+import Button from '../Button'
 
-import SINUP_UP_USER from './signupUserMutation.graphql';
+import SINUP_UP_USER from './signupUserMutation.graphql'
 
 const styles = {
   container: {
@@ -38,7 +38,7 @@ const styles = {
     color: '#fff',
     cursor: 'pointer'
   }
-};
+}
 
 const SignupValidation = yup.object().shape({
   firstName: yup
@@ -61,14 +61,14 @@ const SignupValidation = yup.object().shape({
     .max(16)
     .required()
     .test('passwords-match', 'Passwords should match', function(value) {
-      return this.parent.password === value;
+      return this.parent.password === value
     })
     .label('This'),
   email: yup
     .string()
     .required()
     .label('Email')
-});
+})
 const SignupFormContainer = ({ classes, history, dispatch }) => {
   return (
     <Mutation mutation={SINUP_UP_USER}>
@@ -85,10 +85,10 @@ const SignupFormContainer = ({ classes, history, dispatch }) => {
             onSubmit={async values => {
               const response = await signupUser({
                 variables: values
-              });
+              })
               if (response) {
-                dispatch(login(response.data.loginUser.token));
-                history.push(`/members/${response.data.signupUser.userId}`);
+                dispatch(login(response.data.loginUser.token))
+                history.push(`/members/${response.data.signupUser.userId}`)
               }
             }}
             validationSchema={SignupValidation}
@@ -141,11 +141,11 @@ const SignupFormContainer = ({ classes, history, dispatch }) => {
         </div>
       )}
     </Mutation>
-  );
-};
+  )
+}
 
 export default compose(
   withRouter,
   connect(),
   withStyles(styles)
-)(SignupFormContainer);
+)(SignupFormContainer)

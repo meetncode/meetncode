@@ -1,33 +1,33 @@
-const cloudinary = require("cloudinary").v2;
+const cloudinary = require("cloudinary").v2
 
 const OtherResolvers = {
   Mutation: {
     singleUpload: async (_, { file }) => {
-      const { createReadStream, filename, mimetype, encoding } = await file;
+      const { createReadStream, filename, mimetype, encoding } = await file
 
       try {
         const result = await new Promise((resolve, reject) => {
           createReadStream().pipe(
             cloudinary.uploader.upload_stream((error, result) => {
               if (error) {
-                reject(error);
+                reject(error)
               }
-              resolve(result);
+              resolve(result)
             })
-          );
-        });
+          )
+        })
 
         return {
           filename,
           url: result.secure_url,
           mimetype
         }
-        return;
+        return
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     }
   }
-};
+}
 
-module.exports = { OtherResolvers };
+module.exports = { OtherResolvers }

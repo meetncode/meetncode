@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require('apollo-server')
 
 const EventSchema = gql`
 
@@ -53,4 +53,4 @@ const EventSchema = gql`
   }
 `
 
-module.exports = EventSchema;
+module.exports = EventSchema

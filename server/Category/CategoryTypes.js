@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require('apollo-server')
 
 const CategorySchema = gql`
   type Category {
@@ -27,4 +27,4 @@ const CategorySchema = gql`
   }
 `
 
-module.exports = CategorySchema;
+module.exports = CategorySchema

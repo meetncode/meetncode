@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Route, Redirect } from 'react-router-dom'
 
-import componentOrRender from './componentOrRender';
+import componentOrRender from './componentOrRender'
 
 const AuthenticatedRoute = ({
   component: Component,
@@ -15,17 +15,17 @@ const AuthenticatedRoute = ({
       {...rest}
       render={props => {
         if (!isAuthenticated) {
-          return <Redirect to='/login' />;
+          return <Redirect to='/login' />
         }
 
-        return componentOrRender(props, Component, render);
+        return componentOrRender(props, Component, render)
       }}
     />
-  );
-};
+  )
+}
 
 const mapStateToProps = state => ({
   isAuthenticated: state.isAuthenticated
-});
+})
 
-export default connect(mapStateToProps)(AuthenticatedRoute);
+export default connect(mapStateToProps)(AuthenticatedRoute)

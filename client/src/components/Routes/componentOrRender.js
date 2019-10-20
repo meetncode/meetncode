@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 const componentOrRender = (props, Component, render) => {
   if (Component) {
-    return <Component {...props} />;
+    return <Component {...props} />
   }
   if (render) {
-    return render(props);
+    return render(props)
   }
 
-  return null;
-};
+  return null
+}
 
-export default componentOrRender;
+export default componentOrRender

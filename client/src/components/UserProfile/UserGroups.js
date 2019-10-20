@@ -1,25 +1,25 @@
-import React from 'react';
-import { Query } from 'react-apollo';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Query } from 'react-apollo'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-import GET_USER_GROUPS from './queryGetUserGroups.graphql';
+import GET_USER_GROUPS from './queryGetUserGroups.graphql'
 
 const UserGroups = props => {
-  const { groups } = props;
+  const { groups } = props
   return (
     <div>
       <h3>Your Groups</h3>
       <ul className='groups'>
         {groups.map(group => {
-          const { id } = group;
-          const url = `/group/${id}`;
+          const { id } = group
+          const url = `/group/${id}`
           return (
             <Query query={GET_USER_GROUPS} variables={{ id }} key={group.id}>
               {({ data, loading, error }) => {
-                if (loading) return <p>Loading</p>;
-                if (error) return <p>ERROR</p>;
-                const userGroups = data.getGroup;
+                if (loading) return <p>Loading</p>
+                if (error) return <p>ERROR</p>
+                const userGroups = data.getGroup
                 return (
                   <React.Fragment>
                     <li>
@@ -29,18 +29,18 @@ const UserGroups = props => {
                       </Link>
                     </li>
                   </React.Fragment>
-                );
+                )
               }}
             </Query>
-          );
+          )
         })}
       </ul>
     </div>
-  );
-};
+  )
+}
 
 UserGroups.propTypes = {
   groups: PropTypes.object
-};
+}
 
-export default UserGroups;
+export default UserGroups

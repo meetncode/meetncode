@@ -1,6 +1,6 @@
-import { client } from '../../index';
+import { client } from '../../index'
 
-import MUTATION_UPLOAD_FILE from './mutationUploadFile.graphql';
+import MUTATION_UPLOAD_FILE from './mutationUploadFile.graphql'
 
 const imageUploader = async (image) => {
   const res = await client.mutate({
@@ -10,7 +10,7 @@ const imageUploader = async (image) => {
     }
   })
 
-  return res.data.singleUpload;
+  return res.data.singleUpload
 }
 
-export default imageUploader;
+export default imageUploader

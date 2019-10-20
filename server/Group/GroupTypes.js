@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require('apollo-server')
 
 const GroupSchema = gql`
 
@@ -51,4 +51,4 @@ const GroupSchema = gql`
   }
 `
 
-module.exports = GroupSchema;
+module.exports = GroupSchema

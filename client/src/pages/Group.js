@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import GroupHeader from '../components/GroupHeader/GroupHeaderContainer'
 import GroupAbout from '../components/GroupAbout/GroupAboutContainer'
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import gql from 'graphql-tag'
+import { Query } from 'react-apollo'
 
 const GET_GROUP = gql`
 query GetGroup($id: ID!){
@@ -16,7 +16,7 @@ query GetGroup($id: ID!){
 			id
     }
   }
-}`;
+}`
 
 export default class Group extends React.Component {
 	render() {
@@ -24,8 +24,8 @@ export default class Group extends React.Component {
 		return (
 			<Query query={GET_GROUP} variables={{ id }}>
 				{({ data, loading, error }) => {
-					if (loading) return <p>Loading</p>;
-					if (error) return <p>ERROR</p>;
+					if (loading) return <p>Loading</p>
+					if (error) return <p>ERROR</p>
 					const { id, events } = data.getGroup
 					return (
 						<React.Fragment>

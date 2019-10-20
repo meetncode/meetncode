@@ -1,4 +1,4 @@
-const { Group } =  require('./GroupModel');
+const { Group } =  require('./GroupModel')
 
 const GroupResolvers = {
   Query: {
@@ -12,10 +12,10 @@ const GroupResolvers = {
         }
       })
       .populate('admin')
-      .populate('members');
+      .populate('members')
     },
     getGroups: async(_, { input }) => {
-      let filter = {};
+      let filter = {}
 
       if(input) {
         const {
@@ -23,46 +23,46 @@ const GroupResolvers = {
           category,
           country,
           city
-        } = input;
+        } = input
 
-        if(name) filter.name = { $regex: name };
-        if(category) filter.category = category;
-        if(country) filter['location.country'] = country;
-        if(city) filter['location.city'] = city;
+        if(name) filter.name = { $regex: name }
+        if(category) filter.category = category
+        if(country) filter['location.country'] = country
+        if(city) filter['location.city'] = city
       }
 
       return await Group.find(filter)
         .populate('category')
         .populate('events')
         .populate('admin')
-        .populate('members');
+        .populate('members')
     },
     getGroupsByCategory: async(_, { categoryId }) => {
       return await Group.find({ category: categoryId })
         .populate('category')
         .populate('events')
         .populate('admin')
-        .populate('members');
+        .populate('members')
     },
     getGroupsByLocation: async(_, { country, city }) => {
       return await Group.find({ $or:[{ country }, { city }]})
         .populate('category')
         .populate('events')
         .populate('admin')
-        .populate('members');
+        .populate('members')
     },
   },
   Mutation: {
     createGroup: async (_, { input }, { isAuth }) => {
-      // if(!isAuth) throw Error('You are not authorized to do this');
-      const group =  await Group.create(input);
+      // if(!isAuth) throw Error('You are not authorized to do this')
+      const group =  await Group.create(input)
       return await group.populate('category')
         .populate('events')
         .populate('admin')
-        .populate('members').execPopulate();
+        .populate('members').execPopulate()
     },
     updateGroup: async (_, { id, input }, { isAuth }) => {
-      // if(!isAuth) throw Error('You are not authorized to do this');
+      // if(!isAuth) throw Error('You are not authorized to do this')
       // TODO:protect to only allow the admin to update
       return await Group.findByIdAndUpdate(id, input, {
           new: true
@@ -70,9 +70,9 @@ const GroupResolvers = {
         .populate('category')
         .populate('events')
         .populate('admin')
-        .populate('members');
+        .populate('members')
     }
   }
 }
 
-module.exports = { GroupResolvers };
+module.exports = { GroupResolvers }

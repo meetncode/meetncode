@@ -1,17 +1,17 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
 
 const isAuth = ({ req }) => {
-  const token = req.headers.authorization;
+  const token = req.headers.authorization
   if(!token) {
     return {
       isAuth: false
     }
   }
 
-  let decodedToken;
+  let decodedToken
 
   try {
-    decodedToken = jwt.verify(token, 'secretkey');
+    decodedToken = jwt.verify(token, 'secretkey')
   } catch (error) {
     return {
       isAuth: false
@@ -30,4 +30,4 @@ const isAuth = ({ req }) => {
   }
 }
 
-module.exports = isAuth;
+module.exports = isAuth

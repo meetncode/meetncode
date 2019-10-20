@@ -35,8 +35,8 @@ class GroupAboutContainer extends Component {
               }}
             >
                 {({ data, loading, error }) => {
-                  if (loading) return <p>Loading</p>;
-                  if (error) return <p>ERROR</p>;
+                  if (loading) return <p>Loading</p>
+                  if (error) return <p>ERROR</p>
                   const group = data.getGroup
                   return (
                     <>
