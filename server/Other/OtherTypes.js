@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require('apollo-server')
 
 const LocationSchema = gql`
   type Location {
@@ -38,4 +38,4 @@ const LocationSchema = gql`
 
 `
 
-module.exports = LocationSchema;
+module.exports = LocationSchema

@@ -11,5 +11,5 @@ export default function SignUp() {
       <SignUpForm />
       <Footer />
     </div>
-  );
+  )
 }

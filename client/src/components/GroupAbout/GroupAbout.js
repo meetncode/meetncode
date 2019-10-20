@@ -4,8 +4,8 @@ import PastEvents from '../GroupEvents/PastEvents'
 import GroupSocial from './GroupSocial'
 import { Query } from 'react-apollo'
 
-import GET_UPCOMING_EVENTS from './queryGetUpcomingEvents.graphql';
-import GET_PAST_EVENTS from './queryGetPastEvents.graphql';
+import GET_UPCOMING_EVENTS from './queryGetUpcomingEvents.graphql'
+import GET_PAST_EVENTS from './queryGetPastEvents.graphql'
 import GET_GROUP from './queryGetGroup.graphql'
 
 class GroupAbout extends React.Component {
@@ -25,7 +25,7 @@ class GroupAbout extends React.Component {
   }
 
   render(){
-    const { group } = this.props;
+    const { group } = this.props
     return (
           <div className='group-about-wrapper'>
             <div>

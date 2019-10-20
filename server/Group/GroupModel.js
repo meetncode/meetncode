@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const mongoose = require('mongoose')
+const { Schema } = mongoose
 
 // Add location
 
@@ -56,8 +56,8 @@ const GroupSchema = new Schema({
     default: true
   },
   picture: String
-}, { timestamps: true });
+}, { timestamps: true })
 
-const Group = mongoose.model('group', GroupSchema);
+const Group = mongoose.model('group', GroupSchema)
 
-module.exports = { Group };
+module.exports = { Group }

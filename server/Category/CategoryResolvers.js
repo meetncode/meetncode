@@ -1,4 +1,4 @@
-const { Category } = require('./CategoryModel');
+const { Category } = require('./CategoryModel')
 
 const CategoryResolvers = {
   Query: {
@@ -6,7 +6,7 @@ const CategoryResolvers = {
       return await Category.findById(id)
     },
     getCategories: async() => {
-      return await Category.find();
+      return await Category.find()
     }
   },
   Mutation: {
@@ -21,4 +21,4 @@ const CategoryResolvers = {
   }
 }
 
-module.exports = { CategoryResolvers };
+module.exports = { CategoryResolvers }

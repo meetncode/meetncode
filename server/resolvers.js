@@ -1,10 +1,10 @@
-const { merge } =  require('lodash');
+const { merge } =  require('lodash')
 
-const { UserResolvers } = require('./User/UserResolvers');
-const { EventResolvers } = require('./Event/EventResolver');
-const { GroupResolvers } = require('./Group/GroupResolvers');
-const { CategoryResolvers } = require('./Category/CategoryResolvers');
-const { OtherResolvers } = require('./Other/OtherResolvers');
+const { UserResolvers } = require('./User/UserResolvers')
+const { EventResolvers } = require('./Event/EventResolver')
+const { GroupResolvers } = require('./Group/GroupResolvers')
+const { CategoryResolvers } = require('./Category/CategoryResolvers')
+const { OtherResolvers } = require('./Other/OtherResolvers')
 
 const resolvers = merge(
   UserResolvers,
@@ -12,6 +12,6 @@ const resolvers = merge(
   GroupResolvers,
   CategoryResolvers,
   OtherResolvers
-);
+)
 
-module.exports = resolvers;
+module.exports = resolvers

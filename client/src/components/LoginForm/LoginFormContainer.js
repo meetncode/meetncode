@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
 import * as yup from 'yup'
 import { Form, Formik, Field } from 'formik'
@@ -10,6 +12,7 @@ import LOGIN_USER_MUTATION from './loginUserMutation.graphql'
 import CustomTextField from '../FormikComponents/CustomTextField'
 import Button from '../Button'
 import CustomAlert from '../CustomAlert'
+import { login } from '../../actions/isAuthenticated'
 
 const styles = theme => ({
   formContainer: {
@@ -48,11 +51,12 @@ const LoginValidation = yup.object().shape({
     .max(16)
     .required()
 })
-const LoginFormContainer = ({ classes, history }) => {
+const LoginFormContainer = ({ classes, history, dispatch }) => {
   const [error, setError] = useState({
     status: false,
     message: ''
   })
+
   return (
     <Mutation mutation={LOGIN_USER_MUTATION}>
       {(loginUser, { loading, data }) => (
@@ -73,8 +77,8 @@ const LoginFormContainer = ({ classes, history }) => {
               })
 
               if (response) {
+                dispatch(login(response.data.loginUser.token))
                 history.push(`/members/${response.data.loginUser.userId}`)
-                localStorage.setItem('token', response.data.loginUser.token)
               }
             }}
             validationSchema={LoginValidation}
@@ -126,4 +130,9 @@ const LoginFormContainer = ({ classes, history }) => {
     </Mutation>
   )
 }
-export default withRouter(withStyles(styles)(LoginFormContainer))
+
+export default compose(
+  withRouter,
+  connect(),
+  withStyles(styles)
+)(LoginFormContainer)

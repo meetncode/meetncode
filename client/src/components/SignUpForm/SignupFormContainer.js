@@ -1,4 +1,6 @@
 import React from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { Form, Formik, Field } from 'formik'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
@@ -67,7 +69,7 @@ const SignupValidation = yup.object().shape({
     .required()
     .label('Email')
 })
-const SignupFormContainer = ({ classes, history }) => {
+const SignupFormContainer = ({ classes, history, dispatch }) => {
   return (
     <Mutation mutation={SINUP_UP_USER}>
       {(signupUser, { loading }) => (
@@ -84,9 +86,10 @@ const SignupFormContainer = ({ classes, history }) => {
               const response = await signupUser({
                 variables: values
               })
-              localStorage.setItem('token', response.data.signupUser.token)
-
-              history.push(`/members/${response.data.signupUser.userId}`)
+              if (response) {
+                dispatch(login(response.data.loginUser.token))
+                history.push(`/members/${response.data.signupUser.userId}`)
+              }
             }}
             validationSchema={SignupValidation}
           >
@@ -141,4 +144,8 @@ const SignupFormContainer = ({ classes, history }) => {
   )
 }
 
-export default withRouter(withStyles(styles)(SignupFormContainer))
+export default compose(
+  withRouter,
+  connect(),
+  withStyles(styles)
+)(SignupFormContainer)

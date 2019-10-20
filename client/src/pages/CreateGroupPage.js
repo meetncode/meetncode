@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 
-import CreateGroup from '../components/CreateGroup';
+import CreateGroup from '../components/CreateGroup'
 
 const CreateGroupPage = () => {
   return (
@@ -11,7 +11,7 @@ const CreateGroupPage = () => {
       <CreateGroup />
       <Footer/>
     </div>
-  );
-};
+  )
+}
 
-export default CreateGroupPage;
+export default CreateGroupPage
