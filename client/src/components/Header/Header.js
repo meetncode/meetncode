@@ -8,17 +8,21 @@ import './Header.css';
 import { logout } from '../../actions/isAuthenticated';
 
 const Header = ({ isAuthenticated, dispatch }) => {
-	const history = useHistory()
+  const history = useHistory();
   return (
     <div className='header-wrapper'>
       <img src={mySvg} style={{ maxWidth: 40, margin: '1em' }} />
       <div className='menu-bar-wrapper'>
         <Link to='/create-group'>start a new group</Link>
         {isAuthenticated ? (
-          <a onClick={() => {
-						dispatch(logout())
-						history.push('/')
-					}}>Logout</a>
+          <a
+            onClick={() => {
+              dispatch(logout());
+              history.push('/');
+            }}
+          >
+            Logout
+          </a>
         ) : (
           <React.Fragment>
             <Link to='/login'>Login</Link>
