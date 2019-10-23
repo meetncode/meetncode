@@ -9,6 +9,7 @@ export function login(token) {
 }
 
 export function logout() {
+  localStorage.clear()
   return {
     type: LOGOUT
   }
