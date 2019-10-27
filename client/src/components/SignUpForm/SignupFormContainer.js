@@ -80,9 +80,33 @@ const SignupFormContainer = ({ classes, history, dispatch }) => {
               lastName: '',
               password: '',
               confirmPassword: '',
-              email: ''
+              email: '',
+              location: {}
             }}
             onSubmit={async values => {
+                fetch('http://api.ipify.org/?format=json')
+                .then((res) => { 
+                  return res.json()
+                })
+                .then((data) => {   
+                  return fetch(`http://api.ipstack.com/${data.ip}?access_key=ddfad4825646f3ca95d0a13561681590&format=1`)
+                })
+                .then((res) => { 
+                  return res.json()
+                })
+                .then((data) => {
+                  const location = {
+                    locationCoordinates :  { 
+                      type: 'Point', coordinates: [ data.latitude, data.longitude]
+                    },
+                    city: data.city,
+                    country: data.country_name
+                  }
+                  return location
+                })
+                .catch((error) => { 
+                  console.log('error', error) 
+                })
               const response = await signupUser({
                 variables: values
               })

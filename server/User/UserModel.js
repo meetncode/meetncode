@@ -27,6 +27,17 @@ const UserSchema = new Schema({
       type: String,
       require: true
     },
+    locationCoordinates: {
+      type: {
+        type: String,
+        enum: ['Point'],
+        required: true
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      },
+    }
   },
   hometown: String,
   language: String,
