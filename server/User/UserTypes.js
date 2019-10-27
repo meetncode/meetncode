@@ -27,7 +27,7 @@ const UserSchema = gql`
     lastName: String!
     email: String!
     password: String!
-    location: Location
+    location: LocationInput
   }
 
   input UserInput {

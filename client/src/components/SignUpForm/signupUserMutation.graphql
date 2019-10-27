@@ -1,4 +1,4 @@
-mutation($firstName:String! $lastName:String! $email:String! $password:String! $location:Location) {
+mutation($firstName:String! $lastName:String! $email:String! $password:String! $location:LocationInput) {
   signupUser(
     input: {
       firstName: $firstName
