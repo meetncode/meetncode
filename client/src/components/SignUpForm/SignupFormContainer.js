@@ -8,6 +8,7 @@ import * as yup from 'yup'
 import { Mutation } from 'react-apollo'
 
 import CustomTextField from '../FormikComponents/CustomTextField'
+import { login } from '../../actions/isAuthenticated'
 import Button from '../Button'
 
 import SINUP_UP_USER from './signupUserMutation.graphql'
