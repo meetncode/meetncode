@@ -8,6 +8,7 @@ import * as yup from 'yup'
 import { Mutation } from 'react-apollo'
 
 import CustomTextField from '../FormikComponents/CustomTextField'
+import { login } from '../../actions/isAuthenticated'
 import Button from '../Button'
 
 import SINUP_UP_USER from './signupUserMutation.graphql'
@@ -69,79 +70,116 @@ const SignupValidation = yup.object().shape({
     .required()
     .label('Email')
 })
-const SignupFormContainer = ({ classes, history, dispatch }) => {
-  return (
-    <Mutation mutation={SINUP_UP_USER}>
-      {(signupUser, { loading }) => (
-        <div className={classes.container}>
-          <Formik
-            initialValues={{
-              firstName: '',
-              lastName: '',
-              password: '',
-              confirmPassword: '',
-              email: ''
-            }}
-            onSubmit={async values => {
-              const response = await signupUser({
-                variables: values
-              })
-              if (response) {
-                dispatch(login(response.data.loginUser.token))
-                history.push(`/members/${response.data.signupUser.userId}`)
-              }
-            }}
-            validationSchema={SignupValidation}
-          >
-            {({ errors }) => (
-              <Form className={classes.form}>
-                <Field
-                  component={CustomTextField}
-                  className={classes.field}
-                  name='firstName'
-                  placeholder='First Name'
-                />
-                <Field
-                  component={CustomTextField}
-                  className={classes.field}
-                  name='lastName'
-                  placeholder='Last Name'
-                />
-                <Field
-                  component={CustomTextField}
-                  className={classes.field}
-                  name='email'
-                  placeholder='Email'
-                />
-                <Field
-                  component={CustomTextField}
-                  className={classes.field}
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                />
-                <Field
-                  component={CustomTextField}
-                  className={classes.field}
-                  type='password'
-                  name='confirmPassword'
-                  placeholder='Confirmed Password'
-                />
-                <Button
-                  type='submit'
-                  variant='contained'
-                  className={classes.button}
-                  loading={loading}
-                >
-                  Submit
-                </Button>
-              </Form>
-            )}
-          </Formik>
-        </div>
-      )}
-    </Mutation>
-  )
+class SignupFormContainer extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      location: {}
+    }
+  }
+  componentDidMount() {
+    fetch('http://api.ipify.org/?format=json')
+      .then((res) => { 
+        return res.json()
+      })
+      .then((data) => {   
+        return fetch(`http://api.ipstack.com/${data.ip}?access_key=${process.env.IP_STACK_KEY}`)
+      })
+      .then((res) => { 
+        return res.json()
+      })
+      .then((data) => {
+        const location = {
+          locationCoordinates :  { 
+            type: 'Point', coordinates: [ data.latitude, data.longitude]
+          },
+          city: data.city,
+          country: data.country_name
+        }
+        this.setState({
+          location
+        })
+      })
+      .catch((error) => { 
+        console.log('error', error) 
+      })
+  }
+  render() {
+    const { classes, history, dispatch } = this.props
+    return (
+      <Mutation mutation={SINUP_UP_USER}>
+        {(signupUser, { loading }) => (
+          <div className={classes.container}>
+            <Formik
+              initialValues={{
+                firstName: '',
+                lastName: '',
+                password: '',
+                confirmPassword: '',
+                email: '',
+                location: this.state.location
+              }}
+              onSubmit={async values => {
+                const response = await signupUser({
+                  variables: {...values, location: this.state.location}
+                })
+                if (response) {
+                  dispatch(login(response.data.loginUser.token))
+                  history.push(`/members/${response.data.signupUser.userId}`)
+                }
+              }}
+              validationSchema={SignupValidation}
+            >
+              {({ errors }) => (
+                <Form className={classes.form}>
+                  <Field
+                    component={CustomTextField}
+                    className={classes.field}
+                    name='firstName'
+                    placeholder='First Name'
+                  />
+                  <Field
+                    component={CustomTextField}
+                    className={classes.field}
+                    name='lastName'
+                    placeholder='Last Name'
+                  />
+                  <Field
+                    component={CustomTextField}
+                    className={classes.field}
+                    name='email'
+                    placeholder='Email'
+                  />
+                  <Field
+                    component={CustomTextField}
+                    className={classes.field}
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                  />
+                  <Field
+                    component={CustomTextField}
+                    className={classes.field}
+                    type='password'
+                    name='confirmPassword'
+                    placeholder='Confirmed Password'
+                  />
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    className={classes.button}
+                    loading={loading}
+                  >
+                    Submit
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        )}
+      </Mutation>
+    )
+  }
 }
 
 export default compose(
