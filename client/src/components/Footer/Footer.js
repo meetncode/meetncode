@@ -44,7 +44,7 @@ const Footer = () => {
               <li className = 'menu-item'><a href='http://www.twitter.com/meetup'><i className='fab fa-twitter' ></i> Twitter</a></li>
               <li className = 'menu-item'><a href='http://www.facebook.com/meetup'><i className='fab fa-facebook-square' ></i> Facebook</a></li>
               <li className = 'menu-item'><a href='http://www.dribble.com'><i className='fas fa-basketball-ball'></i> Dribble</a></li>
-ß            </ul>
+            </ul>
           </div>
         </div>
       </div>
