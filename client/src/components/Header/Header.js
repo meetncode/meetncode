@@ -25,7 +25,7 @@ const Header = ({ isAuthenticated, dispatch }) => {
         ) : (
           <React.Fragment>
             <Link to='/login'>Login</Link>
-            <Link to='/signup'>register</Link>
+            <Link to='/signup'>Register</Link>
           </React.Fragment>
         )}
       </div>
