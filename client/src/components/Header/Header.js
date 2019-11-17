@@ -1,14 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import mySvg from './logo.svg';
+import mySvg from './logo.svg'
 
-import './Header.css';
-import { logout } from '../../actions/isAuthenticated';
+import './Header.css'
+import { logout } from '../../actions/isAuthenticated'
 
 const Header = ({ isAuthenticated, dispatch }) => {
-  const history = useHistory();
   return (
     <div className='header-wrapper'>
       <img src={mySvg} style={{ maxWidth: 40, margin: '1em' }} />
@@ -17,8 +16,8 @@ const Header = ({ isAuthenticated, dispatch }) => {
         {isAuthenticated ? (
           <a
             onClick={() => {
-              dispatch(logout());
-              history.push('/');
+              dispatch(logout())
+              this.props.history.push('/')
             }}
           >
             Logout
@@ -26,16 +25,16 @@ const Header = ({ isAuthenticated, dispatch }) => {
         ) : (
           <React.Fragment>
             <Link to='/login'>Login</Link>
-            <Link to='/signup'>register</Link>
+            <Link to='/signup'>Register</Link>
           </React.Fragment>
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => ({
   isAuthenticated: state.isAuthenticated
-});
+})
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Header)
