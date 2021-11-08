@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "apollo-boost": "^0.4.2",
-    "apollo-server": "^2.4.8",
+    "apollo-server": "^2.25.3",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.14.0",
     "dotenv": "^8.0.0",
